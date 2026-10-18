@@ -333,9 +333,9 @@ Konkrétne termíny a priebežný stav plnenia sú na [webe projektu](https://ne
 
 | Meno | Rola |
 |---|---|
-| *doplniť* | *napr. vedúci tímu, analyzátor* |
-| *doplniť* | *napr. AI vrstva, prompty* |
-| *doplniť* | *napr. frontend, dizajn, web projektu* |
-| *doplniť* | *napr. Vercel, CI, testovanie* |
+| ** | ** |
+| ** | ** |
+| ** | ** |
+| ** | ** |
 
 *Roly sú dočasné a môžu sa v priebehu projektu upresniť.*
