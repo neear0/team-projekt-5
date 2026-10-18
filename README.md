@@ -23,20 +23,16 @@
    - [Ako beží analýza na Verceli](#6-ako-beží-analýza-na-verceli)
    - [Dáta: bez databázy a bez účtov](#7-dáta-bez-databázy-a-bez-účtov)
    - [Kvalita kódu a CI](#8-kvalita-kódu-a-ci)
-4. [Zadania učiteľa ako rubriky](#zadania-učiteľa-ako-rubriky)
-5. [Bezpečnosť](#bezpečnosť)
-6. [Štruktúra repozitára](#štruktúra-repozitára)
-7. [Web projektu: povinný obsah](#web-projektu-povinný-obsah)
-8. [Lokálny vývoj](#lokálny-vývoj)
-9. [Nasadenie](#nasadenie)
-10. [Plán projektu](#plán-projektu)
-11. [Tím](#tím)
+4. [Bezpečnosť](#bezpečnosť)
+5. [Štruktúra repozitára](#štruktúra-repozitára)
+6. [Web projektu: povinný obsah](#web-projektu-povinný-obsah)
+7. [Lokálny vývoj](#lokálny-vývoj)
+8. [Plán projektu](#plán-projektu)
+9. [Tím](#tím)
 
 ---
 
 ## O projekte
-
-Študenti, ktorí absolvovali predmet *Internetové technológie*, vytvárajú nástroj, ktorý pomôže hodnotiť práce budúcich prvákov.
 
 **Hlavné funkcie**
 
@@ -76,13 +72,6 @@ flowchart LR
 ```
 
 Všetko beží vo **webovej aplikácii na Verceli**, bez inštalácie, bez vlastnej databázy a bez používateľských účtov. Analýzu riadi prehliadač ako tri samostatné kroky, a každý sa tak zmestí do limitov serverovej funkcie. Podrobnosti sú v bode [6](#6-ako-beží-analýza-na-verceli).
-
-Kľúčový princíp je **hybridné hodnotenie**:
-
-1. **Deterministické nástroje** merajú všetko, čo sa merať dá: validitu HTML, použitie `display: grid`, Lighthouse skóre, chyby prístupnosti. Výsledok je zakaždým rovnaký a dá sa overiť.
-2. **AI** dostane tieto merania ako *dôkazy* a posudzuje to, čo sa zmerať nedá: či je sémantika zmysluplná, či je kód čitateľný, či web vizuálne zodpovedá zadaniu. Potom spíše spätnú väzbu zrozumiteľnú pre prváka.
-
-Pri merateľných kritériách má posledné slovo nástroj, nie AI. Tým sa výrazne obmedzia halucinácie a hodnotenie je obhájiteľné, aj keď študent namietne.
 
 ---
 
@@ -172,39 +161,6 @@ type AiConfig =
   | { provider: 'none' }; // iba deterministické nástroje
 ```
 
-#### Podmienky bezplatného Gemini API
-
-Podľa [podmienok Gemini API](https://ai.google.dev/gemini-api/terms) (verzia z 28. 4. 2026) platí pre nás:
-
-- **Zdieľaný kľúč tímu v aplikácii nepoužijeme.** Podmienky hovoria: *„You may use only Paid Services when making API Clients available to users in the European Economic Area, Switzerland, or the United Kingdom.“* Slovensko je v EHP, takže aplikáciu pre ľudí v EHP nemôžeme poháňať bezplatnou kvótou z nášho kľúča.
-- **Preto BYOK.** Učiteľ si v AI Studio vytvorí vlastný bezplatný kľúč a zadá ho v nastaveniach aplikácie. Členovia tímu pri vývoji používajú svoje vlastné kľúče. *Či je BYOK v plnom súlade s podmienkami, pred ostrým nasadením v predmete ešte overíme, prípadne s fakultou.*
-- **Súkromie kódu študentov.** Pre používateľov v EHP sa pravidlá nakladania s dátami platených služieb uplatňujú aj na bezplatnú kvótu. Google teda vstupy a výstupy nepoužíva na zlepšovanie svojich produktov. Mimo EHP by to tak nebolo.
-- **Vek 18+.** API vyžaduje, aby mal používateľ aspoň 18 rokov, a aplikácia nesmie byť určená osobám mladším ako 18 rokov. Na vysokej škole to spĺňame.
-
-#### Limity free tieru
-
-Free tier má limity na počet požiadaviek za minútu a za deň, ktoré platia pre celý Google Cloud projekt, nie pre jednotlivý kľúč. Aplikácia s tým počíta:
-
-- AI požiadavky idú cez **frontu v prehliadači s jednou súbežnou požiadavkou**. Pri chybe 429 sa požiadavka zopakuje s exponenciálnym čakaním.
-- **Hromadné hodnotenie sa dá prerušiť a obnoviť.** Priebeh sa ukladá v prehliadači. Keď sa minie denný limit, ďalší deň sa pokračuje tam, kde sa skončilo, a dovtedy sú hotové reporty iba s výsledkami nástrojov.
-- **Šetríme tokeny.** Do promptu ide iba relevantný kód (HTML/CSS/JS, nie obrázky ani knižnice tretích strán), skrátené výstupy nástrojov a zmenšené screenshoty.
-- **Výsledky sa cachujú.** AI výstup sa v prehliadači (IndexedDB) uloží podľa hashu kódu a rubriky, takže opakovaná analýza nezmeneného kódu AI znova nevolá.
-
-#### Ako AI hodnotí (proti halucináciám)
-
-1. Do promptu ide **rubrika učiteľa**, **zdrojový kód s číslami riadkov**, **výsledky deterministických nástrojov** a **screenshoty**.
-2. Pri kritériách, ktoré zmeral nástroj (napr. „používa Grid“), AI výsledok **nemení**, iba ho vysvetlí študentovi. Je to dôležité najmä pri menších a lokálnych modeloch, ktoré sa mýlia častejšie.
-3. Každá výhrada musí odkazovať na konkrétny súbor a riadok. Výhrady bez odkazu systém zahodí.
-4. Spätná väzba je **po slovensky**, primeraná prvákovi, a obsahuje *prečo* je to problém a *ako* to opraviť, nielen *čo* je zle.
-5. Report uvádza, **ktorý poskytovateľ a model** ho vytvoril. Je to transparentné voči študentovi a umožňuje porovnávať modely medzi sebou.
-
-#### Lokálny model (plán do budúcna)
-
-- Vercel sa na `localhost` používateľa nedostane, ale **prehliadač áno**. Krok 3 (AI) preto pri lokálnom modeli neposiela prehliadač na server, ale priamo do Ollamy alebo LM Studia na počítači používateľa.
-- Obe poskytujú OpenAI-kompatibilné API, takže stačí existujúci provider `openai-compatible`. Treba iba povoliť CORS pre doménu aplikácie (v Ollame premenná `OLLAMA_ORIGINS`, v LM Studiu prepínač v nastaveniach servera).
-- Kroky 1 a 2 (nástroje) bežia aj tak na Verceli. Lokálny model teda nezmení, že kód prejde cez server, iba to, že AI hodnotenie nebeží v cloude a nemá limity.
-- **Obmedzenia:** na hodnotenie vizuálu treba model s podporou obrázkov, menšie modely menej spoľahlivo dodržia JSON schému (rieši to validácia a opakovanie) a na bežnom hardvéri je hodnotenie pomalšie.
-
 ### 6. Ako beží analýza na Verceli
 
 Podľa [dokumentácie Vercelu](https://vercel.com/docs/functions/limitations) má funkcia v bezplatnom pláne Hobby (s Fluid compute) **maximálne 300 s behu, 2 GB RAM / 1 vCPU, balík do 250 MB** a **4,5 MB** na telo požiadavky aj odpovede. Analýza celého projektu naraz by sa do toho zmestila tesne, preto ju delíme na **tri nezávislé kroky** a riadi ich prehliadač:
@@ -260,55 +216,6 @@ Aplikácia **zámerne nemá databázu ani používateľské účty**. Všetky d�
 | **Mock AI vrstvy** | V CI testoch sa AI nevolá. Testy sú rýchle, deterministické, nepotrebujú kľúč a nemíňajú limity. |
 | **GitHub Actions** | `ci.yml` na každý PR, `site.yml` pri merge do `main` nasadí web na Pages. Aplikáciu nasadzuje Vercel sám. |
 | **Branch protection** | Do `main` iba cez pull request s jedným schválením a zelenou CI |
-
----
-
-## Zadania učiteľa ako rubriky
-
-Učiteľ definuje zadanie ako **rubriku** v YAML formáte. Rubrika kombinuje deterministické a AI kritériá. Aplikácia obsahuje aj **editor rubrík**, ktorý YAML vygeneruje z formulára:
-
-```yaml
-id: zadanie-03-layout
-title: Responzívny layout stránky
-language: sk
-criteria:
-  - id: valid-html
-    type: static
-    check: html.valid          # Nu Html Checker, 0 chýb
-    points: 2
-
-  - id: flex-or-grid
-    type: static
-    check: css.uses-layout     # PostCSS AST
-    params: { any: [flex, grid] }
-    points: 3
-
-  - id: responsive
-    type: static
-    check: css.has-media-query
-    params: { min: 1 }
-    points: 2
-
-  - id: a11y
-    type: lighthouse
-    category: accessibility
-    threshold: 0.9
-    points: 2
-
-  - id: semantic-structure
-    type: ai
-    prompt: >
-      Používa stránka header, nav, main a footer zmysluplne?
-      Sú nadpisy h1–h6 v logickom poradí?
-    points: 4
-
-  - id: visual
-    type: ai-vision
-    prompt: Je layout na mobile použiteľný a bez horizontálneho scrollu?
-    points: 2
-```
-
-Rubriky majú **JSON Schema** (`packages/rubrics`), takže chybu v rubrike odhalí editor ešte pred spustením. Nové typy kontrol (`check: ...`) sa pridávajú ako malé funkcie s testami.
 
 ---
 
@@ -402,24 +309,6 @@ pnpm lint && pnpm check && pnpm test
 ```
 
 Lokálny model pri vývoji: spusti Ollamu s `OLLAMA_ORIGINS=http://localhost:5173` a v nastaveniach aplikácie zvoľ *OpenAI-kompatibilné API* s adresou `http://localhost:11434/v1`.
-
----
-
-## Nasadenie
-
-### Web projektu → GitHub Pages
-
-1. **Settings → Pages → Source: GitHub Actions.**
-2. Workflow `site.yml` pri každom pushi do `main` zbuildí `apps/site`, zvaliduje HTML a nasadí ho.
-3. V `svelte.config.js` je nastavené `paths.base = '/team-projekt-5'`, keďže web beží v podadresári.
-
-### Webová aplikácia → Vercel
-
-1. Na [vercel.com](https://vercel.com) importovať repozitár, **Root Directory: `apps/web`**.
-2. Do Environment Variables doplniť `GITHUB_TOKEN` (fine-grained token len na čítanie verejných repozitárov). Bez neho by GitHub API rýchlo obmedzilo počet stiahnutí. AI kľúč server nepotrebuje, posiela ho používateľ.
-3. V nastaveniach projektu zvoliť región funkcií **`fra1`**.
-4. Nastaviť *Ignored Build Step*, aby zmeny iba v `apps/site` nespúšťali deploy aplikácie.
-5. Každý pull request automaticky dostane vlastnú preview URL.
 
 ---
 
