@@ -41,6 +41,8 @@ header {
     display: flex;
     align-items: center;
     gap: 12px;
+    color: white;
+    text-decoration: none;
 }
 
 .logo-placeholder {
