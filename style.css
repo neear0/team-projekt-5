@@ -112,8 +112,8 @@ main {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Kalendár */
-.kalendar-card {
+/* Karty v obsahu */
+.card {
     background-color: rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -124,7 +124,7 @@ main {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
-.kalendar-card h3 {
+.card h3 {
     margin-top: 0;
 }
 
@@ -263,12 +263,49 @@ td:empty {
     }
 }
 
+.pdf-card {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .pdf-nahlad {
+    display: block;
     width: 100%;
-    height: 600px;
+    height: 70vh;
+    max-height: 600px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-bottom: 14px;
+}
+
+.pdf-tlacidlo {
+    display: inline-block;
+    background-color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.pdf-tlacidlo:hover {
+    background-color: #1c2833;
+}
+
+@media (max-width: 600px) {
+    .pdf-nahlad {
+        display: none;
+    }
+
+    .pdf-tlacidlo {
+        display: block;
+        text-align: center;
+    }
 }
 
 /* Členovia tímu */
@@ -394,7 +431,7 @@ footer p {
         padding: 20px 10px;
     }
 
-    .kalendar-card {
+    .card {
         padding: 14px;
     }
 
