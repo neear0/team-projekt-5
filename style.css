@@ -1,3 +1,28 @@
+:root {
+    /* Značkové farby (RGB triplety kvôli priehľadnosti) */
+    --color-navy-rgb: 44, 62, 80;
+    --color-navy-dark-rgb: 20, 28, 38;
+    --color-navy-hover: #1c2833;
+    --color-accent-rgb: 241, 196, 15;
+    --color-blue-rgb: 52, 152, 219;
+    --color-amber: #e3a51a;
+    --color-amber-light: #fbe8c2;
+    --color-teal: #16a085;
+    --color-white-rgb: 255, 255, 255;
+    --color-shadow-rgb: 0, 0, 0;
+
+    /* Text */
+    --color-text: #333;
+    --color-text-muted: #555;
+
+    /* Pozadia a okraje */
+    --color-bg: #f2f2f2;
+    --color-bg-soft: #fafafa;
+    --color-gray: #999;
+    --color-gray-light: #ccc;
+    --color-gray-pale: #e0e0e0;
+}
+
 /* Základné nastavenia */
 html, body {
     height: 100%;
@@ -10,13 +35,13 @@ html {
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f2f2f2;
+    background-color: var(--color-bg);
     background-image:
-        radial-gradient(circle at 8% -10%, rgba(241, 196, 15, 0.22), transparent 45%),
-        radial-gradient(circle at 92% 15%, rgba(52, 152, 219, 0.16), transparent 42%),
-        radial-gradient(circle at 85% 105%, rgba(44, 62, 80, 0.18), transparent 45%);
+        radial-gradient(circle at 8% -10%, rgba(var(--color-accent-rgb), 0.22), transparent 45%),
+        radial-gradient(circle at 92% 15%, rgba(var(--color-blue-rgb), 0.16), transparent 42%),
+        radial-gradient(circle at 85% 105%, rgba(var(--color-navy-rgb), 0.18), transparent 45%);
     background-attachment: fixed;
-    color: #333;
+    color: var(--color-text);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -31,13 +56,13 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(20, 28, 38, 0.85);
+    background: rgba(var(--color-navy-dark-rgb), 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(var(--color-white-rgb), 0.2);
     color: white;
     padding: 16px 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 20px rgba(var(--color-shadow-rgb), 0.12);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,8 +83,8 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(var(--color-white-rgb), 0.15);
+    border: 1px solid rgba(var(--color-white-rgb), 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,38 +119,38 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #f1c40f;
+    background-color: rgba(var(--color-white-rgb), 0.15);
+    color: rgb(var(--color-accent-rgb));
 }
 
 nav a.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #f1c40f;
+    background-color: rgba(var(--color-white-rgb), 0.2);
+    color: rgb(var(--color-accent-rgb));
 }
 
 /* Hlavný obsah */
 main {
     max-width: 800px;
     margin: 30px auto;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(var(--color-white-rgb), 0.75);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(var(--color-white-rgb), 0.5);
+    box-shadow: 0 8px 30px rgba(var(--color-shadow-rgb), 0.08);
 }
 
 /* Karty v obsahu */
 .card {
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: rgba(var(--color-white-rgb), 0.55);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
     border-radius: 14px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(var(--color-shadow-rgb), 0.06);
 }
 
 .card h3 {
@@ -142,8 +167,8 @@ main {
 }
 
 .trello-zoznam li {
-    background-color: rgba(44, 62, 80, 0.05);
-    border: 1px solid rgba(44, 62, 80, 0.1);
+    background-color: rgba(var(--color-navy-rgb), 0.05);
+    border: 1px solid rgba(var(--color-navy-rgb), 0.1);
     border-radius: 10px;
     padding: 10px 14px;
     font-size: 14px;
@@ -163,33 +188,28 @@ table {
 }
 
 th, td {
-    border: 1px solid #999;
+    border: 1px solid var(--color-gray);
     padding: 12px;
     text-align: center;
 }
 
 th {
-    background-color: #2c3e50;
+    background-color: rgb(var(--color-navy-rgb));
     color: white;
 }
 
 th.vikend {
-    background-color: #e3a51a;
-    color: #2c3e50;
+    background-color: var(--color-amber);
+    color: rgb(var(--color-navy-rgb));
 }
 
 td.vikend {
-    background-color: #fbe8c2;
-    color: #333;
+    background-color: var(--color-amber-light);
+    color: var(--color-text);
 }
 
 td:empty {
-    border-color: #e0e0e0;
-}
-
-/* Motivačný list */
-.list {
-    line-height: 1.6;
+    border-color: var(--color-gray-pale);
 }
 
 /* Úvodná stránka */
@@ -213,7 +233,7 @@ td:empty {
 
 .uvod-podtitul {
     font-size: 18px;
-    color: #555;
+    color: var(--color-text-muted);
     margin-bottom: 24px;
 }
 
@@ -228,13 +248,13 @@ td:empty {
 }
 
 .features li {
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: rgba(var(--color-white-rgb), 0.55);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
     border-radius: 14px;
     padding: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(var(--color-shadow-rgb), 0.06);
 }
 
 .features-icon {
@@ -251,7 +271,7 @@ td:empty {
 .features p {
     margin: 0;
     font-size: 13px;
-    color: #555;
+    color: var(--color-text-muted);
     line-height: 1.5;
 }
 
@@ -277,14 +297,14 @@ td:empty {
     width: 100%;
     height: 70vh;
     max-height: 600px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray-light);
     border-radius: 8px;
     margin-bottom: 14px;
 }
 
 .pdf-tlacidlo {
     display: inline-block;
-    background-color: #2c3e50;
+    background-color: rgb(var(--color-navy-rgb));
     color: white;
     text-decoration: none;
     padding: 10px 20px;
@@ -294,7 +314,7 @@ td:empty {
 }
 
 .pdf-tlacidlo:hover {
-    background-color: #1c2833;
+    background-color: var(--color-navy-hover);
 }
 
 @media (max-width: 600px) {
@@ -319,10 +339,10 @@ td:empty {
     display: flex;
     align-items: center;
     gap: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray-light);
     border-radius: 8px;
     padding: 15px 20px;
-    background-color: #fafafa;
+    background-color: var(--color-bg-soft);
 }
 
 .clen-info {
@@ -347,24 +367,24 @@ td:empty {
 }
 
 .avatar-1 {
-    background-color: #2c3e50;
+    background-color: rgb(var(--color-navy-rgb));
 }
 
 .avatar-2 {
-    background-color: #e3a51a;
+    background-color: var(--color-amber);
 }
 
 .avatar-3 {
-    background-color: #3498db;
+    background-color: rgb(var(--color-blue-rgb));
 }
 
 .avatar-4 {
-    background-color: #16a085;
+    background-color: var(--color-teal);
 }
 
 /* Pätička */
 footer {
-    background-color: #2c3e50;
+    background-color: rgb(var(--color-navy-rgb));
     color: white;
     text-align: center;
     padding: 15px;
@@ -386,14 +406,14 @@ footer nav a {
 }
 
 footer nav a:hover {
-    color: #f1c40f;
+    color: rgb(var(--color-accent-rgb));
     text-decoration: underline;
 }
 
 footer p {
     margin: 0;
     font-size: 13px;
-    color: #ccc;
+    color: var(--color-gray-light);
 }
 
 .foto-tim {
