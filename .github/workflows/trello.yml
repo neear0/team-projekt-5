@@ -33,11 +33,27 @@ jobs:
             -d "cards=open" -d "card_fields=name,due,dueComplete,badges" -d "fields=name" \
             -o trello.json
 
+      - name: Stiahni históriu commitov
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for vetva in main 01-web-setup; do
+            gh api "repos/${{ github.repository }}/commits?sha=$vetva&per_page=40" > "commity-$vetva.json"
+          done
+          jq -s '[.[][]]
+            | unique_by(.sha)
+            | map(select(.commit.author.name != "github-actions[bot]"))
+            | sort_by(.commit.author.date)
+            | reverse
+            | .[:30]
+            | map({sha: .sha[0:7], sprava: .commit.message[0:200], autor: (.author.login // .commit.author.name), datum: .commit.author.date, url: .html_url})' commity-*.json > commits.json
+          rm commity-*.json
+
       - name: Ulož zmeny
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add trello.json
+          git add trello.json commits.json
           git diff --cached --quiet && exit 0
-          git commit -m "Aktualizácia Trello"
+          git commit -m "Aktualizácia Trella a histórie"
           git push
