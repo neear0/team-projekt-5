@@ -176,7 +176,7 @@ main.siroke .hero .uvod-podtitul {
 
 .vyvoj-rozlozenie {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
     gap: 20px;
     align-items: start;
 }
@@ -279,46 +279,79 @@ main.siroke .hero .uvod-podtitul {
 
 /* História zmien */
 .git-historia {
+    max-height: 68vh;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.git-den {
+    margin: 18px 0 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+}
+
+.git-den:first-child {
+    margin-top: 0;
+}
+
+.git-zoznam {
+    position: relative;
     list-style: none;
     margin: 0;
     padding: 0;
-    max-height: 68vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
 }
 
-.git-historia li {
+/* zvislá čiara, na ktorej sedia avatary */
+.git-zoznam::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    left: 15px;
+    width: 2px;
+    background-color: rgba(var(--color-navy-rgb), 0.15);
+}
+
+.git-zoznam li {
+    position: relative;
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    background-color: rgba(var(--color-white-rgb), 0.8);
-    border: 1px solid rgba(var(--color-navy-rgb), 0.08);
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 14px;
+    padding: 8px 0;
 }
 
-.git-sha {
+.git-avatar {
     flex-shrink: 0;
-    font-family: "Courier New", monospace;
-    font-size: 12px;
-    padding: 3px 8px;
-    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(var(--color-shadow-rgb), 0.2);
     background-color: rgb(var(--color-navy-rgb));
-    color: white;
-    text-decoration: none;
 }
 
-.git-sha:hover {
-    background-color: var(--color-navy-hover);
-    color: rgb(var(--color-accent-rgb));
+.git-iniciala {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.git-telo {
+    flex: 1;
+    min-width: 0;
 }
 
 .git-sprava {
     display: block;
+    font-size: 14px;
     line-height: 1.4;
+    overflow-wrap: anywhere;
 }
 
 .git-meta {
@@ -326,6 +359,23 @@ main.siroke .hero .uvod-podtitul {
     margin-top: 2px;
     font-size: 12px;
     color: var(--color-text-muted);
+}
+
+.git-sha {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background-color: rgba(var(--color-navy-rgb), 0.08);
+    color: rgb(var(--color-navy-rgb));
+    text-decoration: none;
+}
+
+.git-sha:hover {
+    background-color: rgb(var(--color-navy-rgb));
+    color: rgb(var(--color-accent-rgb));
 }
 
 /* Zápisnice */
@@ -616,7 +666,7 @@ footer p {
 }
 
 /* Responzívny layout */
-@media (max-width: 1000px) {
+@media (max-width: 720px) {
     .vyvoj-rozlozenie {
         grid-template-columns: minmax(0, 1fr);
     }
