@@ -30,7 +30,7 @@ jobs:
           curl -fsS -G "https://api.trello.com/1/boards/$BOARD_ID/lists" \
             --data-urlencode "key=$TRELLO_KEY" \
             --data-urlencode "token=$TRELLO_TOKEN" \
-            -d "cards=open" -d "card_fields=name,due" -d "fields=name" \
+            -d "cards=open" -d "card_fields=name,due,dueComplete,badges" -d "fields=name" \
             -o trello.json
 
       - name: Ulož zmeny
