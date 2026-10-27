@@ -46,7 +46,7 @@ jobs:
             | sort_by(.commit.author.date)
             | reverse
             | .[:30]
-            | map({sha: .sha[0:7], sprava: .commit.message[0:200], autor: (.author.login // .commit.author.name), datum: .commit.author.date, url: .html_url})' commity-*.json > commits.json
+            | map({sha: .sha[0:7], sprava: .commit.message[0:200], autor: (.author.login // .commit.author.name), datum: .commit.author.date, url: .html_url, avatar: (.author.avatar_url // "")})' commity-*.json > commits.json
           rm commity-*.json
 
       - name: Ulož zmeny
