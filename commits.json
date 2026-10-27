@@ -1,212 +1,242 @@
 [
   {
+    "sha": "f877d00",
+    "sprava": "Workflow: avatar autora v histórii",
+    "autor": "neear0",
+    "datum": "2026-10-27T01:48:49Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/f877d00a305b1ec73761ff4ae023d919b6e6baad",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
+    "sha": "e3aed3f",
+    "sprava": "Vývoj: široké rozloženie, Trello vľavo a história vpravo",
+    "autor": "neear0",
+    "datum": "2026-10-27T01:45:34Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/e3aed3f0f9dc5b8d59d004035f595c12ed8e21f0",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
+    "sha": "5deac4a",
+    "sprava": "História zmien na stránke Vývoj",
+    "autor": "neear0",
+    "datum": "2026-10-27T01:43:01Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/5deac4a1d12750a219430a026a9b0ac0d98d83b9",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
     "sha": "f461dc4",
     "sprava": "Workflow: história commitov do commits.json",
     "autor": "neear0",
     "datum": "2026-10-27T01:41:35Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/f461dc448f5ff2724f5e712cf08e87b469d7071f"
+    "url": "https://github.com/neear0/team-projekt-5/commit/f461dc448f5ff2724f5e712cf08e87b469d7071f",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "93779ba",
     "sprava": "Trello: skryté zoznamy, stav splnenia a podúlohy",
     "autor": "neear0",
     "datum": "2026-10-27T01:40:10Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/93779ba4aef29e3695a6b8ac6530e40864a0bf22"
+    "url": "https://github.com/neear0/team-projekt-5/commit/93779ba4aef29e3695a6b8ac6530e40864a0bf22",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "2ea1df8",
     "sprava": "Trello: stav splnenia a podúlohy",
     "autor": "neear0",
     "datum": "2026-10-27T01:39:11Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/2ea1df85a6badb5b29a2a816ebf2cab1394868ea"
+    "url": "https://github.com/neear0/team-projekt-5/commit/2ea1df85a6badb5b29a2a816ebf2cab1394868ea",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "8b90664",
     "sprava": "Stránka Vývoj namiesto Kalendára, zápisnice a uprataný Trello board",
     "autor": "neear0",
     "datum": "2026-10-27T01:36:44Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/8b90664f28974a07ce6b921dc2ae057081c29d1e"
+    "url": "https://github.com/neear0/team-projekt-5/commit/8b90664f28974a07ce6b921dc2ae057081c29d1e",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "a43b373",
     "sprava": "Trello: ponechanie iba alfanumerických znakov v secretoch",
     "autor": "neear0",
     "datum": "2026-10-27T01:28:47Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/a43b37314025358bb40fe85be33bce583cd2bc23"
+    "url": "https://github.com/neear0/team-projekt-5/commit/a43b37314025358bb40fe85be33bce583cd2bc23",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "af7e4c1",
     "sprava": "Trello: oprava čistenia secretov",
     "autor": "neear0",
     "datum": "2026-10-27T01:27:39Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/af7e4c1ab1520c0eee7fdc9f3161471777e03d9e"
+    "url": "https://github.com/neear0/team-projekt-5/commit/af7e4c1ab1520c0eee7fdc9f3161471777e03d9e",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "cc7ee74",
     "sprava": "Trello: oprava čistenia secretov",
     "autor": "neear0",
     "datum": "2026-10-27T01:27:16Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/cc7ee7419007b8cae19b3927f888c5cad83a23df"
+    "url": "https://github.com/neear0/team-projekt-5/commit/cc7ee7419007b8cae19b3927f888c5cad83a23df",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "cba1d73",
     "sprava": "Trello: odstránenie nového riadka zo secretov",
     "autor": "neear0",
     "datum": "2026-10-27T01:26:54Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/cba1d733a48bab9084f3032b4f7ab2c45f84c0a4"
+    "url": "https://github.com/neear0/team-projekt-5/commit/cba1d733a48bab9084f3032b4f7ab2c45f84c0a4",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "7c2c964",
     "sprava": "Workflow na stiahnutie Trella",
     "autor": "neear0",
     "datum": "2026-10-27T01:24:37Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/7c2c964dfb6279c36631b44703fb6422084357e5"
+    "url": "https://github.com/neear0/team-projekt-5/commit/7c2c964dfb6279c36631b44703fb6422084357e5",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "d8a4410",
     "sprava": "Trello cez trello.json, bez kľúčov v repozitári",
     "autor": "neear0",
     "datum": "2026-10-27T01:24:35Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/d8a44103babb6f731478e2cb3f93e2027bc560f0"
+    "url": "https://github.com/neear0/team-projekt-5/commit/d8a44103babb6f731478e2cb3f93e2027bc560f0",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
   },
   {
     "sha": "16260bb",
     "sprava": "Color variables",
     "autor": "MarianHolly",
     "datum": "2026-10-26T21:17:13Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/16260bbbcfba6d5e878eab965cce4cc54f769f39"
+    "url": "https://github.com/neear0/team-projekt-5/commit/16260bbbcfba6d5e878eab965cce4cc54f769f39",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "e517b91",
     "sprava": "Html table structure",
     "autor": "MarianHolly",
     "datum": "2026-10-26T21:14:48Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/e517b91f9b1b5ab07f67ff784e2831ff18adefe8"
+    "url": "https://github.com/neear0/team-projekt-5/commit/e517b91f9b1b5ab07f67ff784e2831ff18adefe8",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "f3cd44e",
     "sprava": "Page title updated",
     "autor": "MarianHolly",
     "datum": "2026-10-26T21:14:36Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/f3cd44eb9b136f3797906b2faa31a74df0ae2b1e"
+    "url": "https://github.com/neear0/team-projekt-5/commit/f3cd44eb9b136f3797906b2faa31a74df0ae2b1e",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "18c5d74",
     "sprava": "Add Content Security Policy",
     "autor": "MarianHolly",
     "datum": "2026-10-26T21:10:06Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/18c5d746af27b6aef5e6f62226b1916c17eacaa4"
+    "url": "https://github.com/neear0/team-projekt-5/commit/18c5d746af27b6aef5e6f62226b1916c17eacaa4",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "d1abe3f",
     "sprava": "Update pdf viewer",
     "autor": "MarianHolly",
     "datum": "2026-10-26T21:07:16Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/d1abe3faf19433178d4061a6dd0cd76cedbe93ae"
+    "url": "https://github.com/neear0/team-projekt-5/commit/d1abe3faf19433178d4061a6dd0cd76cedbe93ae",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "a2d5a56",
     "sprava": "Style for team",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:52:13Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/a2d5a56f1df970e1b8ebe345415b4c841dd16f95"
+    "url": "https://github.com/neear0/team-projekt-5/commit/a2d5a56f1df970e1b8ebe345415b4c841dd16f95",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "b6f14f6",
     "sprava": "Image placeholders",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:52:03Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/b6f14f6d03b98e9622930fe1fefae12e32c9c1c5"
+    "url": "https://github.com/neear0/team-projekt-5/commit/b6f14f6d03b98e9622930fe1fefae12e32c9c1c5",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "28675ff",
     "sprava": "Style for pdf file",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:39:31Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/28675ff738256d059293615ab5c5dc92e0d9f03f"
+    "url": "https://github.com/neear0/team-projekt-5/commit/28675ff738256d059293615ab5c5dc92e0d9f03f",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "c92b8d5",
     "sprava": "Update class",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:39:04Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/c92b8d5016835765ae3b857cb9bd4d7e1c686500"
+    "url": "https://github.com/neear0/team-projekt-5/commit/c92b8d5016835765ae3b857cb9bd4d7e1c686500",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "75ea736",
     "sprava": "Remove content",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:38:56Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/75ea7365db901cb1041927278faad0061d801824"
+    "url": "https://github.com/neear0/team-projekt-5/commit/75ea7365db901cb1041927278faad0061d801824",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "a9841c8",
     "sprava": "Style for calendar",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:27:36Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/a9841c8decabcede4e7e28bf91dc4076c02ce567"
+    "url": "https://github.com/neear0/team-projekt-5/commit/a9841c8decabcede4e7e28bf91dc4076c02ce567",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "e2590c2",
     "sprava": "Update kalendar.html",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:25:30Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/e2590c2f48c2fc1956e7bfd92618eeb690a71b85"
+    "url": "https://github.com/neear0/team-projekt-5/commit/e2590c2f48c2fc1956e7bfd92618eeb690a71b85",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "56ac577",
     "sprava": "Add features cards",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:19:06Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/56ac577a4ec06a09c4adb04e8f96e0a4f94dcbff"
+    "url": "https://github.com/neear0/team-projekt-5/commit/56ac577a4ec06a09c4adb04e8f96e0a4f94dcbff",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "cd779d6",
     "sprava": "Style for homepage",
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:18:51Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/cd779d671032b017e0c0e821721d4500317a1f27"
+    "url": "https://github.com/neear0/team-projekt-5/commit/cd779d671032b017e0c0e821721d4500317a1f27",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "ba33eef",
     "sprava": "Logo link",
     "autor": "MarianHolly",
     "datum": "2026-10-26T19:53:11Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/ba33eef055386595cfe333fe1f1726b3c55cb533"
+    "url": "https://github.com/neear0/team-projekt-5/commit/ba33eef055386595cfe333fe1f1726b3c55cb533",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "ad51ad1",
     "sprava": "Basic responsive design",
     "autor": "MarianHolly",
     "datum": "2026-10-26T19:52:01Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/ad51ad13869d42d8a9a47ee67a103fe362df9b12"
+    "url": "https://github.com/neear0/team-projekt-5/commit/ad51ad13869d42d8a9a47ee67a103fe362df9b12",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   },
   {
     "sha": "85c4f34",
     "sprava": "Navbar styling",
     "autor": "MarianHolly",
     "datum": "2026-10-26T19:50:03Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/85c4f3433e8e549b1e190a2023adad8785f453f2"
-  },
-  {
-    "sha": "8564cd5",
-    "sprava": "Logo added",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T19:49:51Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/8564cd51cfe67e22c980253b470820afe07a9444"
-  },
-  {
-    "sha": "7c4ed6e",
-    "sprava": "PDF file link",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T19:29:50Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/7c4ed6e5e2ac2c59850167ffe25c699fac2d61b9"
-  },
-  {
-    "sha": "768059a",
-    "sprava": "Footer links",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T19:26:17Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/768059afe4534bc27ffbeda4b17bc29e0ad06435"
+    "url": "https://github.com/neear0/team-projekt-5/commit/85c4f3433e8e549b1e190a2023adad8785f453f2",
+    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   }
 ]
