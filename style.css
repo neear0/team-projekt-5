@@ -166,6 +166,29 @@ main {
     margin: 0;
 }
 
+.trello-board {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    align-items: flex-start;
+}
+
+.trello-stlpec {
+    flex: 0 0 220px;
+}
+
+.trello-stlpec h4 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.trello-termin {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
 .trello-zoznam li {
     background-color: rgba(var(--color-navy-rgb), 0.05);
     border: 1px solid rgba(var(--color-navy-rgb), 0.1);

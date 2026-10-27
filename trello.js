@@ -1,53 +1,71 @@
-// Tu doplň svoje údaje
-const KEY = "a6e353ca42d9b0de020633b7a0874cae";
-const TOKEN = "ATTAbec1cd50f6267c8b2c18c4ea0aa7f24facd939c5d2ce61508f9fbfbed01fa5268BB0B6B9";
-const BOARD_ID = "wvPm4USn";
+// Board sa číta zo súboru trello.json, ktorý pravidelne aktualizuje GitHub Action.
+// V repozitári nie sú žiadne kľúče ani tokeny.
+const kontajner = document.getElementById("trello-board");
 
-const url = "https://api.trello.com/1/boards/" + BOARD_ID +
-            "/cards?fields=name,due&key=" + KEY + "&token=" + TOKEN;
+function vypisChybu(sprava) {
+    kontajner.innerHTML = "";
+    const p = document.createElement("p");
+    p.textContent = sprava;
+    kontajner.appendChild(p);
+}
 
-const zoznam = document.getElementById("trello-zoznam");
-
-// funkcia, ktorá načíta karty a vypíše ich
 function nacitajKarty() {
-    fetch(url)
+    fetch("trello.json", { cache: "no-store" })
         .then(function (odpoved) {
+            if (!odpoved.ok) {
+                throw new Error("trello.json sa nenašiel");
+            }
             return odpoved.json();
         })
-        .then(function (karty) {
-            // necháme len karty, ktoré majú termín
-            const sTerminom = [];
-            for (let i = 0; i < karty.length; i++) {
-                if (karty[i].due) {
-                    sTerminom.push(karty[i]);
+        .then(function (zoznamy) {
+            kontajner.innerHTML = "";
+
+            for (let i = 0; i < zoznamy.length; i++) {
+                const stlpec = document.createElement("div");
+                stlpec.className = "trello-stlpec";
+
+                const nadpis = document.createElement("h4");
+                nadpis.textContent = zoznamy[i].name;
+                stlpec.appendChild(nadpis);
+
+                const ul = document.createElement("ul");
+                ul.className = "trello-zoznam";
+                const karty = zoznamy[i].cards;
+
+                for (let j = 0; j < karty.length; j++) {
+                    const li = document.createElement("li");
+                    li.textContent = karty[j].name;
+
+                    if (karty[j].due) {
+                        const termin = document.createElement("span");
+                        termin.className = "trello-termin";
+                        termin.textContent = new Date(karty[j].due).toLocaleDateString("sk-SK");
+                        li.appendChild(termin);
+                    }
+                    ul.appendChild(li);
                 }
+
+                if (karty.length === 0) {
+                    const prazdne = document.createElement("li");
+                    prazdne.textContent = "Žiadne karty.";
+                    ul.appendChild(prazdne);
+                }
+
+                stlpec.appendChild(ul);
+                kontajner.appendChild(stlpec);
             }
 
-            // zoradíme podľa dátumu
-            sTerminom.sort(function (a, b) {
-                return new Date(a.due) - new Date(b.due);
-            });
-
-            // vypíšeme do zoznamu
-            zoznam.innerHTML = "";
-            for (let i = 0; i < sTerminom.length; i++) {
-                const datum = new Date(sTerminom[i].due).toLocaleDateString("sk-SK");
-                const li = document.createElement("li");
-                li.textContent = datum + " – " + sTerminom[i].name;
-                zoznam.appendChild(li);
-            }
-
-            if (sTerminom.length === 0) {
-                zoznam.innerHTML = "<li>Žiadne karty s termínom.</li>";
+            if (zoznamy.length === 0) {
+                vypisChybu("Board je prázdny.");
             }
         })
         .catch(function () {
-            zoznam.innerHTML = "<li>Nepodarilo sa načítať Trello.</li>";
+            vypisChybu("Nepodarilo sa načítať Trello.");
         });
 }
 
 // prvé načítanie hneď po otvorení stránky
 nacitajKarty();
 
-// potom znova každých 30 sekúnd (30000 milisekúnd)
-setInterval(nacitajKarty, 30000);
+// potom znova každých 5 minút
+setInterval(nacitajKarty, 300000);
