@@ -1,0 +1,39 @@
+name: Trello
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stiahni:
+    runs-on: ubuntu-latest
+    steps:
+      # web beží z vetvy 01-web-setup, preto sa trello.json zapisuje tam
+      - uses: actions/checkout@v4
+        with:
+          ref: 01-web-setup
+
+      - name: Stiahni board z Trella
+        env:
+          TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+          TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
+          BOARD_ID: wvPm4USn
+        run: |
+          curl -fsS -G "https://api.trello.com/1/boards/$BOARD_ID/lists" \
+            --data-urlencode "key=$TRELLO_KEY" \
+            --data-urlencode "token=$TRELLO_TOKEN" \
+            -d "cards=open" -d "card_fields=name,due" -d "fields=name" \
+            -o trello.json
+
+      - name: Ulož zmeny
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add trello.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Aktualizácia Trello"
+          git push
