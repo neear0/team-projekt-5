@@ -23,6 +23,11 @@ jobs:
           TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
           BOARD_ID: wvPm4USn
         run: |
+          # secrety môžu mať na konci znak nového riadka
+          TRELLO_KEY=$(printf %s "$TRELLO_KEY" | tr -d "
+ ")
+          TRELLO_TOKEN=$(printf %s "$TRELLO_TOKEN" | tr -d "
+ ")
           curl -fsS -G "https://api.trello.com/1/boards/$BOARD_ID/lists" \
             --data-urlencode "key=$TRELLO_KEY" \
             --data-urlencode "token=$TRELLO_TOKEN" \
