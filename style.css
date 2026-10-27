@@ -157,6 +157,26 @@ main {
     margin-top: 0;
 }
 
+/* Trello board */
+.trello-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+.trello-stlpec {
+    background-color: rgba(var(--color-navy-rgb), 0.05);
+    border: 1px solid rgba(var(--color-navy-rgb), 0.1);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.trello-stlpec h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
 .trello-zoznam {
     list-style: none;
     display: flex;
@@ -166,38 +186,84 @@ main {
     margin: 0;
 }
 
-.trello-board {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    align-items: flex-start;
-}
-
-.trello-stlpec {
-    flex: 0 0 220px;
-}
-
-.trello-stlpec h4 {
-    margin: 0 0 8px;
-    font-size: 15px;
+.trello-zoznam li {
+    background-color: rgba(var(--color-white-rgb), 0.8);
+    border: 1px solid rgba(var(--color-navy-rgb), 0.08);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 13px;
+    line-height: 1.4;
 }
 
 .trello-termin {
     display: block;
-    margin-top: 4px;
-    font-size: 12px;
-    opacity: 0.7;
+    width: fit-content;
+    margin-top: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background-color: var(--color-amber-light);
+    color: rgb(var(--color-navy-rgb));
+    font-size: 11px;
+    font-weight: 700;
 }
 
-.trello-zoznam li {
-    background-color: rgba(var(--color-navy-rgb), 0.05);
-    border: 1px solid rgba(var(--color-navy-rgb), 0.1);
-    border-radius: 10px;
-    padding: 10px 14px;
+.trello-info {
+    margin: 0 0 14px;
     font-size: 14px;
+    color: var(--color-text-muted);
 }
 
-/* Tabuľka kalendára */
+/* Zápisnice */
+.zapisnica {
+    border: 1px solid rgba(var(--color-navy-rgb), 0.12);
+    border-radius: 12px;
+    background-color: rgba(var(--color-white-rgb), 0.6);
+    margin-bottom: 10px;
+}
+
+.zapisnica summary {
+    cursor: pointer;
+    padding: 14px 16px;
+    font-weight: 700;
+    list-style: none;
+}
+
+.zapisnica summary::-webkit-details-marker {
+    display: none;
+}
+
+.zapisnica summary::before {
+    content: "+";
+    display: inline-block;
+    width: 22px;
+    color: var(--color-amber);
+}
+
+.zapisnica[open] summary::before {
+    content: "−";
+}
+
+.zapisnica-telo {
+    padding: 0 16px 16px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.zapisnica-telo h4 {
+    margin: 16px 0 6px;
+}
+
+.zapisnica-telo ol,
+.zapisnica-telo ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.zapisnica-telo .tabulka-wrap {
+    margin-top: 6px;
+}
+
+/* Tabuľky */
 .tabulka-wrap {
     width: 100%;
     overflow-x: auto;
@@ -206,33 +272,20 @@ main {
 table {
     border-collapse: collapse;
     width: 100%;
-    min-width: 480px;
-    margin-bottom: 20px;
+    min-width: 420px;
+    font-size: 13px;
 }
 
 th, td {
-    border: 1px solid var(--color-gray);
-    padding: 12px;
-    text-align: center;
+    border: 1px solid var(--color-gray-pale);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
 }
 
 th {
     background-color: rgb(var(--color-navy-rgb));
     color: white;
-}
-
-th.vikend {
-    background-color: var(--color-amber);
-    color: rgb(var(--color-navy-rgb));
-}
-
-td.vikend {
-    background-color: var(--color-amber-light);
-    color: var(--color-text);
-}
-
-td:empty {
-    border-color: var(--color-gray-pale);
 }
 
 /* Úvodná stránka */
@@ -508,9 +561,6 @@ footer p {
         padding: 14px;
     }
 
-    th, td {
-        padding: 8px;
-    }
 
     footer nav a {
         margin: 0 8px;

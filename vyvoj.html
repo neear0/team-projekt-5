@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Ooko – Vývoj</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand">
+            <div class="logo-placeholder">O</div>
+            <span class="brand-name">Ooko</span>
+        </a>
+        <nav>
+            <a href="index.html">Domov</a>
+            <a href="vyvoj.html" class="active">Vývoj</a>
+            <a href="motivacny-list.html">Motivačný list</a>
+            <a href="tim.html">Tím</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h2>Vývoj</h2>
+            <p class="uvod-podtitul">Na čom pracujeme a čo sme si dohodli na stretnutiach.</p>
+        </div>
+
+        <div class="card">
+            <h3>Plán a úlohy</h3>
+            <p class="trello-info">Aktuálny stav z nášho Trello boardu, aktualizuje sa približne každých 30 minút.</p>
+            <div id="trello-board" class="trello-board">
+                <p>Načítavam...</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Zápisnice zo stretnutí</h3>
+
+            <details class="zapisnica">
+                <summary>Zápisnica č. 1: úvodné stretnutie</summary>
+                <div class="zapisnica-telo">
+                    <h4>Program</h4>
+                    <ol>
+                        <li>Zvolenie technologického stacku</li>
+                        <li>Rozdelenie projektu do etáp</li>
+                    </ol>
+
+                    <h4>Rozdelenie projektu do etáp</h4>
+                    <div class="tabulka-wrap">
+                        <table>
+                            <tr>
+                                <th>Etapa</th>
+                                <th>Obsah</th>
+                                <th>Výstup</th>
+                            </tr>
+                            <tr>
+                                <td>1. Štart</td>
+                                <td>Tím, motivačný dokument, logo, web projektu, úvodná zápisnica</td>
+                                <td>Web na GitHub Pages, PDF dokumenty</td>
+                            </tr>
+                            <tr>
+                                <td>2. Návrh</td>
+                                <td>Formát rubrík a reportu, UI návrh</td>
+                                <td>JSON schémy, wireframy</td>
+                            </tr>
+                            <tr>
+                                <td>3. Analyzátor (MVP)</td>
+                                <td>Prototyp Chromia a Lighthouse na Verceli, kontroly HTML/CSS/JS, axe-core</td>
+                                <td>Kroky 1 a 2 nasadené, JSON report</td>
+                            </tr>
+                            <tr>
+                                <td>4. AI hodnotenie</td>
+                                <td>Prompty, štruktúrovaný výstup, vision nad screenshotmi</td>
+                                <td>Report s bodmi a radami na opravu</td>
+                            </tr>
+                            <tr>
+                                <td>5. Aplikácia</td>
+                                <td>UI analýzy, hromadné hodnotenie, editor rubrík, export</td>
+                                <td>Hotová aplikácia na Verceli</td>
+                            </tr>
+                            <tr>
+                                <td>6. Ladenie</td>
+                                <td>Testovanie na projektoch z minulých rokov, porovnanie s ručným hodnotením</td>
+                                <td>Vyhodnotenie presnosti</td>
+                            </tr>
+                            <tr>
+                                <td>7. Finále</td>
+                                <td>Dokumentácia modulov, finálna prezentácia</td>
+                                <td>Finálna prezentácia (PDF)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <p>Etapy 1 až 3 a začiatok etapy 4 plánujeme zvládnuť zhruba v prvej polovici semestra. Ako hlavné technické riziko sme určili beh Lighthouse na Chromiu vo Vercel Function, preto sa overí čo najskôr.</p>
+
+                    <h4>Úlohy zo stretnutia</h4>
+                    <ul>
+                        <li>Motivačný dokument (PDF), do 28. 10. 2026</li>
+                        <li>Úvodná prezentácia tímu (PDF), do 28. 10. 2026</li>
+                        <li>Projektová stránka na GitHub Pages, do 28. 10. 2026</li>
+                        <li>Harmonogram na najbližších 5 týždňov v Trelle</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="index.html">Domov</a>
+            <a href="vyvoj.html">Vývoj</a>
+            <a href="motivacny-list.html">Motivačný list</a>
+            <a href="tim.html">Tím</a>
+        </nav>
+        <p>&copy; 2026 Ooko</p>
+    </footer>
+
+    <script src="trello.js"></script>
+
+</body>
+</html>
