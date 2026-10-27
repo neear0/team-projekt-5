@@ -1,5 +1,29 @@
 [
   {
+    "sha": "857fb29",
+    "sprava": "Zápisnica č. 2 (26. 10.)",
+    "autor": "neear0",
+    "datum": "2026-10-27T02:33:50Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/857fb29a888d4f543f9efcdadc949e765dc7c00f",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
+    "sha": "2fc6560",
+    "sprava": "Vývoj: dva stĺpce aj na užších oknách, vzhľad histórie",
+    "autor": "neear0",
+    "datum": "2026-10-27T01:50:01Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/2fc6560c90b9d8327f8cebb8406190075cbdd6da",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
+    "sha": "4b57d94",
+    "sprava": "História zmien: časová os po dňoch s avatarmi",
+    "autor": "neear0",
+    "datum": "2026-10-27T01:49:42Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/4b57d9418227f10447203f33b71eefaf82310dfa",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
     "sha": "f877d00",
     "sprava": "Workflow: avatar autora v histórii",
     "autor": "neear0",
@@ -213,30 +237,6 @@
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:18:51Z",
     "url": "https://github.com/neear0/team-projekt-5/commit/cd779d671032b017e0c0e821721d4500317a1f27",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "ba33eef",
-    "sprava": "Logo link",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T19:53:11Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/ba33eef055386595cfe333fe1f1726b3c55cb533",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "ad51ad1",
-    "sprava": "Basic responsive design",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T19:52:01Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/ad51ad13869d42d8a9a47ee67a103fe362df9b12",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "85c4f34",
-    "sprava": "Navbar styling",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T19:50:03Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/85c4f3433e8e549b1e190a2023adad8785f453f2",
     "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   }
 ]
