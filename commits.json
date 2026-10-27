@@ -1,5 +1,13 @@
 [
   {
+    "sha": "2260977",
+    "sprava": "Role v tíme",
+    "autor": "neear0",
+    "datum": "2026-10-27T10:14:41Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/2260977a38ebf81bf98552fef34f3b2a68f207a7",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
     "sha": "857fb29",
     "sprava": "Zápisnica č. 2 (26. 10.)",
     "autor": "neear0",
@@ -229,14 +237,6 @@
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:19:06Z",
     "url": "https://github.com/neear0/team-projekt-5/commit/56ac577a4ec06a09c4adb04e8f96e0a4f94dcbff",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "cd779d6",
-    "sprava": "Style for homepage",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T20:18:51Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/cd779d671032b017e0c0e821721d4500317a1f27",
     "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   }
 ]
