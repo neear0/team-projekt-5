@@ -2,14 +2,20 @@
 // V repozitári nie sú žiadne kľúče ani tokeny.
 const kontajner = document.getElementById("trello-board");
 
-// zoznamy, ktoré sa na webe nemajú zobrazovať (stačí ich archivovať aj priamo v Trelle)
-const SKRYTE_ZOZNAMY = ["Trello Starter Guide"];
+// zoznamy, ktoré sa na webe nemajú zobrazovať (porovnáva sa začiatok názvu)
+const SKRYTE_ZOZNAMY = ["Trello Starter Guide", "Today", "Next Meeting", "Later"];
 
 function vypisChybu(sprava) {
     kontajner.innerHTML = "";
     const p = document.createElement("p");
     p.textContent = sprava;
     kontajner.appendChild(p);
+}
+
+function jeSkryty(nazov) {
+    return SKRYTE_ZOZNAMY.some(function (skryty) {
+        return nazov.startsWith(skryty);
+    });
 }
 
 function nacitajKarty() {
@@ -27,7 +33,7 @@ function nacitajKarty() {
 
             for (let i = 0; i < zoznamy.length; i++) {
                 const karty = zoznamy[i].cards;
-                if (SKRYTE_ZOZNAMY.includes(zoznamy[i].name) || karty.length === 0) {
+                if (jeSkryty(zoznamy[i].name) || karty.length === 0) {
                     continue;
                 }
                 zobrazene++;
@@ -37,19 +43,45 @@ function nacitajKarty() {
 
                 const nadpis = document.createElement("h4");
                 nadpis.textContent = zoznamy[i].name;
+
+                let hotove = 0;
+                for (let j = 0; j < karty.length; j++) {
+                    if (karty[j].dueComplete) {
+                        hotove++;
+                    }
+                }
+                const pocet = document.createElement("span");
+                pocet.className = "trello-pocet";
+                pocet.textContent = hotove + " / " + karty.length + " hotové";
+                nadpis.appendChild(pocet);
                 stlpec.appendChild(nadpis);
 
                 const ul = document.createElement("ul");
                 ul.className = "trello-zoznam";
                 for (let j = 0; j < karty.length; j++) {
                     const li = document.createElement("li");
-                    li.textContent = karty[j].name;
+                    const nazov = document.createElement("span");
+                    nazov.className = "trello-nazov";
+                    nazov.textContent = karty[j].name;
+                    li.appendChild(nazov);
+
+                    if (karty[j].dueComplete) {
+                        li.className = "hotovo";
+                    }
 
                     if (karty[j].due) {
                         const termin = document.createElement("span");
-                        termin.className = "trello-termin";
+                        termin.className = karty[j].dueComplete ? "trello-termin hotovo" : "trello-termin";
                         termin.textContent = new Date(karty[j].due).toLocaleDateString("sk-SK");
                         li.appendChild(termin);
+                    }
+
+                    const odpocet = karty[j].badges;
+                    if (odpocet && odpocet.checkItems > 0) {
+                        const checklist = document.createElement("span");
+                        checklist.className = "trello-checklist";
+                        checklist.textContent = odpocet.checkItemsChecked + " / " + odpocet.checkItems + " podúloh";
+                        li.appendChild(checklist);
                     }
                     ul.appendChild(li);
                 }
