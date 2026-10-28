@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    // Pri builde berieme ostatné balíky z ich dist/, nie zo zdrojákov.
+    "customConditions": []
+  },
+  "exclude": ["src/**/*.test.ts"]
+}

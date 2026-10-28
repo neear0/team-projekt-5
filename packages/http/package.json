@@ -1,0 +1,20 @@
+{
+  "name": "@ooko/http",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ooko/contracts": "workspace:*",
+    "zod": "^4.6.7"
+  }
+}
