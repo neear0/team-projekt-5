@@ -1,5 +1,29 @@
 [
   {
+    "sha": "a03d748",
+    "sprava": "Náhľady PDF na šírku okna",
+    "autor": "neear0",
+    "datum": "2026-10-28T00:54:39Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/a03d7484c3e2d1c0cfafe9d78fe720bf7976e14c",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
+    "sha": "95dda7e",
+    "sprava": "Dokumenty vedľa seba na širšej stránke",
+    "autor": "neear0",
+    "datum": "2026-10-28T00:52:13Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/95dda7e5acd7b86d1c8bacb6a0f90805f4d4c9ae",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
+    "sha": "439078c",
+    "sprava": "Stránka Dokumenty s motivačným listom a prezentáciou",
+    "autor": "neear0",
+    "datum": "2026-10-28T00:48:20Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/439078c4e801b84cfda586428f3aeceb94a4e324",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
     "sha": "2260977",
     "sprava": "Role v tíme",
     "autor": "neear0",
@@ -213,30 +237,6 @@
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:38:56Z",
     "url": "https://github.com/neear0/team-projekt-5/commit/75ea7365db901cb1041927278faad0061d801824",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "a9841c8",
-    "sprava": "Style for calendar",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T20:27:36Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/a9841c8decabcede4e7e28bf91dc4076c02ce567",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "e2590c2",
-    "sprava": "Update kalendar.html",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T20:25:30Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/e2590c2f48c2fc1956e7bfd92618eeb690a71b85",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "56ac577",
-    "sprava": "Add features cards",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T20:19:06Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/56ac577a4ec06a09c4adb04e8f96e0a4f94dcbff",
     "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   }
 ]
