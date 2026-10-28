@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "lib": ["ES2024"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+
+    // Zdrojáky sa dajú spustiť priamo cez Node (type stripping),
+    // pri builde sa prípony .ts prepíšu na .js.
+    "erasableSyntaxOnly": true,
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+
+    // Vo workspace sa balíky čítajú zo zdrojákov (podmienka "source"),
+    // na Verceli z buildnutého dist/.
+    "customConditions": ["source"]
+  }
+}
