@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { RepoUrl } from './common.ts';
 import { Finding } from './finding.ts';
+import { Rubric, Rule } from './rubric.ts';
 
 export const SourceFile = z.object({
   path: z.string(),
@@ -8,16 +9,28 @@ export const SourceFile = z.object({
 });
 export type SourceFile = z.infer<typeof SourceFile>;
 
+/** Ako dopadlo jedno pravidlo rubriky. */
+export const RuleResult = z.object({
+  criterion_id: z.string(),
+  rule: Rule,
+  passed: z.boolean(),
+  message: z.string(),
+  findings: z.array(Finding),
+});
+export type RuleResult = z.infer<typeof RuleResult>;
+
 // Krok 1: statická analýza
 
 export const StaticRequest = z.object({
   repo_url: RepoUrl,
+  rubric: Rubric,
 });
 export type StaticRequest = z.infer<typeof StaticRequest>;
 
 export const StaticResponse = z.object({
   files: z.array(SourceFile),
   findings: z.array(Finding),
+  rule_results: z.array(RuleResult),
 });
 export type StaticResponse = z.infer<typeof StaticResponse>;
 
@@ -42,6 +55,7 @@ export type LighthouseScores = z.infer<typeof LighthouseScores>;
 
 export const RuntimeRequest = z.object({
   repo_url: RepoUrl,
+  rubric: Rubric,
 });
 export type RuntimeRequest = z.infer<typeof RuntimeRequest>;
 
@@ -49,6 +63,7 @@ export const RuntimeResponse = z.object({
   screenshots: z.array(Screenshot),
   lighthouse: LighthouseScores.nullable(),
   findings: z.array(Finding),
+  rule_results: z.array(RuleResult),
 });
 export type RuntimeResponse = z.infer<typeof RuntimeResponse>;
 
@@ -72,6 +87,7 @@ export type AiConfig = z.infer<typeof AiConfig>;
 
 export const AiRequest = z.object({
   ai: AiConfig,
+  rubric: Rubric,
   static: StaticResponse,
   runtime: RuntimeResponse,
 });

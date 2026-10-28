@@ -121,3 +121,8 @@ export type Rubric = z.infer<typeof Rubric>;
 export function max_points(rubric: Rubric): number {
   return rubric.criteria.reduce((sum, c) => sum + c.points, 0);
 }
+
+/** V ktorom kroku sa pravidlo vyhodnocuje: kódu stačí statická analýza, zvyšok potrebuje prehliadač. */
+export function rule_step(rule: Rule): 'static' | 'runtime' {
+  return /^(axe|lighthouse|runtime)./.test(rule.type) ? 'runtime' : 'static';
+}
