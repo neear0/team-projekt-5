@@ -11,7 +11,8 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "schemas": "node scripts/schemas.ts"
   },
   "dependencies": {
     "yaml": "^2.9.1",

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../packages/contracts/schemas/rubric.schema.json
 # Ukážková rubrika: registračný formulár s kontrolou vstupov v JavaScripte.
 version: 1
 id: formular

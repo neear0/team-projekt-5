@@ -7,5 +7,6 @@
     // Pri builde berieme ostatné balíky z ich dist/, nie zo zdrojákov.
     "customConditions": []
   },
+  "include": ["src"],
   "exclude": ["src/**/*.test.ts"]
 }

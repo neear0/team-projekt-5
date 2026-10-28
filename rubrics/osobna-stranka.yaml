@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../packages/contracts/schemas/rubric.schema.json
 # Ukážková rubrika: jednoduchá osobná stránka v HTML a CSS.
 version: 1
 id: osobna-stranka
