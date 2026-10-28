@@ -1,0 +1,57 @@
+# Ukážková rubrika: registračný formulár s kontrolou vstupov v JavaScripte.
+version: 1
+id: formular
+title: Registračný formulár
+description: >
+  Formulár na registráciu (meno, e-mail, heslo, súhlas s podmienkami) s kontrolou
+  vstupov v JavaScripte pred odoslaním a zrozumiteľnými chybovými hláškami.
+
+criteria:
+  - id: html-formular
+    title: Správne zostavený formulár
+    points: 4
+    rules:
+      - type: html.valid
+        max_errors: 2
+      - type: html.label_for_inputs
+      - type: html.uses_tags
+        tags: [form, label, input, button]
+    ai: >
+      Posúď, či vstupy používajú vhodné typy (email, password, checkbox) a atribúty
+      ako required, autocomplete a name.
+
+  - id: css
+    title: Úprava formulára v CSS
+    points: 3
+    rules:
+      - type: css.uses_layout
+        any_of: [flex, grid]
+      - type: css.custom_properties
+      - type: css.no_inline_styles
+
+  - id: js-kvalita
+    title: Čistý JavaScript
+    points: 4
+    rules:
+      - type: file.exists
+        path: script.js
+      - type: js.no_errors
+      - type: js.no_var
+      - type: js.no_inline_handlers
+
+  - id: js-validacia
+    title: Kontrola vstupov
+    points: 5
+    ai: >
+      Z kódu posúď, či skript pred odoslaním kontroluje prázdne polia, formát e-mailu,
+      dĺžku hesla a zaškrtnutý súhlas, a či chybu ukáže pri príslušnom poli
+      zrozumiteľnou slovenskou hláškou (nie iba alert).
+
+  - id: beh
+    title: Stránka beží bez chýb
+    points: 4
+    rules:
+      - type: runtime.no_console_errors
+      - type: axe.max_violations
+        min_impact: serious
+        max: 0

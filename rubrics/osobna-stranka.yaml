@@ -1,0 +1,63 @@
+# Ukážková rubrika: jednoduchá osobná stránka v HTML a CSS.
+version: 1
+id: osobna-stranka
+title: Osobná stránka
+description: >
+  Statická stránka o sebe: úvod, záľuby, fotka a kontakt.
+  Iba HTML a CSS, bez JavaScriptu a bez frameworkov.
+
+criteria:
+  - id: struktura
+    title: Sémantická štruktúra HTML
+    points: 4
+    description: Stránka má hlavičku, navigáciu, hlavný obsah a pätičku.
+    rules:
+      - type: file.exists
+        path: index.html
+      - type: html.uses_tags
+        tags: [header, nav, main, footer]
+    ai: >
+      Posúď, či sú nadpisy h1–h6 v logickom poradí a či sa sémantické elementy
+      používajú podľa významu, nie iba kvôli vzhľadu.
+
+  - id: validita
+    title: Validný HTML5
+    points: 3
+    rules:
+      - type: html.valid
+        max_errors: 0
+
+  - id: layout
+    title: Layout cez Flexbox alebo Grid
+    points: 4
+    rules:
+      - type: css.uses_layout
+        any_of: [flex, grid]
+      - type: css.no_inline_styles
+
+  - id: responzivita
+    title: Responzívny dizajn
+    points: 3
+    description: Stránka sa dá pohodlne čítať na mobile aj na počítači.
+    rules:
+      - type: css.media_queries
+        min: 1
+    ai: >
+      Porovnaj screenshoty v šírkach 375, 768 a 1440 px. Strhni body, ak sa obsah
+      na mobile prekrýva, pretečie do strany alebo je text príliš malý.
+
+  - id: pristupnost
+    title: Prístupnosť
+    points: 3
+    rules:
+      - type: html.img_alt
+      - type: axe.max_violations
+        min_impact: serious
+        max: 0
+
+  - id: vizual
+    title: Vizuálna stránka
+    points: 3
+    ai: >
+      Podľa screenshotov posúď čitateľnosť, kontrast, zarovnanie a jednotnosť farieb
+      a písma. Hodnoť prácu prváka, nie profesionálny dizajn.
