@@ -29,7 +29,7 @@ export function json(data: unknown, init: ResponseInit = {}): Response {
   return new Response(JSON.stringify(data), { ...init, headers });
 }
 
-export function errorResponse(err: unknown): Response {
+export function error_response(err: unknown): Response {
   if (err instanceof HttpError) {
     const body: ErrorBody = {
       error: {
@@ -46,7 +46,7 @@ export function errorResponse(err: unknown): Response {
   return json(body, { status: 500 });
 }
 
-async function readJson(request: Request): Promise<unknown> {
+async function read_json(request: Request): Promise<unknown> {
   const declared = Number(request.headers.get('content-length') ?? 0);
   if (declared > MAX_BODY_BYTES) {
     throw new HttpError(413, 'payload_too_large', 'Požiadavka je príliš veľká.');
@@ -66,13 +66,13 @@ async function readJson(request: Request): Promise<unknown> {
  * POST endpoint: prečíta JSON, overí ho schémou a výsledok `run` vráti ako JSON.
  * Chyby premení na jednotný tvar `ErrorBody`.
  */
-export function postHandler<S extends z.ZodType>(
+export function post_handler<S extends z.ZodType>(
   schema: S,
   run: (input: z.output<S>, request: Request) => Promise<unknown>,
 ): (request: Request) => Promise<Response> {
   return async (request) => {
     try {
-      const parsed = schema.safeParse(await readJson(request));
+      const parsed = schema.safeParse(await read_json(request));
       if (!parsed.success) {
         throw new HttpError(
           400,
@@ -86,7 +86,7 @@ export function postHandler<S extends z.ZodType>(
       }
       return json(await run(parsed.data, request));
     } catch (err) {
-      return errorResponse(err);
+      return error_response(err);
     }
   };
 }

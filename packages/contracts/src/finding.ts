@@ -6,7 +6,7 @@ export type Severity = z.infer<typeof Severity>;
 /** Jeden nález z ľubovoľného nástroja (validátor, linter, axe, pravidlo rubriky). */
 export const Finding = z.object({
   tool: z.string(),
-  ruleId: z.string(),
+  rule_id: z.string(),
   severity: Severity,
   message: z.string(),
   file: z.string().optional(),

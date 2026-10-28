@@ -3,15 +3,15 @@
 import { existsSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { Readable } from 'node:stream';
-import { errorResponse, HttpError } from '@ooko/http';
+import { error_response, HttpError } from '@ooko/http';
 
 const PORT = Number(process.env.PORT ?? 3000);
-const apiDir = new URL('../api/', import.meta.url);
+const api_dir = new URL('../api/', import.meta.url);
 
 type Handler = (request: Request) => Response | Promise<Response>;
 
-async function loadHandler(name: string, method: string): Promise<Handler> {
-  const file = new URL(`${name}.ts`, apiDir);
+async function load_handler(name: string, method: string): Promise<Handler> {
+  const file = new URL(`${name}.ts`, api_dir);
   if (!/^[a-z][a-z0-9-]*$/.test(name) || !existsSync(file)) {
     throw new HttpError(404, 'not_found', 'Endpoint neexistuje.');
   }
@@ -23,18 +23,18 @@ async function loadHandler(name: string, method: string): Promise<Handler> {
   return handler as Handler;
 }
 
-function toRequest(req: IncomingMessage): Request {
+function to_request(req: IncomingMessage): Request {
   const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
   const headers = new Headers();
   for (const [key, value] of Object.entries(req.headers)) {
     if (typeof value === 'string') headers.set(key, value);
     else if (Array.isArray(value)) for (const v of value) headers.append(key, v);
   }
-  const hasBody = req.method !== 'GET' && req.method !== 'HEAD';
+  const has_body = req.method !== 'GET' && req.method !== 'HEAD';
   return new Request(url, {
     method: req.method ?? 'GET',
     headers,
-    ...(hasBody && { body: Readable.toWeb(req) as ReadableStream, duplex: 'half' }),
+    ...(has_body && { body: Readable.toWeb(req) as ReadableStream, duplex: 'half' }),
   });
 }
 
@@ -52,9 +52,9 @@ createServer((req, res) => {
   const name = /^\/api\/([^/]+)\/?$/.exec(url.pathname)?.[1] ?? '';
   const method = req.method ?? 'GET';
 
-  loadHandler(name, method)
-    .then((handler) => handler(toRequest(req)))
-    .catch(errorResponse)
+  load_handler(name, method)
+    .then((handler) => handler(to_request(req)))
+    .catch(error_response)
     .then((response) => send(res, response))
     .then(() => {
       const ms = Math.round(performance.now() - started);

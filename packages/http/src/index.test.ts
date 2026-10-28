@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import { HttpError, MAX_BODY_BYTES, postHandler } from './index.ts';
+import { HttpError, MAX_BODY_BYTES, post_handler } from './index.ts';
 
-const handler = postHandler(z.object({ name: z.string() }), ({ name }) => {
+const handler = post_handler(z.object({ name: z.string() }), ({ name }) => {
   if (name === 'chyba') throw new Error('tajné');
   if (name === 'nenajdene') throw new HttpError(404, 'not_found', 'Nenašlo sa.');
   return Promise.resolve({ hello: name });
@@ -12,7 +12,7 @@ function post(body: string): Request {
   return new Request('http://localhost/api/test', { method: 'POST', body });
 }
 
-describe('postHandler', () => {
+describe('post_handler', () => {
   it('vráti výsledok ako JSON', async () => {
     const res = await handler(post('{"name":"Ooko"}'));
     expect(res.status).toBe(200);

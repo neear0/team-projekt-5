@@ -1,15 +1,15 @@
 import { RuntimeRequest, type RuntimeResponse } from '@ooko/contracts';
-import { postHandler } from '@ooko/http';
+import { post_handler } from '@ooko/http';
 
 // Krok 2: runtime analýza. Zatiaľ vracia ukážkové dáta v správnom tvare.
-export const POST = postHandler(RuntimeRequest, (): Promise<RuntimeResponse> => {
+export const POST = post_handler(RuntimeRequest, (): Promise<RuntimeResponse> => {
   return Promise.resolve({
     screenshots: [],
-    lighthouse: { performance: 90, accessibility: 80, bestPractices: 100, seo: 90 },
+    lighthouse: { performance: 90, accessibility: 80, best_practices: 100, seo: 90 },
     findings: [
       {
         tool: 'ukazka',
-        ruleId: 'image-alt',
+        rule_id: 'image-alt',
         severity: 'error',
         message: 'Obrázok nemá alternatívny text.',
         file: 'index.html',

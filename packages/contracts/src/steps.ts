@@ -11,7 +11,7 @@ export type SourceFile = z.infer<typeof SourceFile>;
 // Krok 1: statická analýza
 
 export const StaticRequest = z.object({
-  repoUrl: RepoUrl,
+  repo_url: RepoUrl,
 });
 export type StaticRequest = z.infer<typeof StaticRequest>;
 
@@ -25,7 +25,7 @@ export type StaticResponse = z.infer<typeof StaticResponse>;
 
 export const Screenshot = z.object({
   width: z.int().positive(),
-  mimeType: z.enum(['image/jpeg', 'image/webp']),
+  mime_type: z.enum(['image/jpeg', 'image/webp']),
   /** Obrázok v base64. */
   data: z.string(),
 });
@@ -35,13 +35,13 @@ export type Screenshot = z.infer<typeof Screenshot>;
 export const LighthouseScores = z.object({
   performance: z.number().min(0).max(100),
   accessibility: z.number().min(0).max(100),
-  bestPractices: z.number().min(0).max(100),
+  best_practices: z.number().min(0).max(100),
   seo: z.number().min(0).max(100),
 });
 export type LighthouseScores = z.infer<typeof LighthouseScores>;
 
 export const RuntimeRequest = z.object({
-  repoUrl: RepoUrl,
+  repo_url: RepoUrl,
 });
 export type RuntimeRequest = z.infer<typeof RuntimeRequest>;
 
@@ -58,13 +58,13 @@ export const AiConfig = z.discriminatedUnion('provider', [
   z.object({
     provider: z.enum(['google', 'anthropic', 'openai']),
     model: z.string().min(1),
-    apiKey: z.string().min(1),
+    api_key: z.string().min(1),
   }),
   z.object({
     provider: z.literal('openai-compatible'),
-    baseURL: z.url(),
+    base_url: z.url(),
     model: z.string().min(1),
-    apiKey: z.string().optional(),
+    api_key: z.string().optional(),
   }),
   z.object({ provider: z.literal('none') }),
 ]);
@@ -81,7 +81,7 @@ export const CriterionResult = z.object({
   id: z.string(),
   title: z.string(),
   points: z.number().min(0),
-  maxPoints: z.number().positive(),
+  max_points: z.number().positive(),
   reasoning: z.string(),
   findings: z.array(Finding),
 });
