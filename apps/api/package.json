@@ -6,6 +6,7 @@
     "node": "24.x"
   },
   "scripts": {
+    "dev": "node --conditions=source --watch scripts/dev.ts",
     "build": "pnpm --filter \"@ooko/api^...\" run build",
     "typecheck": "tsc --noEmit"
   },
