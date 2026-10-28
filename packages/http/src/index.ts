@@ -1,6 +1,9 @@
 import type { ErrorBody, ErrorCode } from '@ooko/contracts';
 import { z } from 'zod';
 
+// Chybové hlášky z validácie vstupu po slovensky.
+z.config(z.locales.sk());
+
 /** Vercel aj tak viac neprijme, lokálne to strážime sami. */
 export const MAX_BODY_BYTES = 4.5 * 1024 * 1024;
 
