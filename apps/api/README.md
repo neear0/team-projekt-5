@@ -5,13 +5,24 @@ Backend webovej aplikácie: Vercel Functions v `api/`, logika v `packages/*`.
 | Endpoint | Metóda | Stav |
 |---|---|---|
 | `/api/health` | GET | verzia a región |
-| `/api/static` | POST `{ repo_url }` | krok 1, zatiaľ ukážkové dáta |
-| `/api/runtime` | POST `{ repo_url }` | krok 2, zatiaľ ukážkové dáta |
-| `/api/ai` | POST `{ ai, static, runtime }` | krok 3, zatiaľ ukážkové dáta |
+| `/api/static` | POST `{ repo_url, rubric }` | krok 1, zatiaľ ukážkové dáta |
+| `/api/runtime` | POST `{ repo_url, rubric }` | krok 2, zatiaľ ukážkové dáta |
+| `/api/ai` | POST `{ ai, rubric, static, runtime }` | krok 3, zatiaľ ukážkové dáta |
 | `/api/probe` | GET | prototyp etapy 1, na produkcii vypnutý |
 
 Tvar požiadaviek a odpovedí je v `packages/contracts`. Chyby majú vždy tvar
 `{ "error": { "code", "message", "issues"? } }`.
+
+## Rubriky
+
+Učiteľ píše rubriku v YAML (ukážky sú v `rubrics/`), prehliadač ju načíta cez `parse_rubric`
+z `@ooko/contracts` a do krokov posiela už ako JSON. Kritérium má body, deterministické pravidlá
+(`rules`) a/alebo pokyn pre AI (`ai`). Pravidlá `axe.*`, `lighthouse.*` a `runtime.*` vyhodnocuje
+krok 2, ostatné krok 1. Body za pravidlá sa delia rovnakým dielom.
+
+JSON Schema rubriky a reportu je v `packages/contracts/schemas/`. Po zmene schém v Zod ju treba
+pregenerovať cez `pnpm --filter @ooko/contracts schemas` (test to stráži). Editory s YAML
+rozšírením podľa nej dopĺňajú polia priamo v súbore rubriky.
 
 ## Lokálne
 
