@@ -9,52 +9,52 @@ const Id = z
 export const Rule = z.discriminatedUnion('type', [
   // HTML
   z
-    .object({
+    .strictObject({
       type: z.literal('html.valid'),
       /** Koľko chýb validátora sa ešte toleruje. */
       max_errors: z.int().min(0).default(0),
     })
     .describe('HTML prejde validátorom.'),
   z
-    .object({ type: z.literal('html.label_for_inputs') })
+    .strictObject({ type: z.literal('html.label_for_inputs') })
     .describe('Každý vstup formulára má <label>.'),
   z
-    .object({
+    .strictObject({
       type: z.literal('html.uses_tags'),
       tags: z.array(z.string().regex(/^[a-z][a-z0-9-]*$/)).min(1),
     })
     .describe('Stránka používa všetky uvedené elementy.'),
-  z.object({ type: z.literal('html.img_alt') }).describe('Každý <img> má atribút alt.'),
+  z.strictObject({ type: z.literal('html.img_alt') }).describe('Každý <img> má atribút alt.'),
 
   // CSS
   z
-    .object({
+    .strictObject({
       type: z.literal('css.uses_layout'),
       /** Stačí jeden z nich. */
       any_of: z.array(z.enum(['flex', 'grid'])).min(1),
     })
     .describe('Layout používa Flexbox alebo Grid.'),
   z
-    .object({
+    .strictObject({
       type: z.literal('css.media_queries'),
       min: z.int().positive().default(1),
     })
     .describe('CSS obsahuje aspoň `min` media queries.'),
   z
-    .object({ type: z.literal('css.custom_properties') })
+    .strictObject({ type: z.literal('css.custom_properties') })
     .describe('CSS definuje a používa vlastné premenné (--farba …).'),
-  z.object({ type: z.literal('css.no_inline_styles') }).describe('HTML nemá atribúty style.'),
+  z.strictObject({ type: z.literal('css.no_inline_styles') }).describe('HTML nemá atribúty style.'),
 
   // JS
   z
-    .object({ type: z.literal('js.no_inline_handlers') })
+    .strictObject({ type: z.literal('js.no_inline_handlers') })
     .describe('Udalosti cez addEventListener, nie onclick v HTML.'),
-  z.object({ type: z.literal('js.no_var') }).describe('Premenné cez let a const, nie var.'),
-  z.object({ type: z.literal('js.no_errors') }).describe('ESLint nenájde chyby.'),
+  z.strictObject({ type: z.literal('js.no_var') }).describe('Premenné cez let a const, nie var.'),
+  z.strictObject({ type: z.literal('js.no_errors') }).describe('ESLint nenájde chyby.'),
 
   // Runtime
   z
-    .object({
+    .strictObject({
       type: z.literal('axe.max_violations'),
       /** Od akej závažnosti sa porušenia počítajú. */
       min_impact: z.enum(['minor', 'moderate', 'serious', 'critical']).default('serious'),
@@ -62,19 +62,19 @@ export const Rule = z.discriminatedUnion('type', [
     })
     .describe('axe-core nenájde porušenia prístupnosti.'),
   z
-    .object({
+    .strictObject({
       type: z.literal('lighthouse.min_score'),
       category: z.enum(['performance', 'accessibility', 'best_practices', 'seo']),
       min: z.number().min(0).max(100),
     })
     .describe('Lighthouse skóre v kategórii je aspoň `min`.'),
   z
-    .object({ type: z.literal('runtime.no_console_errors') })
+    .strictObject({ type: z.literal('runtime.no_console_errors') })
     .describe('Konzola prehliadača je bez chýb.'),
 
   // Súbory
   z
-    .object({
+    .strictObject({
       type: z.literal('file.exists'),
       path: z.string().min(1),
     })
@@ -88,7 +88,7 @@ export type RuleType = Rule['type'];
  * text `ai` je pokyn pre AI pri kritériách, ktoré sa merať nedajú.
  */
 export const Criterion = z
-  .object({
+  .strictObject({
     id: Id,
     title: z.string().min(1).max(200),
     points: z.number().positive(),
@@ -105,7 +105,7 @@ export type Criterion = z.infer<typeof Criterion>;
 
 /** Rubrika zadania, ktorú učiteľ píše v YAML. */
 export const Rubric = z
-  .object({
+  .strictObject({
     version: z.literal(1),
     id: Id,
     title: z.string().min(1).max(200),

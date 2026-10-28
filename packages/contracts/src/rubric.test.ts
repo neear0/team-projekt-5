@@ -52,4 +52,12 @@ describe('Rubric', () => {
     });
     expect(result.success).toBe(false);
   });
+
+  it('odmietne preklep v názve poľa', () => {
+    const result = Rubric.safeParse({
+      ...rubric,
+      criteria: [{ id: 'x', title: 'X', points: 1, rules: [{ type: 'html.valid', max_error: 3 }] }],
+    });
+    expect(result.success).toBe(false);
+  });
 });
