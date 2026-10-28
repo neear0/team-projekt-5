@@ -96,7 +96,8 @@ export async function run_probe(): Promise<ProbeResult> {
     for (const width of SCREENSHOT_WIDTHS) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(site.url, { waitUntil: 'load', timeout: 15_000 });
-      const full_height = await page.evaluate(() => document.documentElement.scrollHeight);
+      // Výraz beží v prehliadači, ako reťazec nepotrebuje DOM typy.
+      const full_height = await page.evaluate<number>('document.documentElement.scrollHeight');
       const height = Math.min(full_height, MAX_SCREENSHOT_HEIGHT);
       const image = await page.screenshot({
         type: 'jpeg',
