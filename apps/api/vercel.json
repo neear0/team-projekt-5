@@ -5,6 +5,10 @@
   "outputDirectory": "public",
   "regions": ["fra1"],
   "functions": {
-    "api/runtime.ts": { "maxDuration": 300 }
+    "api/runtime.ts": { "maxDuration": 300 },
+    "api/probe.ts": {
+      "maxDuration": 300,
+      "includeFiles": "node_modules/{@sparticuz/chromium/bin,lighthouse}/**"
+    }
   }
 }

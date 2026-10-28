@@ -12,6 +12,9 @@
   },
   "dependencies": {
     "@ooko/contracts": "workspace:*",
-    "@ooko/http": "workspace:*"
+    "@ooko/http": "workspace:*",
+    "@ooko/runtime": "workspace:*",
+    "@sparticuz/chromium": "^153.0.0",
+    "lighthouse": "~13.5.0"
   }
 }
