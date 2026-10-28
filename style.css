@@ -527,6 +527,17 @@ th {
     }
 }
 
+/* Stránka Dokumenty: PDF vedľa seba */
+.dokumenty-rozlozenie {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.dokumenty-rozlozenie .card {
+    margin-bottom: 0;
+}
+
 .pdf-card {
     display: flex;
     flex-direction: column;
@@ -536,8 +547,8 @@ th {
 .pdf-nahlad {
     display: block;
     width: 100%;
-    height: 70vh;
-    max-height: 600px;
+    height: calc(100vh - 260px);
+    min-height: 500px;
     border: 1px solid var(--color-gray-light);
     border-radius: 8px;
     margin-bottom: 14px;
@@ -668,6 +679,12 @@ footer p {
 /* Responzívny layout */
 @media (max-width: 720px) {
     .vyvoj-rozlozenie {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    .dokumenty-rozlozenie {
         grid-template-columns: minmax(0, 1fr);
     }
 }
