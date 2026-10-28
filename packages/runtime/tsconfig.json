@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    // page.evaluate() beží v prehliadači.
+    "lib": ["ES2024", "DOM"]
+  },
+  "include": ["src", "scripts"]
+}
