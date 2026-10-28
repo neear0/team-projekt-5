@@ -1,0 +1,16 @@
+{
+  "name": "@ooko/api",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "pnpm --filter \"@ooko/api^...\" run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ooko/contracts": "workspace:*",
+    "@ooko/http": "workspace:*"
+  }
+}
