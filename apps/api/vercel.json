@@ -8,7 +8,7 @@
     "api/runtime.ts": { "maxDuration": 300 },
     "api/probe.ts": {
       "maxDuration": 300,
-      "includeFiles": "node_modules/{@sparticuz/chromium/bin,lighthouse}/**"
+      "includeFiles": "../../node_modules/.pnpm/{@sparticuz+chromium@*/node_modules/@sparticuz/chromium/bin,lighthouse@*/node_modules/lighthouse/{flow-report/assets,report/assets,shared/localization/locales}}/**"
     }
   }
 }
