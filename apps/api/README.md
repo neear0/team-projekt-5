@@ -5,7 +5,7 @@ Backend webovej aplikácie: Vercel Functions v `api/`, logika v `packages/*`.
 | Endpoint | Metóda | Stav |
 |---|---|---|
 | `/api/health` | GET | verzia a región |
-| `/api/static` | POST `{ repo_url, rubric }` | krok 1, zatiaľ ukážkové dáta |
+| `/api/static` | POST `{ repo_url, rubric }` | krok 1: stiahne repozitár, vyhodnotí statické pravidlá (`packages/analyzer`) |
 | `/api/runtime` | POST `{ repo_url, rubric }` | krok 2, zatiaľ ukážkové dáta |
 | `/api/ai` | POST `{ ai, rubric, static, runtime }` | krok 3, zatiaľ ukážkové dáta |
 | `/api/probe` | GET | prototyp etapy 1, na produkcii vypnutý |
@@ -89,3 +89,14 @@ Vercel (5. 11. 2026, `fra1`, Chromium 153, 3 volania): **Lighthouse dobehne**.
 
 Funkcia má 78 MB, pamäť procesu 480–510 MB z 2 GB. Chromium musí bežať bez
 `--single-process`, inak Lighthouse skončí po 30 s timeoutom.
+
+## Krok 1: statická analýza
+
+`packages/analyzer` stiahne repozitár ako tar.gz z `codeload.github.com` (bez API kľúča,
+limit 25 MB zbalený, 3000 súborov), rozbalí ho v pamäti a vyhodnotí pravidlá rubriky.
+HTML a CSS validuje cez verejné služby W3C (Nu Html Checker, CSS Validator), najviac
+25 súborov, 3 naraz. Keď W3C neodpovedá, pravidlo má `skipped: true` a body sa zaň nerátajú.
+Odkaz `/tree/vetva/priecinok` analyzuje iba priečinok, vetva s lomkou v názve nie je podporovaná.
+
+Ukážkový web, ktorý spĺňa celú rubriku `webove-sidlo.yaml`, je v
+`packages/analyzer/test/fixtures/webove-sidlo/`.
