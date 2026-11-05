@@ -1,0 +1,39 @@
+/* Základ stránky */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, serif;
+  color: #222;
+  background-color: #f4f1ea;
+}
+
+/* Hlavička a menu */
+header {
+  padding: 16px;
+  border-bottom: 2px solid #4a6b3a;
+}
+
+#menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#menu li {
+  display: inline-block;
+}
+
+.logo {
+  float: left;
+  width: 64px;
+}
+
+/* Obrázky */
+.nahlad {
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
