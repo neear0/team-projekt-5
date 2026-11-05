@@ -386,14 +386,20 @@ function validation_outcome(
   }
   const errors = [...results.values()].flatMap((r) => r?.errors ?? []);
   const passed = errors.length <= rule.max_errors;
-  const files = String(results.size);
+  const files = count(results.size, 'súbor', 'súbory', 'súborov');
+  const tolerance = rule.max_errors > 0 ? `, tolerancia je ${String(rule.max_errors)}` : '';
   return outcome(
     passed,
     errors.length === 0
-      ? `Validátor nenašiel chyby (${files} súb.).`
-      : `Validátor našiel ${String(errors.length)} chýb v ${files} súb.${rule.max_errors > 0 ? `, tolerancia je ${String(rule.max_errors)}` : ''}.`,
+      ? `Validátor nenašiel chyby (${files}).`
+      : `Validátor našiel ${count(errors.length, 'chybu', 'chyby', 'chýb')} (${files})${tolerance}.`,
     passed ? [] : errors,
   );
+}
+
+/** Číslo so správnym tvarom slova: 1 chybu, 2 chyby, 5 chýb. */
+export function count(n: number, one: string, few: string, many: string): string {
+  return `${String(n)} ${n === 1 ? one : n >= 2 && n <= 4 ? few : many}`;
 }
 
 // JS
@@ -879,7 +885,7 @@ export function evaluate_rule(rule: Rule, ctx: RuleContext): Outcome {
         messages.length === 0,
         messages.length === 0
           ? 'ESLint nenašiel chyby.'
-          : `ESLint našiel ${String(messages.length)} chýb.`,
+          : `ESLint našiel ${count(messages.length, 'chybu', 'chyby', 'chýb')}.`,
         lint_findings(rule, messages),
       );
     }
