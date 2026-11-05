@@ -8,7 +8,7 @@
     "api/runtime.ts": { "maxDuration": 300 },
     "api/probe.ts": {
       "maxDuration": 300,
-      "includeFiles": "../../node_modules/.pnpm/{@sparticuz+chromium@*/node_modules/@sparticuz/chromium/bin,lighthouse@*/node_modules/lighthouse/{core,dist/report,flow-report/assets,report/assets,shared}}/**"
+      "includeFiles": "../../node_modules/.pnpm/{@sparticuz+chromium@*/*/*/chromium/bin,lighthouse@*/*/lighthouse/{core,dist/report,*/assets,shared,third-party},node_modules/{ajv*,axe-core,csp_evaluator,http-link-*,image-ssim,jpeg-js,js-library-*,robots-*,speedline-core}}/**"
     }
   }
 }
