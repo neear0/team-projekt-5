@@ -32,7 +32,8 @@ export async function launch_browser(): Promise<LaunchedBrowser> {
   if (is_serverless) {
     const { default: chromium } = await import('@sparticuz/chromium');
     options = {
-      args: [...chromium.args, ...args],
+      // V jednom procese sa Lighthouse zasekne pri otvorení vlastnej stránky (timeout 30 s).
+      args: [...chromium.args.filter((arg) => arg !== '--single-process'), ...args],
       executablePath: await chromium.executablePath(),
     };
   } else if (process.env.CHROMIUM_PATH) {
