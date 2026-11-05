@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@ooko/analyzer": "workspace:*",
     "@ooko/contracts": "workspace:*",
     "@ooko/http": "workspace:*",
     "@ooko/runtime": "workspace:*",

@@ -5,13 +5,36 @@ import {
   RuntimeResponse,
   StaticResponse,
 } from '@ooko/contracts';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { make_tar_gz } from '../../../packages/analyzer/test/tar.ts';
 import * as ai from '../api/ai.ts';
 import * as health from '../api/health.ts';
 import * as runtime from '../api/runtime.ts';
 import * as static_step from '../api/static.ts';
 
-const repo_url = 'https://github.com/neear0/team-projekt-5';
+const repo_url = 'https://github.com/student/web';
+const missing_repo_url = 'https://github.com/student/neexistuje';
+
+// GitHub a W3C validátor bez siete.
+beforeEach(() => {
+  vi.stubGlobal('fetch', (input: string | URL | Request) => {
+    const url = input instanceof Request ? input.url : input.toString();
+    if (url.startsWith('https://codeload.github.com/student/web/')) {
+      const html =
+        '<!DOCTYPE html>\n<html lang="sk"><head><title>Web</title></head><body></body></html>';
+      return Promise.resolve(new Response(make_tar_gz({ 'index.html': html })));
+    }
+    if (url.startsWith('https://codeload.github.com/')) {
+      return Promise.resolve(new Response('Not Found', { status: 404 }));
+    }
+    if (url.startsWith('https://validator.w3.org/'))
+      return Promise.resolve(Response.json({ messages: [] }));
+    return Promise.reject(new Error(`neočakávaná požiadavka ${url}`));
+  });
+});
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
 const rubric = {
   version: 1,
   id: 'test',
@@ -56,6 +79,20 @@ describe('API', () => {
       ['pristupnost', 3],
       ['vizual', 0],
     ]);
+  });
+
+  it('static stiahne repozitár a vyhodnotí pravidlá', async () => {
+    const res = await static_step.POST(post({ repo_url, rubric }));
+    expect(res.status).toBe(200);
+    const body = StaticResponse.parse(await res.json());
+    expect(body.files.map((f) => f.path)).toEqual(['index.html']);
+    expect(body.rule_results).toMatchObject([{ criterion_id: 'html', passed: true }]);
+  });
+
+  it('static vráti 404, ak repozitár neexistuje', async () => {
+    const res = await static_step.POST(post({ repo_url: missing_repo_url, rubric }));
+    expect(res.status).toBe(404);
+    expect(ErrorBody.parse(await res.json()).error.code).toBe('not_found');
   });
 
   it.each([
