@@ -40,6 +40,11 @@
             "type": "number",
             "exclusiveMinimum": 0
           },
+          "group": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
           "description": {
             "type": "string"
           },
@@ -48,6 +53,45 @@
             "type": "array",
             "items": {
               "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "site.min_pages"
+                    },
+                    "min": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "min"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Web má aspoň `min` HTML stránok."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "site.pages_reachable"
+                    },
+                    "start": {
+                      "default": "index.html",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Na každú HTML stránku sa dá prekliknúť z úvodnej stránky."
+                },
                 {
                   "type": "object",
                   "properties": {
@@ -67,6 +111,137 @@
                   ],
                   "additionalProperties": false,
                   "description": "HTML prejde validátorom."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "html.head"
+                    },
+                    "scope": {
+                      "default": "each_page",
+                      "type": "string",
+                      "enum": [
+                        "site",
+                        "each_page"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Stránka má <!DOCTYPE html>, html, head, body, kódovanie (meta charset) a neprázdny title."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "html.meta"
+                    },
+                    "names": {
+                      "minItems": 1,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9:-]*$"
+                      }
+                    },
+                    "scope": {
+                      "default": "each_page",
+                      "type": "string",
+                      "enum": [
+                        "site",
+                        "each_page"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "names"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Stránka má neprázdne <meta name=\"…\" content=\"…\"> pre všetky uvedené mená."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "html.favicon"
+                    },
+                    "scope": {
+                      "default": "each_page",
+                      "type": "string",
+                      "enum": [
+                        "site",
+                        "each_page"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Stránka odkazuje na favicon (link rel=\"icon\") a súbor v repozitári existuje."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "html.heading_levels"
+                    },
+                    "min": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "scope": {
+                      "default": "site",
+                      "type": "string",
+                      "enum": [
+                        "site",
+                        "each_page"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "min"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Nadpisy h1–h6 sú použité aspoň v `min` úrovniach."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "html.entities"
+                    },
+                    "min": {
+                      "default": 1,
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "scope": {
+                      "default": "site",
+                      "type": "string",
+                      "enum": [
+                        "site",
+                        "each_page"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Zdrojový kód obsahuje aspoň `min` špeciálnych symbolov zapísaných entitou (&copy;, &#8364; …)."
                 },
                 {
                   "type": "object",
@@ -96,6 +271,14 @@
                         "type": "string",
                         "pattern": "^[a-z][a-z0-9-]*$"
                       }
+                    },
+                    "scope": {
+                      "default": "site",
+                      "type": "string",
+                      "enum": [
+                        "site",
+                        "each_page"
+                      ]
                     }
                   },
                   "required": [
@@ -110,6 +293,45 @@
                   "properties": {
                     "type": {
                       "type": "string",
+                      "const": "html.selector"
+                    },
+                    "selector": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "min": {
+                      "default": 1,
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100
+                    },
+                    "scope": {
+                      "default": "site",
+                      "type": "string",
+                      "enum": [
+                        "site",
+                        "each_page"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "selector"
+                  ],
+                  "additionalProperties": false,
+                  "description": "HTML obsahuje aspoň `min` elementov, ktoré zodpovedajú selektoru."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
                       "const": "html.img_alt"
                     }
                   },
@@ -118,6 +340,149 @@
                   ],
                   "additionalProperties": false,
                   "description": "Každý <img> má atribút alt."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "html.no_broken_links"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Odkazy a cesty k súborom (a, img, link, script, source, area) vedú na existujúce súbory."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "css.valid"
+                    },
+                    "max_errors": {
+                      "default": 0,
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false,
+                  "description": "CSS prejde W3C validátorom."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "css.single_file"
+                    },
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "path"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Repozitár má iba jeden CSS súbor na uvedenej ceste a každá stránka ho pripája."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "css.comments"
+                    },
+                    "min": {
+                      "default": 1,
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false,
+                  "description": "CSS obsahuje aspoň `min` komentárov."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "css.selector_kinds"
+                    },
+                    "kinds": {
+                      "minItems": 1,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "type",
+                          "class",
+                          "id",
+                          "attribute",
+                          "pseudo_class",
+                          "pseudo_element",
+                          "universal"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "kinds"
+                  ],
+                  "additionalProperties": false,
+                  "description": "CSS používa uvedené druhy selektorov (element, trieda, id …)."
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "css.uses_properties"
+                    },
+                    "properties": {
+                      "minItems": 1,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?[a-z][a-z0-9-]*$"
+                      }
+                    },
+                    "match": {
+                      "default": "all",
+                      "type": "string",
+                      "enum": [
+                        "all",
+                        "any"
+                      ]
+                    },
+                    "selector_includes": {
+                      "minItems": 1,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "properties"
+                  ],
+                  "additionalProperties": false,
+                  "description": "CSS používa uvedené vlastnosti."
                 },
                 {
                   "type": "object",

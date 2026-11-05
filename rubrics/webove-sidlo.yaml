@@ -1,0 +1,236 @@
+# yaml-language-server: $schema=../packages/contracts/schemas/rubric.schema.json
+# Zadanie z Internetových technológií: webové sídlo v HTML5 a CSS3 (testing_schema.md).
+version: 1
+id: webove-sidlo
+title: Webové sídlo v HTML5 a CSS3
+description: >
+  Webové sídlo s úvodnou stránkou a aspoň tromi podstránkami vrátane stránky s kontaktmi.
+  1. časť hodnotí HTML5 (50 bodov), 2. časť CSS3 (50 bodov).
+
+criteria:
+  # 1. časť: HTML5
+
+  - id: stranky
+    group: '1. časť: HTML5'
+    title: Úvodná stránka a aspoň 3 podstránky
+    points: 4
+    rules:
+      - type: file.exists
+        path: index.html
+      - type: site.min_pages
+        min: 4
+
+  - id: kontakty
+    group: '1. časť: HTML5'
+    title: Stránka s kontaktmi
+    points: 4
+    description: Kontaktné údaje autora stránky a použité literárne zdroje.
+    ai: >
+      Nájdi stránku s kontaktmi (napr. kontakt.html alebo kontakty.html). Posúď, či obsahuje
+      kontaktné údaje autora (meno, e-mail a pod.) a zoznam použitých literárnych zdrojov.
+      Ak stránka chýba, kritérium má 0 bodov.
+
+  - id: struktura
+    group: '1. časť: HTML5'
+    title: Minimálna štruktúra, kódovanie a title
+    points: 3
+    rules:
+      - type: html.head
+        scope: each_page
+
+  - id: meta
+    group: '1. časť: HTML5'
+    title: Meta informácie
+    points: 3
+    rules:
+      - type: html.meta
+        names: [description, keywords, author]
+        scope: each_page
+    ai: >
+      Posúď, či description a keywords naozaj zodpovedajú téme stránky.
+
+  - id: favicon
+    group: '1. časť: HTML5'
+    title: Favicon
+    points: 2
+    rules:
+      - type: html.favicon
+        scope: each_page
+
+  - id: nadpisy
+    group: '1. časť: HTML5'
+    title: Nadpisy aspoň v troch úrovniach
+    points: 3
+    rules:
+      - type: html.heading_levels
+        min: 3
+
+  - id: textove-elementy
+    group: '1. časť: HTML5'
+    title: Textové elementy, odkazy a špeciálne symboly
+    points: 5
+    description: strong, em, blockquote, q, cite, kotva, mark, špeciálne symboly a odkazy.
+    rules:
+      - type: html.uses_tags
+        tags: [strong, em, blockquote, q, cite, mark, a]
+      - type: html.selector
+        selector: 'a[href*="#"]:not([href="#"])'
+        label: Kotva (odkaz na miesto v stránke)
+      - type: html.entities
+        min: 1
+
+  - id: zoznamy
+    group: '1. časť: HTML5'
+    title: Zoznamy s obrázkami
+    points: 4
+    description: Usporiadaný, neusporiadaný a definičný zoznam, v niektorom z nich obrázky.
+    rules:
+      - type: html.uses_tags
+        tags: [ol, ul, dl, dt, dd]
+      - type: html.selector
+        selector: 'ol img, ul img, dl img'
+        label: Obrázok v zozname
+
+  - id: obrazky
+    group: '1. časť: HTML5'
+    title: Obrázok, logo s odkazom a obrázková mapa
+    points: 5
+    rules:
+      - type: html.uses_tags
+        tags: [img, map, area]
+      - type: html.selector
+        selector: 'a[href="index.html"] img, a[href="./index.html"] img, a[href="../index.html"] img'
+        label: Logo s odkazom na index.html
+      - type: html.selector
+        selector: 'img[usemap]'
+        label: Obrázok napojený na obrázkovú mapu (usemap)
+
+  - id: semantika
+    group: '1. časť: HTML5'
+    title: Sémantická štruktúra
+    points: 5
+    rules:
+      - type: html.uses_tags
+        tags: [header, nav, main, article, section, aside, footer]
+    ai: >
+      Posúď, či sú sémantické elementy použité podľa významu (nav pre navigáciu, article pre
+      samostatný obsah a pod.), nie iba ako náhrada za div.
+
+  - id: navigacia
+    group: '1. časť: HTML5'
+    title: Funkčná navigácia medzi stránkami
+    points: 5
+    rules:
+      - type: html.no_broken_links
+      - type: site.pages_reachable
+
+  - id: html-validita
+    group: '1. časť: HTML5'
+    title: Validné HTML súbory
+    points: 7
+    rules:
+      - type: html.valid
+        max_errors: 0
+
+  # 2. časť: CSS3
+
+  - id: css-subor
+    group: '2. časť: CSS3'
+    title: Jeden CSS súbor v style/style.css
+    points: 5
+    rules:
+      - type: file.exists
+        path: style/style.css
+      - type: css.single_file
+        path: style/style.css
+
+  - id: css-komentare
+    group: '2. časť: CSS3'
+    title: Okomentované časti CSS
+    points: 4
+    rules:
+      - type: css.comments
+        min: 3
+    ai: >
+      Posúď, či komentáre v style.css oddeľujú a opisujú jednotlivé časti kódu
+      (hlavička, menu, obsah, pätička …).
+
+  - id: selektory
+    group: '2. časť: CSS3'
+    title: Selektory podľa elementu, id a triedy
+    points: 4
+    rules:
+      - type: css.selector_kinds
+        kinds: [type, id, class]
+
+  - id: farby-pismo
+    group: '2. časť: CSS3'
+    title: Farba pozadia, textu a štýlovanie písma
+    points: 5
+    rules:
+      - type: css.uses_properties
+        properties: [background, color, font]
+
+  - id: okraje
+    group: '2. časť: CSS3'
+    title: Okraje, rám a obtekanie obrázkov
+    points: 6
+    rules:
+      - type: css.uses_properties
+        properties: [margin, padding, border, float]
+
+  - id: obrazky-efekty
+    group: '2. časť: CSS3'
+    title: Efekty na obrázkoch
+    points: 5
+    description: Napríklad zväčšenie po ukázaní myšou alebo zaoblené rohy.
+    rules:
+      - type: css.uses_properties
+        properties: [transform, scale, width, height, filter, opacity, box-shadow]
+        match: any
+        selector_includes: [img, ':hover']
+    ai: >
+      Posúď, či majú obrázky vhodné CSS vlastnosti (zväčšenie pri :hover, zaoblené rohy,
+      tieň, prechod transition) a či efekt na screenshotoch nepôsobí rušivo.
+
+  - id: tabulka
+    group: '2. časť: CSS3'
+    title: Tabuľka s obrázkami
+    points: 4
+    rules:
+      - type: html.uses_tags
+        tags: [table, tr, td]
+      - type: html.selector
+        selector: 'table img'
+        label: Obrázok v tabuľke
+
+  - id: multimedia
+    group: '2. časť: CSS3'
+    title: Audio a video
+    points: 4
+    rules:
+      - type: html.uses_tags
+        tags: [audio, video]
+
+  - id: menu
+    group: '2. časť: CSS3'
+    title: Funkčné menu
+    points: 6
+    description: Vertikálne alebo horizontálne menu.
+    rules:
+      - type: html.selector
+        selector: 'nav a'
+        min: 3
+        label: Odkazy v menu (nav)
+        scope: each_page
+    ai: >
+      Podľa screenshotov a CSS posúď, či je menu upravené ako vertikálne alebo horizontálne
+      menu (nie predvolený zoznam s odrážkami) a či je zreteľné na mobile aj na počítači.
+
+  - id: css-validita
+    group: '2. časť: CSS3'
+    title: Validný CSS súbor
+    points: 7
+    rules:
+      - type: css.valid
+        max_errors: 0

@@ -96,6 +96,7 @@ export type AiRequest = z.infer<typeof AiRequest>;
 export const CriterionResult = z.object({
   id: z.string(),
   title: z.string(),
+  group: z.string().optional(),
   points: z.number().min(0),
   max_points: z.number().positive(),
   reasoning: z.string(),

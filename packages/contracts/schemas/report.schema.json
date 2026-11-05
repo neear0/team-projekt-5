@@ -81,6 +81,9 @@
           "title": {
             "type": "string"
           },
+          "group": {
+            "type": "string"
+          },
           "points": {
             "type": "number",
             "minimum": 0
