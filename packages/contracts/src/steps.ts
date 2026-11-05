@@ -14,6 +14,11 @@ export const RuleResult = z.object({
   criterion_id: z.string(),
   rule: Rule,
   passed: z.boolean(),
+  /**
+   * Pravidlo sa nedalo vyhodnotiť (nedostupný validátor, chybný selektor v rubrike …).
+   * Nie je to chyba študenta, body za pravidlo sa nerátajú ani nestrhávajú.
+   */
+  skipped: z.boolean().optional(),
   message: z.string(),
   findings: z.array(Finding),
 });
