@@ -1,0 +1,708 @@
+{
+  "files": [
+    {
+      "path": "dokumenty.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';\">\n    <meta name=\"referrer\" content=\"strict-origin-when-cross-origin\">\n    <title>Ooko – Dokumenty</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n\n    <header>\n        <a href=\"index.html\" class=\"brand\">\n            <div class=\"logo-placeholder\">O</div>\n            <span class=\"brand-name\">Ooko</span>\n        </a>\n        <nav>\n            <a href=\"index.html\">Domov</a>\n            <a href=\"vyvoj.html\">Vývoj</a>\n            <a href=\"dokumenty.html\" class=\"active\">Dokumenty</a>\n            <a href=\"tim.html\">Tím</a>\n        </nav>\n    </header>\n\n    <main class=\"siroke\">\n        <div class=\"hero\">\n            <h2>Dokumenty</h2>\n            <p class=\"uvod-podtitul\">Podklady k projektu — ako PDF na stiahnutie.</p>\n        </div>\n\n        <div class=\"dokumenty-rozlozenie\">\n            <section class=\"card pdf-card\">\n                <h3>Motivačný list</h3>\n                <iframe src=\"documents/Motivacny_dokument_Tema_6.pdf#view=FitH&amp;zoom=page-width&amp;pagemode=none\" class=\"pdf-nahlad\" title=\"Motivačný list (PDF)\"></iframe>\n                <a href=\"documents/Motivacny_dokument_Tema_6.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pdf-tlacidlo\">Otvoriť / stiahnuť PDF</a>\n            </section>\n\n            <section class=\"card pdf-card\">\n                <h3>Úvodná prezentácia</h3>\n                <iframe src=\"documents/Uvodna_prezentacia_Tema_6.pdf#view=FitH&amp;zoom=page-width&amp;pagemode=none\" class=\"pdf-nahlad\" title=\"Úvodná prezentácia (PDF)\"></iframe>\n                <a href=\"documents/Uvodna_prezentacia_Tema_6.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"pdf-tlacidlo\">Otvoriť / stiahnuť PDF</a>\n            </section>\n        </div>\n    </main>\n\n    <footer>\n        <nav>\n            <a href=\"index.html\">Domov</a>\n            <a href=\"vyvoj.html\">Vývoj</a>\n            <a href=\"dokumenty.html\">Dokumenty</a>\n            <a href=\"tim.html\">Tím</a>\n        </nav>\n        <p>&copy; 2026 Ooko</p>\n    </footer>\n\n</body>\n</html>\n"
+    },
+    {
+      "path": "index.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';\">\n    <meta name=\"referrer\" content=\"strict-origin-when-cross-origin\">\n    <title>Ooko – Domov</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n\n    <header>\n        <a href=\"index.html\" class=\"brand\">\n            <div class=\"logo-placeholder\">O</div>\n            <span class=\"brand-name\">Ooko</span>\n        </a>\n        <nav>\n            <a href=\"index.html\" class=\"active\">Domov</a>\n            <a href=\"vyvoj.html\">Vývoj</a>\n            <a href=\"dokumenty.html\">Dokumenty</a>\n            <a href=\"tim.html\">Tím</a>\n        </nav>\n    </header>\n\n    <main>\n        <div class=\"hero\">\n            <h2>Autonómny agent na kontrolu webových projektov</h2>\n            <p class=\"uvod-podtitul\">\n                Ohodnotiť HTML, CSS a JS webových projektov prvákov rýchlo a jasne poukázať na nedostatky\n            </p>\n\n            <ul class=\"features\">\n                <li>\n                    <span class=\"features-icon\">👁️</span>\n                    <h4>Kontrola kódu</h4>\n                    <p>Prejde HTML, CSS a JS a skontroluje, či projekt spĺňa pravidlá zadania.</p>\n                </li>\n                <li>\n                    <span class=\"features-icon\">⚡</span>\n                    <h4>Výkon a prístupnosť</h4>\n                    <p>Zmeria rýchlosť a prístupnosť stránky pomocou nástroja Lighthouse.</p>\n                </li>\n                <li>\n                    <span class=\"features-icon\">💬</span>\n                    <h4>Konkrétne rady</h4>\n                    <p>Vygeneruje code review, ktorý presne povie, čo a kde opraviť.</p>\n                </li>\n            </ul>\n        </div>\n    </main>\n\n    <footer>\n        <nav>\n            <a href=\"index.html\">Domov</a>\n            <a href=\"vyvoj.html\">Vývoj</a>\n            <a href=\"dokumenty.html\">Dokumenty</a>\n            <a href=\"tim.html\">Tím</a>\n        </nav>\n        <p>&copy; 2026 Ooko</p>\n    </footer>\n\n</body>\n</html>\n"
+    },
+    {
+      "path": "tim.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';\">\n    <meta name=\"referrer\" content=\"strict-origin-when-cross-origin\">\n    <title>Ooko – Tím</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n\n    <header>\n        <a href=\"index.html\" class=\"brand\">\n            <div class=\"logo-placeholder\">O</div>\n            <span class=\"brand-name\">Ooko</span>\n        </a>\n        <nav>\n            <a href=\"index.html\">Domov</a>\n            <a href=\"vyvoj.html\">Vývoj</a>\n            <a href=\"dokumenty.html\">Dokumenty</a>\n            <a href=\"tim.html\" class=\"active\">Tím</a>\n        </nav>\n    </header>\n\n    <main>\n        <div class=\"hero\">\n            <h2>Náš tím</h2>\n            <p class=\"uvod-podtitul\">Štyria členovia tímu a ich rola v projekte.</p>\n        </div>\n\n        <img src=\"images/timovaFotka.jpg\" alt=\"Fotka nášho tímu\" class=\"foto-tim\">\n\n        <div class=\"tim-grid\">\n        <div class=\"clen\">\n            <div class=\"avatar-placeholder avatar-1\" aria-hidden=\"true\">SŠ</div>\n            <div class=\"clen-info\">\n                <h3>Simon Škreko</h3>\n                <p>Rola: Vedúci projektu</p>\n                <p>Backend + DevOps</p>\n            </div>\n        </div>\n\n        <div class=\"clen\">\n            <div class=\"avatar-placeholder avatar-2\" aria-hidden=\"true\">MH</div>\n            <div class=\"clen-info\">\n                <h3>Marián Hollý</h3>\n                <p>Rola: Frontend</p>\n                <p>Web a UI/UX webovej aplikácie</p>\n            </div>\n        </div>\n\n        <div class=\"clen\">\n            <div class=\"avatar-placeholder avatar-3\" aria-hidden=\"true\">OP</div>\n            <div class=\"clen-info\">\n                <h3>Ondrej Potúček</h3>\n                <p>Rola: QA engineer</p>\n                <p>AI/ML a dáta</p>\n            </div>\n        </div>\n\n        <div class=\"clen\">\n            <div class=\"avatar-placeholder avatar-4\" aria-hidden=\"true\">DK</div>\n            <div class=\"clen-info\">\n                <h3>David Kocák</h3>\n                <p>Rola: Frontend, scrum master</p>\n                <p>Web projektu</p>\n            </div>\n        </div>\n        </div>\n    </main>\n\n    <footer>\n        <nav>\n            <a href=\"index.html\">Domov</a>\n            <a href=\"vyvoj.html\">Vývoj</a>\n            <a href=\"dokumenty.html\">Dokumenty</a>\n            <a href=\"tim.html\">Tím</a>\n        </nav>\n        <p>&copy; 2026 Ooko</p>\n    </footer>\n\n</body>\n</html>\n"
+    },
+    {
+      "path": "vyvoj.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';\">\n    <meta name=\"referrer\" content=\"strict-origin-when-cross-origin\">\n    <title>Ooko – Vývoj</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n\n    <header>\n        <a href=\"index.html\" class=\"brand\">\n            <div class=\"logo-placeholder\">O</div>\n            <span class=\"brand-name\">Ooko</span>\n        </a>\n        <nav>\n            <a href=\"index.html\">Domov</a>\n            <a href=\"vyvoj.html\" class=\"active\">Vývoj</a>\n            <a href=\"dokumenty.html\">Dokumenty</a>\n            <a href=\"tim.html\">Tím</a>\n        </nav>\n    </header>\n\n    <main class=\"siroke\">\n        <div class=\"hero\">\n            <h2>Vývoj</h2>\n            <p class=\"uvod-podtitul\">Na čom pracujeme a čo sme si dohodli na stretnutiach.</p>\n        </div>\n\n        <div class=\"vyvoj-rozlozenie\">\n        <div class=\"card\">\n            <h3>Plán a úlohy</h3>\n            <p class=\"trello-info\">Aktuálny stav z nášho Trello boardu, aktualizuje sa približne každých 30 minút.</p>\n            <div id=\"trello-board\" class=\"trello-board\">\n                <p>Načítavam...</p>\n            </div>\n        </div>\n\n        <div class=\"card\">\n            <h3>História zmien</h3>\n            <p class=\"trello-info\">Posledné zmeny v repozitári projektu.</p>\n            <div id=\"git-historia\" class=\"git-historia\">\n                <p>Načítavam...</p>\n            </div>\n        </div>\n        </div>\n\n        <div class=\"card\">\n            <h3>Zápisnice zo stretnutí</h3>\n\n            <details class=\"zapisnica\">\n                <summary>Zápisnica č. 3: 4. 11. 2026</summary>\n                <div class=\"zapisnica-telo\">\n                    <h4>Program</h4>\n                    <ol>\n                        <li>Testovacie weby</li>\n                        <li>Čo presne budeme testovať</li>\n                        <li>Rozdelenie úloh: web projektu a frontend aplikácie</li>\n                    </ol>\n\n                    <h4>Testovacie weby</h4>\n                    <ul>\n                        <li>Dohodli sme sa, že vytvoríme testovacie weby, na ktorých budeme overovať kontroly agenta.</li>\n                        <li>Weby budú obsahovať zámerné chyby aj správne riešenia, aby sa dalo overiť, či agent chyby nájde a správne riešenia neoznačí ako chybné.</li>\n                    </ul>\n\n                    <h4>Čo presne budeme testovať</h4>\n                    <ul>\n                        <li>Upresnili sme, čo presne bude agent na webových projektoch kontrolovať.</li>\n                        <li>Kontroly budú vychádzať z rubrík, ktoré už vie backend načítať z YAML.</li>\n                    </ul>\n\n                    <h4>Rozdelenie úloh: web projektu a frontend aplikácie</h4>\n                    <ul>\n                        <li>Rozdelili sme úlohy medzi web projektu (landing page na GitHub Pages) a frontend webovej aplikácie.</li>\n                        <li>Web projektu a aplikácia budú mať naďalej spoločný vzhľad podľa grafickej šablóny.</li>\n                    </ul>\n                </div>\n            </details>\n\n            <details class=\"zapisnica\">\n                <summary>Zápisnica č. 2: 26. 10. 2026</summary>\n                <div class=\"zapisnica-telo\">\n                    <h4>Program</h4>\n                    <ol>\n                        <li>Web projektu</li>\n                        <li>Grafika a logo</li>\n                        <li>Pracovný názov projektu</li>\n                        <li>Trello, plán a úlohy</li>\n                    </ol>\n\n                    <h4>Web projektu</h4>\n                    <ul>\n                        <li>Člen tímu pripravil web projektu v klasickom HTML a CSS a nasadil ho na GitHub Pages.</li>\n                        <li>Web má stránky Domov, Motivačný list, Tím a Vývoj.</li>\n                        <li>Stránka Vývoj ukazuje Trello board so stavom úloh (hotové úlohy, termíny, podúlohy), históriu zmien v repozitári a zápisnice. Dáta z Trella ukladá do súboru GitHub Action, takže v repozitári nie sú žiadne prístupové kľúče.</li>\n                        <li>Technológie nie sú pevné. Web zostáva zatiaľ v HTML a CSS, UI aplikácie bude pravdepodobne v Astro.</li>\n                    </ul>\n\n                    <h4>Grafika a logo</h4>\n                    <ul>\n                        <li>Členovia tímu pracovali na grafike webu a na logu projektu.</li>\n                        <li>Grafická šablóna sa použije aj pri aplikácii, aby mali obe časti rovnaký vzhľad.</li>\n                    </ul>\n\n                    <h4>Pracovný názov projektu</h4>\n                    <ul>\n                        <li>Dohodli sme sa na pracovnom názve <strong>Ooko</strong>. Názov sa môže ešte zmeniť.</li>\n                    </ul>\n\n                    <h4>Trello, plán a úlohy</h4>\n                    <ul>\n                        <li>Harmonogram na najbližšie týždne je v Trelle, úlohy majú termíny.</li>\n                        <li>Najbližší termín je 28. 10. 2026: motivačný dokument (PDF), úvodná prezentácia tímu (PDF) a web projektu (logo, grafická šablóna, stránka Tím, úvodná zápisnica a stránka Dokumenty).</li>\n                        <li>Backend: kostra aplikácie a Vercel do 1. 11. 2026.</li>\n                    </ul>\n                </div>\n            </details>\n\n            <details class=\"zapisnica\">\n                <summary>Zápisnica č. 1: úvodné stretnutie</summary>\n                <div class=\"zapisnica-telo\">\n                    <h4>Program</h4>\n                    <ol>\n                        <li>Zvolenie technologického stacku</li>\n                        <li>Rozdelenie projektu do etáp</li>\n                    </ol>\n\n                    <h4>Rozdelenie projektu do etáp</h4>\n                    <div class=\"tabulka-wrap\">\n                        <table>\n                            <tr>\n                                <th>Etapa</th>\n                                <th>Obsah</th>\n                                <th>Výstup</th>\n                            </tr>\n                            <tr>\n                                <td>1. Štart</td>\n                                <td>Tím, motivačný dokument, logo, web projektu, úvodná zápisnica</td>\n                                <td>Web na GitHub Pages, PDF dokumenty</td>\n                            </tr>\n                            <tr>\n                                <td>2. Návrh</td>\n                                <td>Formát rubrík a reportu, UI návrh</td>\n                                <td>JSON schémy, wireframy</td>\n                            </tr>\n                            <tr>\n                                <td>3. Analyzátor (MVP)</td>\n                                <td>Prototyp Chromia a Lighthouse na Verceli, kontroly HTML/CSS/JS, axe-core</td>\n                                <td>Kroky 1 a 2 nasadené, JSON report</td>\n                            </tr>\n                            <tr>\n                                <td>4. AI hodnotenie</td>\n                                <td>Prompty, štruktúrovaný výstup, vision nad screenshotmi</td>\n                                <td>Report s bodmi a radami na opravu</td>\n                            </tr>\n                            <tr>\n                                <td>5. Aplikácia</td>\n                                <td>UI analýzy, hromadné hodnotenie, editor rubrík, export</td>\n                                <td>Hotová aplikácia na Verceli</td>\n                            </tr>\n                            <tr>\n                                <td>6. Ladenie</td>\n                                <td>Testovanie na projektoch z minulých rokov, porovnanie s ručným hodnotením</td>\n                                <td>Vyhodnotenie presnosti</td>\n                            </tr>\n                            <tr>\n                                <td>7. Finále</td>\n                                <td>Dokumentácia modulov, finálna prezentácia</td>\n                                <td>Finálna prezentácia (PDF)</td>\n                            </tr>\n                        </table>\n                    </div>\n                    <p>Etapy 1 až 3 a začiatok etapy 4 plánujeme zvládnuť zhruba v prvej polovici semestra. Ako hlavné technické riziko sme určili beh Lighthouse na Chromiu vo Vercel Function, preto sa overí čo najskôr.</p>\n\n                    <h4>Úlohy zo stretnutia</h4>\n                    <ul>\n                        <li>Motivačný dokument (PDF), do 28. 10. 2026</li>\n                        <li>Úvodná prezentácia tímu (PDF), do 28. 10. 2026</li>\n                        <li>Projektová stránka na GitHub Pages, do 28. 10. 2026</li>\n                        <li>Harmonogram na najbližších 5 týždňov v Trelle</li>\n                    </ul>\n                </div>\n            </details>\n        </div>\n    </main>\n\n    <footer>\n        <nav>\n            <a href=\"index.html\">Domov</a>\n            <a href=\"vyvoj.html\">Vývoj</a>\n            <a href=\"dokumenty.html\">Dokumenty</a>\n            <a href=\"tim.html\">Tím</a>\n        </nav>\n        <p>&copy; 2026 Ooko</p>\n    </footer>\n\n    <script src=\"trello.js\"></script>\n    <script src=\"historia.js\"></script>\n\n</body>\n</html>\n"
+    },
+    {
+      "path": "style.css",
+      "content": ":root {\n    /* Značkové farby (RGB triplety kvôli priehľadnosti) */\n    --color-navy-rgb: 44, 62, 80;\n    --color-navy-dark-rgb: 20, 28, 38;\n    --color-navy-hover: #1c2833;\n    --color-accent-rgb: 241, 196, 15;\n    --color-blue-rgb: 52, 152, 219;\n    --color-amber: #e3a51a;\n    --color-amber-light: #fbe8c2;\n    --color-teal: #16a085;\n    --color-white-rgb: 255, 255, 255;\n    --color-shadow-rgb: 0, 0, 0;\n\n    /* Text */\n    --color-text: #333;\n    --color-text-muted: #555;\n\n    /* Pozadia a okraje */\n    --color-bg: #f2f2f2;\n    --color-bg-soft: #fafafa;\n    --color-gray: #999;\n    --color-gray-light: #ccc;\n    --color-gray-pale: #e0e0e0;\n}\n\n/* Základné nastavenia */\nhtml, body {\n    height: 100%;\n}\n\nhtml {\n    scrollbar-gutter: stable;\n}\n\nbody {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    background-color: var(--color-bg);\n    background-image:\n        radial-gradient(circle at 8% -10%, rgba(var(--color-accent-rgb), 0.22), transparent 45%),\n        radial-gradient(circle at 92% 15%, rgba(var(--color-blue-rgb), 0.16), transparent 42%),\n        radial-gradient(circle at 85% 105%, rgba(var(--color-navy-rgb), 0.18), transparent 45%);\n    background-attachment: fixed;\n    color: var(--color-text);\n    display: flex;\n    flex-direction: column;\n    min-height: 100vh;\n}\n\nmain {\n    flex: 1;\n}\n\n/* Hlavička */\nheader {\n    position: sticky;\n    top: 0;\n    z-index: 10;\n    background: rgba(var(--color-navy-dark-rgb), 0.85);\n    backdrop-filter: blur(16px);\n    -webkit-backdrop-filter: blur(16px);\n    border-bottom: 1px solid rgba(var(--color-white-rgb), 0.2);\n    color: white;\n    padding: 16px 30px;\n    box-shadow: 0 4px 20px rgba(var(--color-shadow-rgb), 0.12);\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    flex-wrap: wrap;\n    gap: 12px;\n}\n\n/* Logo + názov */\n.brand {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n    color: white;\n    text-decoration: none;\n}\n\n.logo-placeholder {\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    background: rgba(var(--color-white-rgb), 0.15);\n    border: 1px solid rgba(var(--color-white-rgb), 0.3);\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 18px;\n    flex-shrink: 0;\n}\n\n.brand-name {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 22px;\n    letter-spacing: 0.5px;\n}\n\n/* Menu */\nnav {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    flex-wrap: wrap;\n}\n\nnav a {\n    color: white;\n    text-decoration: none;\n    padding: 6px 14px;\n    font-size: 16px;\n    border-radius: 999px;\n    transition: background-color 0.2s ease, color 0.2s ease;\n}\n\nnav a:hover {\n    background-color: rgba(var(--color-white-rgb), 0.15);\n    color: rgb(var(--color-accent-rgb));\n}\n\nnav a.active {\n    background-color: rgba(var(--color-white-rgb), 0.2);\n    color: rgb(var(--color-accent-rgb));\n}\n\n/* Hlavný obsah */\nmain {\n    max-width: 800px;\n    margin: 30px auto;\n    background-color: rgba(var(--color-white-rgb), 0.75);\n    backdrop-filter: blur(10px);\n    -webkit-backdrop-filter: blur(10px);\n    padding: 20px;\n    border-radius: 12px;\n    border: 1px solid rgba(var(--color-white-rgb), 0.5);\n    box-shadow: 0 8px 30px rgba(var(--color-shadow-rgb), 0.08);\n}\n\n/* Karty v obsahu */\n.card {\n    background-color: rgba(var(--color-white-rgb), 0.55);\n    backdrop-filter: blur(8px);\n    -webkit-backdrop-filter: blur(8px);\n    border: 1px solid rgba(var(--color-white-rgb), 0.6);\n    border-radius: 14px;\n    padding: 20px;\n    margin-bottom: 20px;\n    box-shadow: 0 4px 16px rgba(var(--color-shadow-rgb), 0.06);\n}\n\n.card h3 {\n    margin-top: 0;\n}\n\n/* Trello board */\n/* Stránka Vývoj: široký obsah, Trello vľavo a história vpravo */\nmain.siroke {\n    width: min(1400px, calc(100% - 40px));\n    max-width: none;\n    box-sizing: border-box;\n}\n\nmain.siroke .hero {\n    margin: 0 auto 10px;\n    padding: 10px;\n}\n\nmain.siroke .hero .uvod-podtitul {\n    margin-bottom: 0;\n}\n\n.vyvoj-rozlozenie {\n    display: grid;\n    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);\n    gap: 20px;\n    align-items: start;\n}\n\n.trello-board {\n    display: flex;\n    gap: 14px;\n    align-items: flex-start;\n    overflow-x: auto;\n    padding-bottom: 10px;\n}\n\n.trello-stlpec {\n    flex: 0 0 270px;\n    display: flex;\n    flex-direction: column;\n    max-height: 68vh;\n    background-color: rgba(var(--color-navy-rgb), 0.05);\n    border: 1px solid rgba(var(--color-navy-rgb), 0.1);\n    border-radius: 12px;\n    padding: 14px;\n    box-sizing: border-box;\n}\n\n.trello-stlpec h4 {\n    margin: 0 0 10px;\n    font-size: 14px;\n    line-height: 1.4;\n}\n\n.trello-zoznam {\n    list-style: none;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n    padding: 0;\n    margin: 0;\n    overflow-y: auto;\n}\n\n.trello-zoznam li {\n    background-color: rgba(var(--color-white-rgb), 0.8);\n    border: 1px solid rgba(var(--color-navy-rgb), 0.08);\n    border-radius: 8px;\n    padding: 8px 10px;\n    font-size: 13px;\n    line-height: 1.4;\n}\n\n.trello-termin {\n    display: block;\n    width: fit-content;\n    margin-top: 6px;\n    padding: 2px 8px;\n    border-radius: 999px;\n    background-color: var(--color-amber-light);\n    color: rgb(var(--color-navy-rgb));\n    font-size: 11px;\n    font-weight: 700;\n}\n\n.trello-pocet {\n    display: block;\n    margin-top: 2px;\n    font-size: 11px;\n    font-weight: 400;\n    color: var(--color-text-muted);\n}\n\n.trello-zoznam li.hotovo {\n    background-color: rgba(var(--color-white-rgb), 0.45);\n}\n\n.trello-zoznam li.hotovo .trello-nazov {\n    text-decoration: line-through;\n    color: var(--color-text-muted);\n}\n\n.trello-termin.hotovo {\n    background-color: var(--color-teal);\n    color: white;\n}\n\n.trello-termin.hotovo::before {\n    content: \"✓ \";\n}\n\n.trello-checklist {\n    display: block;\n    margin-top: 6px;\n    font-size: 11px;\n    color: var(--color-text-muted);\n}\n\n.trello-info {\n    margin: 0 0 14px;\n    font-size: 14px;\n    color: var(--color-text-muted);\n}\n\n/* História zmien */\n.git-historia {\n    max-height: 68vh;\n    overflow-y: auto;\n    padding-right: 4px;\n}\n\n.git-den {\n    margin: 18px 0 8px;\n    font-size: 12px;\n    text-transform: uppercase;\n    letter-spacing: 0.08em;\n    color: var(--color-text-muted);\n}\n\n.git-den:first-child {\n    margin-top: 0;\n}\n\n.git-zoznam {\n    position: relative;\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n/* zvislá čiara, na ktorej sedia avatary */\n.git-zoznam::before {\n    content: \"\";\n    position: absolute;\n    top: 16px;\n    bottom: 16px;\n    left: 15px;\n    width: 2px;\n    background-color: rgba(var(--color-navy-rgb), 0.15);\n}\n\n.git-zoznam li {\n    position: relative;\n    display: flex;\n    align-items: flex-start;\n    gap: 12px;\n    padding: 8px 0;\n}\n\n.git-avatar {\n    flex-shrink: 0;\n    width: 32px;\n    height: 32px;\n    border-radius: 50%;\n    border: 2px solid white;\n    box-shadow: 0 1px 4px rgba(var(--color-shadow-rgb), 0.2);\n    background-color: rgb(var(--color-navy-rgb));\n}\n\n.git-iniciala {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    box-sizing: border-box;\n    color: white;\n    font-size: 14px;\n    font-weight: 700;\n}\n\n.git-telo {\n    flex: 1;\n    min-width: 0;\n}\n\n.git-sprava {\n    display: block;\n    font-size: 14px;\n    line-height: 1.4;\n    overflow-wrap: anywhere;\n}\n\n.git-meta {\n    display: block;\n    margin-top: 2px;\n    font-size: 12px;\n    color: var(--color-text-muted);\n}\n\n.git-sha {\n    flex-shrink: 0;\n    margin-top: 2px;\n    font-family: \"Courier New\", monospace;\n    font-size: 11px;\n    padding: 2px 7px;\n    border-radius: 6px;\n    background-color: rgba(var(--color-navy-rgb), 0.08);\n    color: rgb(var(--color-navy-rgb));\n    text-decoration: none;\n}\n\n.git-sha:hover {\n    background-color: rgb(var(--color-navy-rgb));\n    color: rgb(var(--color-accent-rgb));\n}\n\n/* Zápisnice */\n.zapisnica {\n    border: 1px solid rgba(var(--color-navy-rgb), 0.12);\n    border-radius: 12px;\n    background-color: rgba(var(--color-white-rgb), 0.6);\n    margin-bottom: 10px;\n}\n\n.zapisnica summary {\n    cursor: pointer;\n    padding: 14px 16px;\n    font-weight: 700;\n    list-style: none;\n}\n\n.zapisnica summary::-webkit-details-marker {\n    display: none;\n}\n\n.zapisnica summary::before {\n    content: \"+\";\n    display: inline-block;\n    width: 22px;\n    color: var(--color-amber);\n}\n\n.zapisnica[open] summary::before {\n    content: \"−\";\n}\n\n.zapisnica-telo {\n    padding: 0 16px 16px;\n    font-size: 14px;\n    line-height: 1.6;\n}\n\n.zapisnica-telo h4 {\n    margin: 16px 0 6px;\n}\n\n.zapisnica-telo ol,\n.zapisnica-telo ul {\n    margin: 0;\n    padding-left: 20px;\n}\n\n.zapisnica-telo .tabulka-wrap {\n    margin-top: 6px;\n}\n\n/* Tabuľky */\n.tabulka-wrap {\n    width: 100%;\n    overflow-x: auto;\n}\n\ntable {\n    border-collapse: collapse;\n    width: 100%;\n    min-width: 420px;\n    font-size: 13px;\n}\n\nth, td {\n    border: 1px solid var(--color-gray-pale);\n    padding: 8px 10px;\n    text-align: left;\n    vertical-align: top;\n}\n\nth {\n    background-color: rgb(var(--color-navy-rgb));\n    color: white;\n}\n\n/* Úvodná stránka */\n.hero {\n    margin: 20px auto;\n    padding: 20px 30px;\n    text-align: center;\n    animation: hero-fade-in 0.6s ease-out;\n}\n\n.hero h2 {\n    font-size: 26px;\n    line-height: 1.3;\n    margin-bottom: 14px;\n}\n\n.hero p {\n    font-size: 14px;\n    line-height: 1.7;\n}\n\n.uvod-podtitul {\n    font-size: 18px;\n    color: var(--color-text-muted);\n    margin-bottom: 24px;\n}\n\n.features {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 14px;\n    list-style: none;\n    padding: 0;\n    margin: 0;\n    text-align: center;\n}\n\n.features li {\n    background-color: rgba(var(--color-white-rgb), 0.55);\n    backdrop-filter: blur(8px);\n    -webkit-backdrop-filter: blur(8px);\n    border: 1px solid rgba(var(--color-white-rgb), 0.6);\n    border-radius: 14px;\n    padding: 16px;\n    box-shadow: 0 4px 16px rgba(var(--color-shadow-rgb), 0.06);\n}\n\n.features-icon {\n    display: block;\n    font-size: 22px;\n    margin-bottom: 8px;\n}\n\n.features h4 {\n    margin: 0 0 6px;\n    font-size: 15px;\n}\n\n.features p {\n    margin: 0;\n    font-size: 13px;\n    color: var(--color-text-muted);\n    line-height: 1.5;\n}\n\n@keyframes hero-fade-in {\n    from {\n        opacity: 0;\n        transform: translateY(10px);\n    }\n    to {\n        opacity: 1;\n        transform: translateY(0);\n    }\n}\n\n/* Stránka Dokumenty: PDF vedľa seba */\n.dokumenty-rozlozenie {\n    display: grid;\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n    gap: 20px;\n}\n\n.dokumenty-rozlozenie .card {\n    margin-bottom: 0;\n}\n\n.pdf-card {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n\n.pdf-nahlad {\n    display: block;\n    width: 100%;\n    height: calc(100vh - 260px);\n    min-height: 500px;\n    border: 1px solid var(--color-gray-light);\n    border-radius: 8px;\n    margin-bottom: 14px;\n}\n\n.pdf-tlacidlo {\n    display: inline-block;\n    background-color: rgb(var(--color-navy-rgb));\n    color: white;\n    text-decoration: none;\n    padding: 10px 20px;\n    border-radius: 8px;\n    font-size: 14px;\n    transition: background-color 0.2s ease;\n}\n\n.pdf-tlacidlo:hover {\n    background-color: var(--color-navy-hover);\n}\n\n@media (max-width: 600px) {\n    .pdf-nahlad {\n        display: none;\n    }\n\n    .pdf-tlacidlo {\n        display: block;\n        text-align: center;\n    }\n}\n\n/* Členovia tímu */\n.tim-grid {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    gap: 15px;\n}\n\n.clen {\n    display: flex;\n    align-items: center;\n    gap: 20px;\n    border: 1px solid var(--color-gray-light);\n    border-radius: 8px;\n    padding: 15px 20px;\n    background-color: var(--color-bg-soft);\n}\n\n.clen-info {\n    flex: 1;\n}\n\n.clen h3 {\n    margin-top: 0;\n}\n\n.avatar-placeholder {\n    width: 90px;\n    height: 90px;\n    border-radius: 50%;\n    flex-shrink: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    color: white;\n    font-weight: 700;\n    font-size: 26px;\n}\n\n.avatar-1 {\n    background-color: rgb(var(--color-navy-rgb));\n}\n\n.avatar-2 {\n    background-color: var(--color-amber);\n}\n\n.avatar-3 {\n    background-color: rgb(var(--color-blue-rgb));\n}\n\n.avatar-4 {\n    background-color: var(--color-teal);\n}\n\n/* Pätička */\nfooter {\n    background-color: rgb(var(--color-navy-rgb));\n    color: white;\n    text-align: center;\n    padding: 15px;\n    margin-top: 30px;\n}\n\nfooter nav {\n    display: flex;\n    justify-content: center;\n    flex-wrap: wrap;\n    margin: 0 0 8px;\n}\n\nfooter nav a {\n    color: white;\n    text-decoration: none;\n    margin: 0 12px;\n    font-size: 14px;\n}\n\nfooter nav a:hover {\n    color: rgb(var(--color-accent-rgb));\n    text-decoration: underline;\n}\n\nfooter p {\n    margin: 0;\n    font-size: 13px;\n    color: var(--color-gray-light);\n}\n\n.foto-tim {\n    width: 100%;\n    max-width: 100%;\n    height: auto;\n    border-radius: 8px;\n    margin-bottom: 20px;\n}\n\n/* Responzívny layout */\n@media (max-width: 720px) {\n    .vyvoj-rozlozenie {\n        grid-template-columns: minmax(0, 1fr);\n    }\n}\n\n@media (max-width: 1000px) {\n    .dokumenty-rozlozenie {\n        grid-template-columns: minmax(0, 1fr);\n    }\n}\n\n@media (max-width: 768px) {\n    header {\n        flex-direction: column;\n        text-align: center;\n        padding: 16px;\n    }\n\n    nav {\n        justify-content: center;\n    }\n\n    main {\n        max-width: 100%;\n        margin: 20px 15px;\n        padding: 15px;\n    }\n\n    .tim-grid {\n        grid-template-columns: 1fr;\n    }\n\n    .clen {\n        flex-direction: column;\n        text-align: center;\n    }\n\n    .features {\n        grid-template-columns: 1fr;\n    }\n}\n\n@media (max-width: 480px) {\n    .brand-name {\n        font-size: 18px;\n    }\n\n    .logo-placeholder {\n        width: 34px;\n        height: 34px;\n        font-size: 16px;\n    }\n\n    nav a {\n        font-size: 14px;\n        padding: 5px 10px;\n    }\n\n    main {\n        margin: 15px 10px;\n        padding: 12px;\n    }\n\n    .hero {\n        padding: 20px 10px;\n    }\n\n    .card {\n        padding: 14px;\n    }\n\n\n    footer nav a {\n        margin: 0 8px;\n    }\n}\n"
+    },
+    {
+      "path": "historia.js",
+      "content": "// História zmien sa číta zo súboru commits.json, ktorý pravidelne aktualizuje GitHub Action.\nconst historia = document.getElementById(\"git-historia\");\n\nfunction vypisChybuHistorie(sprava) {\n    historia.innerHTML = \"\";\n    const p = document.createElement(\"p\");\n    p.textContent = sprava;\n    historia.appendChild(p);\n}\n\n// kľúč dňa, napríklad 2026-10-27, podľa miestneho času\nfunction kluc(datum) {\n    return datum.getFullYear() + \"-\" + datum.getMonth() + \"-\" + datum.getDate();\n}\n\nfunction nazovDna(datum) {\n    const dnes = new Date();\n    const vcera = new Date();\n    vcera.setDate(vcera.getDate() - 1);\n\n    if (kluc(datum) === kluc(dnes)) {\n        return \"Dnes\";\n    }\n    if (kluc(datum) === kluc(vcera)) {\n        return \"Včera\";\n    }\n    return datum.toLocaleDateString(\"sk-SK\", { weekday: \"long\", day: \"numeric\", month: \"long\" });\n}\n\nfunction vytvorCommit(commit) {\n    const datum = new Date(commit.datum);\n    const li = document.createElement(\"li\");\n\n    if (commit.avatar) {\n        const avatar = document.createElement(\"img\");\n        avatar.className = \"git-avatar\";\n        avatar.src = commit.avatar + \"&s=64\";\n        avatar.alt = commit.autor;\n        avatar.width = 32;\n        avatar.height = 32;\n        li.appendChild(avatar);\n    } else {\n        const iniciala = document.createElement(\"span\");\n        iniciala.className = \"git-avatar git-iniciala\";\n        iniciala.textContent = commit.autor.charAt(0).toUpperCase();\n        li.appendChild(iniciala);\n    }\n\n    const telo = document.createElement(\"div\");\n    telo.className = \"git-telo\";\n\n    const sprava = document.createElement(\"span\");\n    sprava.className = \"git-sprava\";\n    // pri dlhších správach stačí prvý riadok\n    sprava.textContent = commit.sprava.split(String.fromCharCode(10))[0];\n    telo.appendChild(sprava);\n\n    const meta = document.createElement(\"span\");\n    meta.className = \"git-meta\";\n    const cas = datum.toLocaleTimeString(\"sk-SK\", { hour: \"2-digit\", minute: \"2-digit\" });\n    meta.textContent = commit.autor + \" · \" + cas;\n    telo.appendChild(meta);\n    li.appendChild(telo);\n\n    const kod = document.createElement(\"a\");\n    kod.className = \"git-sha\";\n    kod.href = commit.url;\n    kod.textContent = commit.sha;\n    li.appendChild(kod);\n\n    return li;\n}\n\nfunction nacitajHistoriu() {\n    fetch(\"commits.json\", { cache: \"no-store\" })\n        .then(function (odpoved) {\n            if (!odpoved.ok) {\n                throw new Error(\"commits.json sa nenašiel\");\n            }\n            return odpoved.json();\n        })\n        .then(function (commity) {\n            historia.innerHTML = \"\";\n\n            if (commity.length === 0) {\n                vypisChybuHistorie(\"Zatiaľ žiadne zmeny.\");\n                return;\n            }\n\n            let aktualnyDen = \"\";\n            let ul = null;\n\n            for (let i = 0; i < commity.length; i++) {\n                const datum = new Date(commity[i].datum);\n\n                // nový nadpis vždy, keď sa zmení deň\n                if (kluc(datum) !== aktualnyDen) {\n                    aktualnyDen = kluc(datum);\n\n                    const nadpis = document.createElement(\"h4\");\n                    nadpis.className = \"git-den\";\n                    nadpis.textContent = nazovDna(datum);\n                    historia.appendChild(nadpis);\n\n                    ul = document.createElement(\"ul\");\n                    ul.className = \"git-zoznam\";\n                    historia.appendChild(ul);\n                }\n\n                ul.appendChild(vytvorCommit(commity[i]));\n            }\n        })\n        .catch(function () {\n            vypisChybuHistorie(\"Nepodarilo sa načítať históriu zmien.\");\n        });\n}\n\nnacitajHistoriu();\n"
+    },
+    {
+      "path": "trello.js",
+      "content": "// Board sa číta zo súboru trello.json, ktorý pravidelne aktualizuje GitHub Action.\n// V repozitári nie sú žiadne kľúče ani tokeny.\nconst kontajner = document.getElementById(\"trello-board\");\n\n// zoznamy, ktoré sa na webe nemajú zobrazovať (porovnáva sa začiatok názvu)\nconst SKRYTE_ZOZNAMY = [\"Trello Starter Guide\", \"Today\", \"Next Meeting\", \"Later\"];\n\nfunction vypisChybu(sprava) {\n    kontajner.innerHTML = \"\";\n    const p = document.createElement(\"p\");\n    p.textContent = sprava;\n    kontajner.appendChild(p);\n}\n\nfunction jeSkryty(nazov) {\n    return SKRYTE_ZOZNAMY.some(function (skryty) {\n        return nazov.startsWith(skryty);\n    });\n}\n\nfunction nacitajKarty() {\n    fetch(\"trello.json\", { cache: \"no-store\" })\n        .then(function (odpoved) {\n            if (!odpoved.ok) {\n                throw new Error(\"trello.json sa nenašiel\");\n            }\n            return odpoved.json();\n        })\n        .then(function (zoznamy) {\n            kontajner.innerHTML = \"\";\n\n            let zobrazene = 0;\n\n            for (let i = 0; i < zoznamy.length; i++) {\n                const karty = zoznamy[i].cards;\n                if (jeSkryty(zoznamy[i].name) || karty.length === 0) {\n                    continue;\n                }\n                zobrazene++;\n\n                const stlpec = document.createElement(\"div\");\n                stlpec.className = \"trello-stlpec\";\n\n                const nadpis = document.createElement(\"h4\");\n                nadpis.textContent = zoznamy[i].name;\n\n                let hotove = 0;\n                for (let j = 0; j < karty.length; j++) {\n                    if (karty[j].dueComplete) {\n                        hotove++;\n                    }\n                }\n                const pocet = document.createElement(\"span\");\n                pocet.className = \"trello-pocet\";\n                pocet.textContent = hotove + \" / \" + karty.length + \" hotové\";\n                nadpis.appendChild(pocet);\n                stlpec.appendChild(nadpis);\n\n                const ul = document.createElement(\"ul\");\n                ul.className = \"trello-zoznam\";\n                for (let j = 0; j < karty.length; j++) {\n                    const li = document.createElement(\"li\");\n                    const nazov = document.createElement(\"span\");\n                    nazov.className = \"trello-nazov\";\n                    nazov.textContent = karty[j].name;\n                    li.appendChild(nazov);\n\n                    if (karty[j].dueComplete) {\n                        li.className = \"hotovo\";\n                    }\n\n                    if (karty[j].due) {\n                        const termin = document.createElement(\"span\");\n                        termin.className = karty[j].dueComplete ? \"trello-termin hotovo\" : \"trello-termin\";\n                        termin.textContent = new Date(karty[j].due).toLocaleDateString(\"sk-SK\");\n                        li.appendChild(termin);\n                    }\n\n                    const odpocet = karty[j].badges;\n                    if (odpocet && odpocet.checkItems > 0) {\n                        const checklist = document.createElement(\"span\");\n                        checklist.className = \"trello-checklist\";\n                        checklist.textContent = odpocet.checkItemsChecked + \" / \" + odpocet.checkItems + \" podúloh\";\n                        li.appendChild(checklist);\n                    }\n                    ul.appendChild(li);\n                }\n\n                stlpec.appendChild(ul);\n                kontajner.appendChild(stlpec);\n            }\n\n            if (zobrazene === 0) {\n                vypisChybu(\"Board je prázdny.\");\n            }\n        })\n        .catch(function () {\n            vypisChybu(\"Nepodarilo sa načítať Trello.\");\n        });\n}\n\n// prvé načítanie hneď po otvorení stránky\nnacitajKarty();\n\n// potom znova každých 5 minút\nsetInterval(nacitajKarty, 300000);\n"
+    }
+  ],
+  "findings": [],
+  "rule_results": [
+    {
+      "criterion_id": "stranky",
+      "rule": {
+        "type": "file.exists",
+        "path": "index.html"
+      },
+      "passed": true,
+      "message": "Súbor index.html existuje.",
+      "findings": []
+    },
+    {
+      "criterion_id": "stranky",
+      "rule": {
+        "type": "site.min_pages",
+        "min": 4
+      },
+      "passed": true,
+      "message": "Web má 4 HTML stránok, treba aspoň 4.",
+      "findings": []
+    },
+    {
+      "criterion_id": "struktura",
+      "rule": {
+        "type": "html.head",
+        "scope": "each_page"
+      },
+      "passed": true,
+      "message": "Stránky majú správnu kostru, kódovanie a title.",
+      "findings": []
+    },
+    {
+      "criterion_id": "meta",
+      "rule": {
+        "type": "html.meta",
+        "names": [
+          "description",
+          "keywords",
+          "author"
+        ],
+        "scope": "each_page"
+      },
+      "passed": false,
+      "message": "Meta informácie chýbajú na 4 stránkach.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "dokumenty.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "index.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "tim.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "vyvoj.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        }
+      ]
+    },
+    {
+      "criterion_id": "favicon",
+      "rule": {
+        "type": "html.favicon",
+        "scope": "each_page"
+      },
+      "passed": false,
+      "message": "Favicon chýba na 4 stránkach.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "dokumenty.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "index.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "tim.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "vyvoj.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        }
+      ]
+    },
+    {
+      "criterion_id": "nadpisy",
+      "rule": {
+        "type": "html.heading_levels",
+        "min": 3,
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Nadpisy sú použité v 3 úrovniach (h2, h3, h4), treba aspoň 3.",
+      "findings": []
+    },
+    {
+      "criterion_id": "textove-elementy",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "strong",
+          "em",
+          "blockquote",
+          "q",
+          "cite",
+          "mark",
+          "a"
+        ],
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Na webe chýbajú elementy: <em>, <blockquote>, <q>, <cite>, <mark>.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <em>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <blockquote>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <q>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <cite>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <mark>."
+        }
+      ]
+    },
+    {
+      "criterion_id": "textove-elementy",
+      "rule": {
+        "type": "html.selector",
+        "selector": "a[href*=\"#\"]:not([href=\"#\"])",
+        "min": 1,
+        "label": "Kotva (odkaz na miesto v stránke)",
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Kotva (odkaz na miesto v stránke): nájdené 0×, treba aspoň 1×.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Kotva (odkaz na miesto v stránke)."
+        }
+      ]
+    },
+    {
+      "criterion_id": "textove-elementy",
+      "rule": {
+        "type": "html.entities",
+        "min": 1,
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web obsahuje 8 špeciálnych symbolov zapísaných entitou, treba aspoň 1.",
+      "findings": []
+    },
+    {
+      "criterion_id": "zoznamy",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "ol",
+          "ul",
+          "dl",
+          "dt",
+          "dd"
+        ],
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Na webe chýbajú elementy: <dl>, <dt>, <dd>.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <dl>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <dt>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <dd>."
+        }
+      ]
+    },
+    {
+      "criterion_id": "zoznamy",
+      "rule": {
+        "type": "html.selector",
+        "selector": "ol img, ul img, dl img",
+        "min": 1,
+        "label": "Obrázok v zozname",
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Obrázok v zozname: nájdené 0×, treba aspoň 1×.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Obrázok v zozname."
+        }
+      ]
+    },
+    {
+      "criterion_id": "obrazky",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "img",
+          "map",
+          "area"
+        ],
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Na webe chýbajú elementy: <map>, <area>.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <map>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <area>."
+        }
+      ]
+    },
+    {
+      "criterion_id": "obrazky",
+      "rule": {
+        "type": "html.selector",
+        "selector": "a[href=\"index.html\"] img, a[href=\"./index.html\"] img, a[href=\"../index.html\"] img",
+        "min": 1,
+        "label": "Logo s odkazom na index.html",
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Logo s odkazom na index.html: nájdené 0×, treba aspoň 1×.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Logo s odkazom na index.html."
+        }
+      ]
+    },
+    {
+      "criterion_id": "obrazky",
+      "rule": {
+        "type": "html.selector",
+        "selector": "img[usemap]",
+        "min": 1,
+        "label": "Obrázok napojený na obrázkovú mapu (usemap)",
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Obrázok napojený na obrázkovú mapu (usemap): nájdené 0×, treba aspoň 1×.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Obrázok napojený na obrázkovú mapu (usemap)."
+        }
+      ]
+    },
+    {
+      "criterion_id": "semantika",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "header",
+          "nav",
+          "main",
+          "article",
+          "section",
+          "aside",
+          "footer"
+        ],
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Na webe chýbajú elementy: <article>, <aside>.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <article>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <aside>."
+        }
+      ]
+    },
+    {
+      "criterion_id": "navigacia",
+      "rule": {
+        "type": "html.no_broken_links"
+      },
+      "passed": true,
+      "message": "Všetky odkazy a cesty k súborom fungujú.",
+      "findings": []
+    },
+    {
+      "criterion_id": "navigacia",
+      "rule": {
+        "type": "site.pages_reachable",
+        "start": "index.html"
+      },
+      "passed": true,
+      "message": "Na všetky stránky (4) sa dá prekliknúť z index.html.",
+      "findings": []
+    },
+    {
+      "criterion_id": "html-validita",
+      "rule": {
+        "type": "html.valid",
+        "max_errors": 0
+      },
+      "passed": false,
+      "message": "Validátor našiel 1 chybu (4 súbory).",
+      "findings": [
+        {
+          "tool": "nu-html-checker",
+          "rule_id": "html.valid",
+          "severity": "error",
+          "message": "The heading “h4” (with computed level 4) follows the heading “h2” (with computed level 2), skipping 1 heading level.",
+          "file": "index.html",
+          "line": 36,
+          "column": 21
+        }
+      ]
+    },
+    {
+      "criterion_id": "css-subor",
+      "rule": {
+        "type": "file.exists",
+        "path": "style/style.css"
+      },
+      "passed": false,
+      "message": "V repozitári chýba súbor style/style.css.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "file.exists",
+          "severity": "error",
+          "message": "Chýba súbor style/style.css."
+        }
+      ]
+    },
+    {
+      "criterion_id": "css-subor",
+      "rule": {
+        "type": "css.single_file",
+        "path": "style/style.css"
+      },
+      "passed": false,
+      "message": "CSS nie je iba v style/style.css.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Chýba súbor style/style.css."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Navyše CSS súbor style.css, všetko CSS má byť v style/style.css.",
+          "file": "style.css"
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "dokumenty.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "index.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "tim.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "vyvoj.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        }
+      ]
+    },
+    {
+      "criterion_id": "css-komentare",
+      "rule": {
+        "type": "css.comments",
+        "min": 3
+      },
+      "passed": true,
+      "message": "CSS má 20 komentárov, treba aspoň 3.",
+      "findings": []
+    },
+    {
+      "criterion_id": "selektory",
+      "rule": {
+        "type": "css.selector_kinds",
+        "kinds": [
+          "type",
+          "id",
+          "class"
+        ]
+      },
+      "passed": false,
+      "message": "V CSS chýbajú selektory: id (#id).",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "css.selector_kinds",
+          "severity": "error",
+          "message": "V CSS nie je selektor typu id (#id)."
+        }
+      ]
+    },
+    {
+      "criterion_id": "farby-pismo",
+      "rule": {
+        "type": "css.uses_properties",
+        "properties": [
+          "background",
+          "color",
+          "font"
+        ],
+        "match": "all"
+      },
+      "passed": true,
+      "message": "CSS používa background, color, font.",
+      "findings": []
+    },
+    {
+      "criterion_id": "okraje",
+      "rule": {
+        "type": "css.uses_properties",
+        "properties": [
+          "margin",
+          "padding",
+          "border",
+          "float"
+        ],
+        "match": "all"
+      },
+      "passed": false,
+      "message": "V CSS chýbajú vlastnosti: float.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "css.uses_properties",
+          "severity": "error",
+          "message": "Chýbajú vlastnosti: float."
+        }
+      ]
+    },
+    {
+      "criterion_id": "obrazky-efekty",
+      "rule": {
+        "type": "css.uses_properties",
+        "properties": [
+          "transform",
+          "scale",
+          "width",
+          "height",
+          "filter",
+          "opacity",
+          "box-shadow"
+        ],
+        "match": "any",
+        "selector_includes": [
+          "img",
+          ":hover"
+        ]
+      },
+      "passed": false,
+      "message": "CSS nepoužíva v pravidlách so selektorom obsahujúcim img, :hover ani jednu z vlastností transform, scale, width, height, filter, opacity, box-shadow.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "css.uses_properties",
+          "severity": "error",
+          "message": "Chýba niektorá z vlastností v pravidlách so selektorom obsahujúcim img, :hover: transform, scale, width, height, filter, opacity, box-shadow."
+        }
+      ]
+    },
+    {
+      "criterion_id": "tabulka",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "table",
+          "tr",
+          "td"
+        ],
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web používa všetky elementy (table, tr, td).",
+      "findings": []
+    },
+    {
+      "criterion_id": "tabulka",
+      "rule": {
+        "type": "html.selector",
+        "selector": "table img",
+        "min": 1,
+        "label": "Obrázok v tabuľke",
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Obrázok v tabuľke: nájdené 0×, treba aspoň 1×.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Obrázok v tabuľke."
+        }
+      ]
+    },
+    {
+      "criterion_id": "multimedia",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "audio",
+          "video"
+        ],
+        "scope": "site"
+      },
+      "passed": false,
+      "message": "Na webe chýbajú elementy: <audio>, <video>.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <audio>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <video>."
+        }
+      ]
+    },
+    {
+      "criterion_id": "menu",
+      "rule": {
+        "type": "html.selector",
+        "selector": "nav a",
+        "min": 3,
+        "label": "Odkazy v menu (nav)",
+        "scope": "each_page"
+      },
+      "passed": true,
+      "message": "Odkazy v menu (nav): je na každej stránke.",
+      "findings": []
+    },
+    {
+      "criterion_id": "css-validita",
+      "rule": {
+        "type": "css.valid",
+        "max_errors": 0
+      },
+      "passed": true,
+      "message": "Validátor nenašiel chyby (1 súbor).",
+      "findings": []
+    }
+  ]
+}

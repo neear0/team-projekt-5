@@ -8,10 +8,12 @@
   "scripts": {
     "dev": "node --conditions=source --watch scripts/dev.ts",
     "build": "pnpm --filter \"@ooko/api^...\" run build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "examples": "node --conditions=source scripts/examples.ts"
   },
   "dependencies": {
     "@ooko/analyzer": "workspace:*",
+    "@ooko/client": "workspace:*",
     "@ooko/contracts": "workspace:*",
     "@ooko/http": "workspace:*",
     "@ooko/runtime": "workspace:*",

@@ -1,0 +1,418 @@
+{
+  "files": [
+    {
+      "path": "galeria.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"description\" content=\"Fotky a videá z hôr\">\n  <meta name=\"keywords\" content=\"galéria, fotky, video\">\n  <meta name=\"author\" content=\"Jana Študentová\">\n  <title>Galéria | Hory Slovenska</title>\n  <link rel=\"icon\" href=\"images/favicon.ico\">\n  <link rel=\"stylesheet\" href=\"style/style.css\">\n</head>\n<body>\n  <header>\n    <a href=\"index.html\"><img src=\"images/logo.png\" alt=\"Logo Hory Slovenska\" class=\"logo\"></a>\n    <nav id=\"menu\">\n      <ul>\n        <li><a href=\"index.html\">Domov</a></li>\n        <li><a href=\"tatry.html\">Tatry</a></li>\n        <li><a href=\"galeria.html\">Galéria</a></li>\n        <li><a href=\"kontakty.html\">Kontakty</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>\n    <h1>Galéria</h1>\n    <table>\n      <tr>\n        <th>Fotka</th>\n        <th>Miesto</th>\n      </tr>\n      <tr>\n        <td><img src=\"images/foto.png\" alt=\"Výhľad z Rysov\" class=\"nahlad\"></td>\n        <td>Rysy</td>\n      </tr>\n    </table>\n\n    <h2>Zvuk a video</h2>\n    <audio controls src=\"media/zvuk.mp3\"></audio>\n    <video controls width=\"320\" src=\"media/video.mp4\"></video>\n  </main>\n\n  <footer>\n    <p>&copy; 2026 Jana Študentová</p>\n  </footer>\n</body>\n</html>\n"
+    },
+    {
+      "path": "index.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <meta name=\"description\" content=\"Stránka o horách na Slovensku\">\n  <meta name=\"keywords\" content=\"hory, turistika, Tatry\">\n  <meta name=\"author\" content=\"Jana Študentová\">\n  <title>Hory Slovenska</title>\n  <link rel=\"icon\" href=\"images/favicon.ico\">\n  <link rel=\"stylesheet\" href=\"style/style.css\">\n</head>\n<body>\n  <header>\n    <a href=\"index.html\"><img src=\"images/logo.png\" alt=\"Logo Hory Slovenska\" class=\"logo\"></a>\n    <nav id=\"menu\">\n      <ul>\n        <li><a href=\"index.html\">Domov</a></li>\n        <li><a href=\"tatry.html\">Tatry</a></li>\n        <li><a href=\"galeria.html\">Galéria</a></li>\n        <li><a href=\"kontakty.html\">Kontakty</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>\n    <h1>Hory Slovenska</h1>\n    <p><a href=\"#trasy\">Prejsť na trasy</a></p>\n\n    <article>\n      <h2>Prečo do hôr</h2>\n      <p>Hory sú <strong>najlepší</strong> oddych a <em>každá</em> túra je iná.</p>\n      <blockquote cite=\"https://sk.wikipedia.org/wiki/Tatry\">\n        <p>Tatry sú najvyššie pohorie Karpát.</p>\n      </blockquote>\n      <p>Ako hovorí príslovie, <q>kto nejde, ten nevidí</q>. Viac v knihe <cite>Turistický sprievodca</cite>.</p>\n      <p>Pred túrou si <mark>vždy</mark> skontroluj počasie.</p>\n    </article>\n\n    <section id=\"trasy\">\n      <h3>Obľúbené trasy</h3>\n      <ol>\n        <li>Rysy</li>\n        <li>Kriváň</li>\n      </ol>\n    </section>\n\n    <aside>\n      <p>Tip: ráno je na chodníkoch menej ľudí.</p>\n    </aside>\n  </main>\n\n  <footer>\n    <p>&copy; 2026 Jana Študentová</p>\n  </footer>\n</body>\n</html>\n"
+    },
+    {
+      "path": "kontakty.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"description\" content=\"Kontakt na autorku a použité zdroje\">\n  <meta name=\"keywords\" content=\"kontakt, zdroje\">\n  <meta name=\"author\" content=\"Jana Študentová\">\n  <title>Kontakty | Hory Slovenska</title>\n  <link rel=\"icon\" href=\"images/favicon.ico\">\n  <link rel=\"stylesheet\" href=\"style/style.css\">\n</head>\n<body>\n  <header>\n    <a href=\"index.html\"><img src=\"images/logo.png\" alt=\"Logo Hory Slovenska\" class=\"logo\"></a>\n    <nav id=\"menu\">\n      <ul>\n        <li><a href=\"index.html\">Domov</a></li>\n        <li><a href=\"tatry.html\">Tatry</a></li>\n        <li><a href=\"galeria.html\">Galéria</a></li>\n        <li><a href=\"kontakty.html\">Kontakty</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>\n    <h1>Kontakty</h1>\n    <p>Autorka: Jana Študentová, <a href=\"mailto:jana@example.com\">jana@example.com</a></p>\n    <h2>Zdroje</h2>\n    <ul>\n      <li>Turistický sprievodca, 2020</li>\n    </ul>\n  </main>\n\n  <footer>\n    <p>&copy; 2026 Jana Študentová</p>\n  </footer>\n</body>\n</html>\n"
+    },
+    {
+      "path": "tatry.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"sk\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"description\" content=\"Vysoké Tatry, štíty a doliny\">\n  <meta name=\"keywords\" content=\"Tatry, štíty, doliny\">\n  <meta name=\"author\" content=\"Jana Študentová\">\n  <title>Tatry | Hory Slovenska</title>\n  <link rel=\"icon\" href=\"images/favicon.ico\">\n  <link rel=\"stylesheet\" href=\"style/style.css\">\n</head>\n<body>\n  <header>\n    <a href=\"index.html\"><img src=\"images/logo.png\" alt=\"Logo Hory Slovenska\" class=\"logo\"></a>\n    <nav id=\"menu\">\n      <ul>\n        <li><a href=\"index.html\">Domov</a></li>\n        <li><a href=\"tatry.html\">Tatry</a></li>\n        <li><a href=\"galeria.html\">Galéria</a></li>\n        <li><a href=\"kontakty.html\">Kontakty</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>\n    <h1>Tatry</h1>\n    <section>\n      <h2>Štíty</h2>\n      <ul>\n        <li><img src=\"images/foto.png\" alt=\"Rysy\" class=\"nahlad\"> Rysy</li>\n        <li>Gerlachovský štít</li>\n      </ul>\n      <dl>\n        <dt>Pleso</dt>\n        <dd>Horské jazero ľadovcového pôvodu.</dd>\n      </dl>\n    </section>\n\n    <section>\n      <h2>Mapa</h2>\n      <img src=\"images/foto.png\" alt=\"Mapa Tatier\" usemap=\"#mapa\" width=\"300\" height=\"200\">\n      <map name=\"mapa\">\n        <area shape=\"rect\" coords=\"0,0,150,200\" href=\"galeria.html\" alt=\"Galéria\">\n      </map>\n    </section>\n  </main>\n\n  <footer>\n    <p>&copy; 2026 Jana Študentová</p>\n  </footer>\n</body>\n</html>\n"
+    },
+    {
+      "path": "style/style.css",
+      "content": "/* Základ stránky */\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: Georgia, serif;\n  color: #222;\n  background-color: #f4f1ea;\n}\n\n/* Hlavička a menu */\nheader {\n  padding: 16px;\n  border-bottom: 2px solid #4a6b3a;\n}\n\n#menu ul {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n#menu li {\n  display: inline-block;\n}\n\n.logo {\n  float: left;\n  width: 64px;\n}\n\n/* Obrázky */\n.nahlad {\n  border-radius: 8px;\n  transition: transform 0.3s;\n}\n\nimg:hover {\n  transform: scale(1.1);\n}\n"
+    }
+  ],
+  "findings": [],
+  "rule_results": [
+    {
+      "criterion_id": "stranky",
+      "rule": {
+        "type": "file.exists",
+        "path": "index.html"
+      },
+      "passed": true,
+      "message": "Súbor index.html existuje.",
+      "findings": []
+    },
+    {
+      "criterion_id": "stranky",
+      "rule": {
+        "type": "site.min_pages",
+        "min": 4
+      },
+      "passed": true,
+      "message": "Web má 4 HTML stránok, treba aspoň 4.",
+      "findings": []
+    },
+    {
+      "criterion_id": "struktura",
+      "rule": {
+        "type": "html.head",
+        "scope": "each_page"
+      },
+      "passed": true,
+      "message": "Stránky majú správnu kostru, kódovanie a title.",
+      "findings": []
+    },
+    {
+      "criterion_id": "meta",
+      "rule": {
+        "type": "html.meta",
+        "names": [
+          "description",
+          "keywords",
+          "author"
+        ],
+        "scope": "each_page"
+      },
+      "passed": true,
+      "message": "Meta informácie (description, keywords, author) sú vyplnené.",
+      "findings": []
+    },
+    {
+      "criterion_id": "favicon",
+      "rule": {
+        "type": "html.favicon",
+        "scope": "each_page"
+      },
+      "passed": true,
+      "message": "Favicon je nastavený.",
+      "findings": []
+    },
+    {
+      "criterion_id": "nadpisy",
+      "rule": {
+        "type": "html.heading_levels",
+        "min": 3,
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Nadpisy sú použité v 3 úrovniach (h1, h2, h3), treba aspoň 3.",
+      "findings": []
+    },
+    {
+      "criterion_id": "textove-elementy",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "strong",
+          "em",
+          "blockquote",
+          "q",
+          "cite",
+          "mark",
+          "a"
+        ],
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web používa všetky elementy (strong, em, blockquote, q, cite, mark, a).",
+      "findings": []
+    },
+    {
+      "criterion_id": "textove-elementy",
+      "rule": {
+        "type": "html.selector",
+        "selector": "a[href*=\"#\"]:not([href=\"#\"])",
+        "min": 1,
+        "label": "Kotva (odkaz na miesto v stránke)",
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Kotva (odkaz na miesto v stránke): nájdené 1×, treba aspoň 1×.",
+      "findings": []
+    },
+    {
+      "criterion_id": "textove-elementy",
+      "rule": {
+        "type": "html.entities",
+        "min": 1,
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web obsahuje 4 špeciálnych symbolov zapísaných entitou, treba aspoň 1.",
+      "findings": []
+    },
+    {
+      "criterion_id": "zoznamy",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "ol",
+          "ul",
+          "dl",
+          "dt",
+          "dd"
+        ],
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web používa všetky elementy (ol, ul, dl, dt, dd).",
+      "findings": []
+    },
+    {
+      "criterion_id": "zoznamy",
+      "rule": {
+        "type": "html.selector",
+        "selector": "ol img, ul img, dl img",
+        "min": 1,
+        "label": "Obrázok v zozname",
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Obrázok v zozname: nájdené 1×, treba aspoň 1×.",
+      "findings": []
+    },
+    {
+      "criterion_id": "obrazky",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "img",
+          "map",
+          "area"
+        ],
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web používa všetky elementy (img, map, area).",
+      "findings": []
+    },
+    {
+      "criterion_id": "obrazky",
+      "rule": {
+        "type": "html.selector",
+        "selector": "a[href=\"index.html\"] img, a[href=\"./index.html\"] img, a[href=\"../index.html\"] img",
+        "min": 1,
+        "label": "Logo s odkazom na index.html",
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Logo s odkazom na index.html: nájdené 4×, treba aspoň 1×.",
+      "findings": []
+    },
+    {
+      "criterion_id": "obrazky",
+      "rule": {
+        "type": "html.selector",
+        "selector": "img[usemap]",
+        "min": 1,
+        "label": "Obrázok napojený na obrázkovú mapu (usemap)",
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Obrázok napojený na obrázkovú mapu (usemap): nájdené 1×, treba aspoň 1×.",
+      "findings": []
+    },
+    {
+      "criterion_id": "semantika",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "header",
+          "nav",
+          "main",
+          "article",
+          "section",
+          "aside",
+          "footer"
+        ],
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web používa všetky elementy (header, nav, main, article, section, aside, footer).",
+      "findings": []
+    },
+    {
+      "criterion_id": "navigacia",
+      "rule": {
+        "type": "html.no_broken_links"
+      },
+      "passed": true,
+      "message": "Všetky odkazy a cesty k súborom fungujú.",
+      "findings": []
+    },
+    {
+      "criterion_id": "navigacia",
+      "rule": {
+        "type": "site.pages_reachable",
+        "start": "index.html"
+      },
+      "passed": true,
+      "message": "Na všetky stránky (4) sa dá prekliknúť z index.html.",
+      "findings": []
+    },
+    {
+      "criterion_id": "html-validita",
+      "rule": {
+        "type": "html.valid",
+        "max_errors": 0
+      },
+      "passed": true,
+      "message": "Validátor nenašiel chyby (4 súbory).",
+      "findings": []
+    },
+    {
+      "criterion_id": "css-subor",
+      "rule": {
+        "type": "file.exists",
+        "path": "style/style.css"
+      },
+      "passed": true,
+      "message": "Súbor style/style.css existuje.",
+      "findings": []
+    },
+    {
+      "criterion_id": "css-subor",
+      "rule": {
+        "type": "css.single_file",
+        "path": "style/style.css"
+      },
+      "passed": true,
+      "message": "Všetko CSS je v style/style.css a pripájajú ho všetky stránky.",
+      "findings": []
+    },
+    {
+      "criterion_id": "css-komentare",
+      "rule": {
+        "type": "css.comments",
+        "min": 3
+      },
+      "passed": true,
+      "message": "CSS má 3 komentárov, treba aspoň 3.",
+      "findings": []
+    },
+    {
+      "criterion_id": "selektory",
+      "rule": {
+        "type": "css.selector_kinds",
+        "kinds": [
+          "type",
+          "id",
+          "class"
+        ]
+      },
+      "passed": true,
+      "message": "CSS používa všetky požadované druhy selektorov.",
+      "findings": []
+    },
+    {
+      "criterion_id": "farby-pismo",
+      "rule": {
+        "type": "css.uses_properties",
+        "properties": [
+          "background",
+          "color",
+          "font"
+        ],
+        "match": "all"
+      },
+      "passed": true,
+      "message": "CSS používa background, color, font.",
+      "findings": []
+    },
+    {
+      "criterion_id": "okraje",
+      "rule": {
+        "type": "css.uses_properties",
+        "properties": [
+          "margin",
+          "padding",
+          "border",
+          "float"
+        ],
+        "match": "all"
+      },
+      "passed": true,
+      "message": "CSS používa margin, padding, border, float.",
+      "findings": []
+    },
+    {
+      "criterion_id": "obrazky-efekty",
+      "rule": {
+        "type": "css.uses_properties",
+        "properties": [
+          "transform",
+          "scale",
+          "width",
+          "height",
+          "filter",
+          "opacity",
+          "box-shadow"
+        ],
+        "match": "any",
+        "selector_includes": [
+          "img",
+          ":hover"
+        ]
+      },
+      "passed": true,
+      "message": "CSS používa transform v pravidlách so selektorom obsahujúcim img, :hover.",
+      "findings": []
+    },
+    {
+      "criterion_id": "tabulka",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "table",
+          "tr",
+          "td"
+        ],
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web používa všetky elementy (table, tr, td).",
+      "findings": []
+    },
+    {
+      "criterion_id": "tabulka",
+      "rule": {
+        "type": "html.selector",
+        "selector": "table img",
+        "min": 1,
+        "label": "Obrázok v tabuľke",
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Obrázok v tabuľke: nájdené 1×, treba aspoň 1×.",
+      "findings": []
+    },
+    {
+      "criterion_id": "multimedia",
+      "rule": {
+        "type": "html.uses_tags",
+        "tags": [
+          "audio",
+          "video"
+        ],
+        "scope": "site"
+      },
+      "passed": true,
+      "message": "Web používa všetky elementy (audio, video).",
+      "findings": []
+    },
+    {
+      "criterion_id": "menu",
+      "rule": {
+        "type": "html.selector",
+        "selector": "nav a",
+        "min": 3,
+        "label": "Odkazy v menu (nav)",
+        "scope": "each_page"
+      },
+      "passed": true,
+      "message": "Odkazy v menu (nav): je na každej stránke.",
+      "findings": []
+    },
+    {
+      "criterion_id": "css-validita",
+      "rule": {
+        "type": "css.valid",
+        "max_errors": 0
+      },
+      "passed": true,
+      "message": "Validátor nenašiel chyby (1 súbor).",
+      "findings": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "not_found",
+    "message": "Repozitár alebo vetva neexistuje, alebo repozitár nie je verejný."
+  }
+}

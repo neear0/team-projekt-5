@@ -1,0 +1,749 @@
+{
+  "version": 1,
+  "generated_at": "2026-11-06T12:00:00.000Z",
+  "repo_url": "https://github.com/neear0/team-projekt-5/tree/01-web-setup",
+  "rubric": {
+    "id": "webove-sidlo",
+    "title": "Webové sídlo v HTML5 a CSS3"
+  },
+  "points": 40.67,
+  "max_points": 100,
+  "summary": null,
+  "ai": null,
+  "criteria": [
+    {
+      "id": "stranky",
+      "title": "Úvodná stránka a aspoň 3 podstránky",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 2 z 2.",
+      "findings": []
+    },
+    {
+      "id": "kontakty",
+      "title": "Stránka s kontaktmi",
+      "points": 0,
+      "max_points": 4,
+      "reasoning": "Kritérium hodnotí AI, tá zatiaľ nie je zapojená.",
+      "findings": []
+    },
+    {
+      "id": "struktura",
+      "title": "Minimálna štruktúra, kódovanie a title",
+      "points": 3,
+      "max_points": 3,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "meta",
+      "title": "Meta informácie",
+      "points": 0,
+      "max_points": 3,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "dokumenty.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "index.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "tim.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.meta",
+          "severity": "error",
+          "message": "Chýbajú meta informácie: description, keywords, author.",
+          "file": "vyvoj.html",
+          "line": 1,
+          "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+        }
+      ]
+    },
+    {
+      "id": "favicon",
+      "title": "Favicon",
+      "points": 0,
+      "max_points": 2,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "dokumenty.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "index.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "tim.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.favicon",
+          "severity": "error",
+          "message": "Stránka nemá favicon.",
+          "file": "vyvoj.html",
+          "line": 1,
+          "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+        }
+      ]
+    },
+    {
+      "id": "nadpisy",
+      "title": "Nadpisy aspoň v troch úrovniach",
+      "points": 3,
+      "max_points": 3,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "textove-elementy",
+      "title": "Textové elementy, odkazy a špeciálne symboly",
+      "points": 1.6666666666666667,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 1 z 3.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <em>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <blockquote>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <q>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <cite>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <mark>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Kotva (odkaz na miesto v stránke)."
+        }
+      ]
+    },
+    {
+      "id": "zoznamy",
+      "title": "Zoznamy s obrázkami",
+      "points": 0,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 0 z 2.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <dl>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <dt>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <dd>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Obrázok v zozname."
+        }
+      ]
+    },
+    {
+      "id": "obrazky",
+      "title": "Obrázok, logo s odkazom a obrázková mapa",
+      "points": 0,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 0 z 3.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <map>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <area>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Logo s odkazom na index.html."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Obrázok napojený na obrázkovú mapu (usemap)."
+        }
+      ]
+    },
+    {
+      "id": "semantika",
+      "title": "Sémantická štruktúra",
+      "points": 0,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <article>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <aside>."
+        }
+      ]
+    },
+    {
+      "id": "navigacia",
+      "title": "Funkčná navigácia medzi stránkami",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 2 z 2.",
+      "findings": []
+    },
+    {
+      "id": "html-validita",
+      "title": "Validné HTML súbory",
+      "points": 0,
+      "max_points": 7,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "nu-html-checker",
+          "rule_id": "html.valid",
+          "severity": "error",
+          "message": "The heading “h4” (with computed level 4) follows the heading “h2” (with computed level 2), skipping 1 heading level.",
+          "file": "index.html",
+          "line": 36,
+          "column": 21
+        }
+      ]
+    },
+    {
+      "id": "css-subor",
+      "title": "Jeden CSS súbor v style/style.css",
+      "points": 0,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 0 z 2.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "file.exists",
+          "severity": "error",
+          "message": "Chýba súbor style/style.css."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Chýba súbor style/style.css."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Navyše CSS súbor style.css, všetko CSS má byť v style/style.css.",
+          "file": "style.css"
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "dokumenty.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "index.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "tim.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "css.single_file",
+          "severity": "error",
+          "message": "Stránka nepripája style/style.css.",
+          "file": "vyvoj.html",
+          "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+        }
+      ]
+    },
+    {
+      "id": "css-komentare",
+      "title": "Okomentované časti CSS",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "selektory",
+      "title": "Selektory podľa elementu, id a triedy",
+      "points": 0,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "css.selector_kinds",
+          "severity": "error",
+          "message": "V CSS nie je selektor typu id (#id)."
+        }
+      ]
+    },
+    {
+      "id": "farby-pismo",
+      "title": "Farba pozadia, textu a štýlovanie písma",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "okraje",
+      "title": "Okraje, rám a obtekanie obrázkov",
+      "points": 0,
+      "max_points": 6,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "css.uses_properties",
+          "severity": "error",
+          "message": "Chýbajú vlastnosti: float."
+        }
+      ]
+    },
+    {
+      "id": "obrazky-efekty",
+      "title": "Efekty na obrázkoch",
+      "points": 0,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "css.uses_properties",
+          "severity": "error",
+          "message": "Chýba niektorá z vlastností v pravidlách so selektorom obsahujúcim img, :hover: transform, scale, width, height, filter, opacity, box-shadow."
+        }
+      ]
+    },
+    {
+      "id": "tabulka",
+      "title": "Tabuľka s obrázkami",
+      "points": 2,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 1 z 2.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.selector",
+          "severity": "error",
+          "message": "Na webe chýba: Obrázok v tabuľke."
+        }
+      ]
+    },
+    {
+      "id": "multimedia",
+      "title": "Audio a video",
+      "points": 0,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 0 z 1.",
+      "findings": [
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <audio>."
+        },
+        {
+          "tool": "ooko",
+          "rule_id": "html.uses_tags",
+          "severity": "error",
+          "message": "Na žiadnej stránke nie je element <video>."
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "title": "Funkčné menu",
+      "points": 6,
+      "max_points": 6,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "css-validita",
+      "title": "Validný CSS súbor",
+      "points": 7,
+      "max_points": 7,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    }
+  ],
+  "lighthouse": {
+    "performance": 90,
+    "accessibility": 80,
+    "best_practices": 100,
+    "seo": 90
+  },
+  "findings": [
+    {
+      "tool": "ukazka",
+      "rule_id": "image-alt",
+      "severity": "error",
+      "message": "Obrázok nemá alternatívny text.",
+      "file": "index.html",
+      "line": 12,
+      "hint": "Pridaj k <img> atribút alt s popisom obrázka."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.meta",
+      "severity": "error",
+      "message": "Chýbajú meta informácie: description, keywords, author.",
+      "file": "dokumenty.html",
+      "line": 1,
+      "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.meta",
+      "severity": "error",
+      "message": "Chýbajú meta informácie: description, keywords, author.",
+      "file": "index.html",
+      "line": 1,
+      "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.meta",
+      "severity": "error",
+      "message": "Chýbajú meta informácie: description, keywords, author.",
+      "file": "tim.html",
+      "line": 1,
+      "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.meta",
+      "severity": "error",
+      "message": "Chýbajú meta informácie: description, keywords, author.",
+      "file": "vyvoj.html",
+      "line": 1,
+      "hint": "Doplň do <head> napr. <meta name=\"description\" content=\"…\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.favicon",
+      "severity": "error",
+      "message": "Stránka nemá favicon.",
+      "file": "dokumenty.html",
+      "line": 1,
+      "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.favicon",
+      "severity": "error",
+      "message": "Stránka nemá favicon.",
+      "file": "index.html",
+      "line": 1,
+      "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.favicon",
+      "severity": "error",
+      "message": "Stránka nemá favicon.",
+      "file": "tim.html",
+      "line": 1,
+      "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.favicon",
+      "severity": "error",
+      "message": "Stránka nemá favicon.",
+      "file": "vyvoj.html",
+      "line": 1,
+      "hint": "Doplň do <head> <link rel=\"icon\" href=\"images/favicon.ico\">."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <em>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <blockquote>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <q>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <cite>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <mark>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.selector",
+      "severity": "error",
+      "message": "Na webe chýba: Kotva (odkaz na miesto v stránke)."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <dl>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <dt>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <dd>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.selector",
+      "severity": "error",
+      "message": "Na webe chýba: Obrázok v zozname."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <map>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <area>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.selector",
+      "severity": "error",
+      "message": "Na webe chýba: Logo s odkazom na index.html."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.selector",
+      "severity": "error",
+      "message": "Na webe chýba: Obrázok napojený na obrázkovú mapu (usemap)."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <article>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <aside>."
+    },
+    {
+      "tool": "nu-html-checker",
+      "rule_id": "html.valid",
+      "severity": "error",
+      "message": "The heading “h4” (with computed level 4) follows the heading “h2” (with computed level 2), skipping 1 heading level.",
+      "file": "index.html",
+      "line": 36,
+      "column": 21
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "file.exists",
+      "severity": "error",
+      "message": "Chýba súbor style/style.css."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.single_file",
+      "severity": "error",
+      "message": "Chýba súbor style/style.css."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.single_file",
+      "severity": "error",
+      "message": "Navyše CSS súbor style.css, všetko CSS má byť v style/style.css.",
+      "file": "style.css"
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.single_file",
+      "severity": "error",
+      "message": "Stránka nepripája style/style.css.",
+      "file": "dokumenty.html",
+      "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.single_file",
+      "severity": "error",
+      "message": "Stránka nepripája style/style.css.",
+      "file": "index.html",
+      "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.single_file",
+      "severity": "error",
+      "message": "Stránka nepripája style/style.css.",
+      "file": "tim.html",
+      "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.single_file",
+      "severity": "error",
+      "message": "Stránka nepripája style/style.css.",
+      "file": "vyvoj.html",
+      "hint": "Doplň do <head> <link rel=\"stylesheet\" href=\"…style/style.css\">, cesta sa počíta od stránky."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.selector_kinds",
+      "severity": "error",
+      "message": "V CSS nie je selektor typu id (#id)."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.uses_properties",
+      "severity": "error",
+      "message": "Chýbajú vlastnosti: float."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "css.uses_properties",
+      "severity": "error",
+      "message": "Chýba niektorá z vlastností v pravidlách so selektorom obsahujúcim img, :hover: transform, scale, width, height, filter, opacity, box-shadow."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.selector",
+      "severity": "error",
+      "message": "Na webe chýba: Obrázok v tabuľke."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <audio>."
+    },
+    {
+      "tool": "ooko",
+      "rule_id": "html.uses_tags",
+      "severity": "error",
+      "message": "Na žiadnej stránke nie je element <video>."
+    }
+  ]
+}

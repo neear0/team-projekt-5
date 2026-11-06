@@ -1,0 +1,21 @@
+{
+  "screenshots": [],
+  "lighthouse": {
+    "performance": 90,
+    "accessibility": 80,
+    "best_practices": 100,
+    "seo": 90
+  },
+  "findings": [
+    {
+      "tool": "ukazka",
+      "rule_id": "image-alt",
+      "severity": "error",
+      "message": "Obrázok nemá alternatívny text.",
+      "file": "index.html",
+      "line": 12,
+      "hint": "Pridaj k <img> atribút alt s popisom obrázka."
+    }
+  ],
+  "rule_results": []
+}

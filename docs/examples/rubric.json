@@ -1,0 +1,405 @@
+{
+  "version": 1,
+  "id": "webove-sidlo",
+  "title": "Webové sídlo v HTML5 a CSS3",
+  "description": "Webové sídlo s úvodnou stránkou a aspoň tromi podstránkami vrátane stránky s kontaktmi. 1. časť hodnotí HTML5 (50 bodov), 2. časť CSS3 (50 bodov).\n",
+  "criteria": [
+    {
+      "id": "stranky",
+      "title": "Úvodná stránka a aspoň 3 podstránky",
+      "points": 4,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "file.exists",
+          "path": "index.html"
+        },
+        {
+          "type": "site.min_pages",
+          "min": 4
+        }
+      ]
+    },
+    {
+      "id": "kontakty",
+      "title": "Stránka s kontaktmi",
+      "points": 4,
+      "group": "1. časť: HTML5",
+      "description": "Kontaktné údaje autora stránky a použité literárne zdroje.",
+      "rules": [],
+      "ai": "Nájdi stránku s kontaktmi (napr. kontakt.html alebo kontakty.html). Posúď, či obsahuje kontaktné údaje autora (meno, e-mail a pod.) a zoznam použitých literárnych zdrojov. Ak stránka chýba, kritérium má 0 bodov.\n"
+    },
+    {
+      "id": "struktura",
+      "title": "Minimálna štruktúra, kódovanie a title",
+      "points": 3,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.head",
+          "scope": "each_page"
+        }
+      ]
+    },
+    {
+      "id": "meta",
+      "title": "Meta informácie",
+      "points": 3,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.meta",
+          "names": [
+            "description",
+            "keywords",
+            "author"
+          ],
+          "scope": "each_page"
+        }
+      ],
+      "ai": "Posúď, či description a keywords naozaj zodpovedajú téme stránky.\n"
+    },
+    {
+      "id": "favicon",
+      "title": "Favicon",
+      "points": 2,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.favicon",
+          "scope": "each_page"
+        }
+      ]
+    },
+    {
+      "id": "nadpisy",
+      "title": "Nadpisy aspoň v troch úrovniach",
+      "points": 3,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.heading_levels",
+          "min": 3,
+          "scope": "site"
+        }
+      ]
+    },
+    {
+      "id": "textove-elementy",
+      "title": "Textové elementy, odkazy a špeciálne symboly",
+      "points": 5,
+      "group": "1. časť: HTML5",
+      "description": "strong, em, blockquote, q, cite, kotva, mark, špeciálne symboly a odkazy.",
+      "rules": [
+        {
+          "type": "html.uses_tags",
+          "tags": [
+            "strong",
+            "em",
+            "blockquote",
+            "q",
+            "cite",
+            "mark",
+            "a"
+          ],
+          "scope": "site"
+        },
+        {
+          "type": "html.selector",
+          "selector": "a[href*=\"#\"]:not([href=\"#\"])",
+          "min": 1,
+          "label": "Kotva (odkaz na miesto v stránke)",
+          "scope": "site"
+        },
+        {
+          "type": "html.entities",
+          "min": 1,
+          "scope": "site"
+        }
+      ]
+    },
+    {
+      "id": "zoznamy",
+      "title": "Zoznamy s obrázkami",
+      "points": 4,
+      "group": "1. časť: HTML5",
+      "description": "Usporiadaný, neusporiadaný a definičný zoznam, v niektorom z nich obrázky.",
+      "rules": [
+        {
+          "type": "html.uses_tags",
+          "tags": [
+            "ol",
+            "ul",
+            "dl",
+            "dt",
+            "dd"
+          ],
+          "scope": "site"
+        },
+        {
+          "type": "html.selector",
+          "selector": "ol img, ul img, dl img",
+          "min": 1,
+          "label": "Obrázok v zozname",
+          "scope": "site"
+        }
+      ]
+    },
+    {
+      "id": "obrazky",
+      "title": "Obrázok, logo s odkazom a obrázková mapa",
+      "points": 5,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.uses_tags",
+          "tags": [
+            "img",
+            "map",
+            "area"
+          ],
+          "scope": "site"
+        },
+        {
+          "type": "html.selector",
+          "selector": "a[href=\"index.html\"] img, a[href=\"./index.html\"] img, a[href=\"../index.html\"] img",
+          "min": 1,
+          "label": "Logo s odkazom na index.html",
+          "scope": "site"
+        },
+        {
+          "type": "html.selector",
+          "selector": "img[usemap]",
+          "min": 1,
+          "label": "Obrázok napojený na obrázkovú mapu (usemap)",
+          "scope": "site"
+        }
+      ]
+    },
+    {
+      "id": "semantika",
+      "title": "Sémantická štruktúra",
+      "points": 5,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.uses_tags",
+          "tags": [
+            "header",
+            "nav",
+            "main",
+            "article",
+            "section",
+            "aside",
+            "footer"
+          ],
+          "scope": "site"
+        }
+      ],
+      "ai": "Posúď, či sú sémantické elementy použité podľa významu (nav pre navigáciu, article pre samostatný obsah a pod.), nie iba ako náhrada za div.\n"
+    },
+    {
+      "id": "navigacia",
+      "title": "Funkčná navigácia medzi stránkami",
+      "points": 5,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.no_broken_links"
+        },
+        {
+          "type": "site.pages_reachable",
+          "start": "index.html"
+        }
+      ]
+    },
+    {
+      "id": "html-validita",
+      "title": "Validné HTML súbory",
+      "points": 7,
+      "group": "1. časť: HTML5",
+      "rules": [
+        {
+          "type": "html.valid",
+          "max_errors": 0
+        }
+      ]
+    },
+    {
+      "id": "css-subor",
+      "title": "Jeden CSS súbor v style/style.css",
+      "points": 5,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "file.exists",
+          "path": "style/style.css"
+        },
+        {
+          "type": "css.single_file",
+          "path": "style/style.css"
+        }
+      ]
+    },
+    {
+      "id": "css-komentare",
+      "title": "Okomentované časti CSS",
+      "points": 4,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "css.comments",
+          "min": 3
+        }
+      ],
+      "ai": "Posúď, či komentáre v style.css oddeľujú a opisujú jednotlivé časti kódu (hlavička, menu, obsah, pätička …).\n"
+    },
+    {
+      "id": "selektory",
+      "title": "Selektory podľa elementu, id a triedy",
+      "points": 4,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "css.selector_kinds",
+          "kinds": [
+            "type",
+            "id",
+            "class"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "farby-pismo",
+      "title": "Farba pozadia, textu a štýlovanie písma",
+      "points": 5,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "css.uses_properties",
+          "properties": [
+            "background",
+            "color",
+            "font"
+          ],
+          "match": "all"
+        }
+      ]
+    },
+    {
+      "id": "okraje",
+      "title": "Okraje, rám a obtekanie obrázkov",
+      "points": 6,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "css.uses_properties",
+          "properties": [
+            "margin",
+            "padding",
+            "border",
+            "float"
+          ],
+          "match": "all"
+        }
+      ]
+    },
+    {
+      "id": "obrazky-efekty",
+      "title": "Efekty na obrázkoch",
+      "points": 5,
+      "group": "2. časť: CSS3",
+      "description": "Napríklad zväčšenie po ukázaní myšou alebo zaoblené rohy.",
+      "rules": [
+        {
+          "type": "css.uses_properties",
+          "properties": [
+            "transform",
+            "scale",
+            "width",
+            "height",
+            "filter",
+            "opacity",
+            "box-shadow"
+          ],
+          "match": "any",
+          "selector_includes": [
+            "img",
+            ":hover"
+          ]
+        }
+      ],
+      "ai": "Posúď, či majú obrázky vhodné CSS vlastnosti (zväčšenie pri :hover, zaoblené rohy, tieň, prechod transition) a či efekt na screenshotoch nepôsobí rušivo.\n"
+    },
+    {
+      "id": "tabulka",
+      "title": "Tabuľka s obrázkami",
+      "points": 4,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "html.uses_tags",
+          "tags": [
+            "table",
+            "tr",
+            "td"
+          ],
+          "scope": "site"
+        },
+        {
+          "type": "html.selector",
+          "selector": "table img",
+          "min": 1,
+          "label": "Obrázok v tabuľke",
+          "scope": "site"
+        }
+      ]
+    },
+    {
+      "id": "multimedia",
+      "title": "Audio a video",
+      "points": 4,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "html.uses_tags",
+          "tags": [
+            "audio",
+            "video"
+          ],
+          "scope": "site"
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "title": "Funkčné menu",
+      "points": 6,
+      "group": "2. časť: CSS3",
+      "description": "Vertikálne alebo horizontálne menu.",
+      "rules": [
+        {
+          "type": "html.selector",
+          "selector": "nav a",
+          "min": 3,
+          "label": "Odkazy v menu (nav)",
+          "scope": "each_page"
+        }
+      ],
+      "ai": "Podľa screenshotov a CSS posúď, či je menu upravené ako vertikálne alebo horizontálne menu (nie predvolený zoznam s odrážkami) a či je zreteľné na mobile aj na počítači.\n"
+    },
+    {
+      "id": "css-validita",
+      "title": "Validný CSS súbor",
+      "points": 7,
+      "group": "2. časť: CSS3",
+      "rules": [
+        {
+          "type": "css.valid",
+          "max_errors": 0
+        }
+      ]
+    }
+  ]
+}

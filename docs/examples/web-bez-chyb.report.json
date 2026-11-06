@@ -1,0 +1,208 @@
+{
+  "version": 1,
+  "generated_at": "2026-11-06T12:00:00.000Z",
+  "repo_url": "https://github.com/neear0/team-projekt-5/tree/02-backend/packages/analyzer/test/fixtures/webove-sidlo",
+  "rubric": {
+    "id": "webove-sidlo",
+    "title": "Webové sídlo v HTML5 a CSS3"
+  },
+  "points": 96,
+  "max_points": 100,
+  "summary": null,
+  "ai": null,
+  "criteria": [
+    {
+      "id": "stranky",
+      "title": "Úvodná stránka a aspoň 3 podstránky",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 2 z 2.",
+      "findings": []
+    },
+    {
+      "id": "kontakty",
+      "title": "Stránka s kontaktmi",
+      "points": 0,
+      "max_points": 4,
+      "reasoning": "Kritérium hodnotí AI, tá zatiaľ nie je zapojená.",
+      "findings": []
+    },
+    {
+      "id": "struktura",
+      "title": "Minimálna štruktúra, kódovanie a title",
+      "points": 3,
+      "max_points": 3,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "meta",
+      "title": "Meta informácie",
+      "points": 3,
+      "max_points": 3,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "favicon",
+      "title": "Favicon",
+      "points": 2,
+      "max_points": 2,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "nadpisy",
+      "title": "Nadpisy aspoň v troch úrovniach",
+      "points": 3,
+      "max_points": 3,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "textove-elementy",
+      "title": "Textové elementy, odkazy a špeciálne symboly",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 3 z 3.",
+      "findings": []
+    },
+    {
+      "id": "zoznamy",
+      "title": "Zoznamy s obrázkami",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 2 z 2.",
+      "findings": []
+    },
+    {
+      "id": "obrazky",
+      "title": "Obrázok, logo s odkazom a obrázková mapa",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 3 z 3.",
+      "findings": []
+    },
+    {
+      "id": "semantika",
+      "title": "Sémantická štruktúra",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "navigacia",
+      "title": "Funkčná navigácia medzi stránkami",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 2 z 2.",
+      "findings": []
+    },
+    {
+      "id": "html-validita",
+      "title": "Validné HTML súbory",
+      "points": 7,
+      "max_points": 7,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "css-subor",
+      "title": "Jeden CSS súbor v style/style.css",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 2 z 2.",
+      "findings": []
+    },
+    {
+      "id": "css-komentare",
+      "title": "Okomentované časti CSS",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "selektory",
+      "title": "Selektory podľa elementu, id a triedy",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "farby-pismo",
+      "title": "Farba pozadia, textu a štýlovanie písma",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "okraje",
+      "title": "Okraje, rám a obtekanie obrázkov",
+      "points": 6,
+      "max_points": 6,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "obrazky-efekty",
+      "title": "Efekty na obrázkoch",
+      "points": 5,
+      "max_points": 5,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "tabulka",
+      "title": "Tabuľka s obrázkami",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 2 z 2.",
+      "findings": []
+    },
+    {
+      "id": "multimedia",
+      "title": "Audio a video",
+      "points": 4,
+      "max_points": 4,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "menu",
+      "title": "Funkčné menu",
+      "points": 6,
+      "max_points": 6,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    },
+    {
+      "id": "css-validita",
+      "title": "Validný CSS súbor",
+      "points": 7,
+      "max_points": 7,
+      "reasoning": "Splnené pravidlá: 1 z 1.",
+      "findings": []
+    }
+  ],
+  "lighthouse": {
+    "performance": 90,
+    "accessibility": 80,
+    "best_practices": 100,
+    "seo": 90
+  },
+  "findings": [
+    {
+      "tool": "ukazka",
+      "rule_id": "image-alt",
+      "severity": "error",
+      "message": "Obrázok nemá alternatívny text.",
+      "file": "index.html",
+      "line": 12,
+      "hint": "Pridaj k <img> atribút alt s popisom obrázka."
+    }
+  ]
+}
