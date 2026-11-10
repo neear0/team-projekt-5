@@ -4,7 +4,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist/', 'web/'] },
+  { ignores: ['**/dist/', '**/.svelte-kit/', 'apps/web/build/'] },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,
   {

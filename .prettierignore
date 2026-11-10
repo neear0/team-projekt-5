@@ -1,6 +1,7 @@
 pnpm-lock.yaml
 dist/
-web/
+.svelte-kit/
+apps/web/build/
 README.md
 praca.md
 zapisnice/
