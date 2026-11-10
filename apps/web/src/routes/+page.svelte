@@ -47,41 +47,126 @@
   <title>ooko</title>
 </svelte:head>
 
-<h1>ooko</h1>
-<p>Autonómny agent na kontrolu webových projektov.</p>
+<section class="card">
+  <h1>Analýza repozitára</h1>
+  <form onsubmit={on_submit}>
+    <label>
+      Repozitár na GitHube
+      <input
+        type="url"
+        bind:value={repo_url}
+        placeholder="https://github.com/vlastnik/repo"
+        required
+        disabled={running}
+      />
+    </label>
 
-<form onsubmit={on_submit}>
-  <label>
-    Repozitár na GitHube
-    <input
-      type="url"
-      bind:value={repo_url}
-      placeholder="https://github.com/vlastnik/repo"
-      required
-      disabled={running}
-    />
-  </label>
+    <label>
+      Rubrika (zadanie)
+      <select bind:value={rubric_id} disabled={running}>
+        {#each rubrics as rubric (rubric.id)}
+          <option value={rubric.id}>{rubric.title}</option>
+        {/each}
+      </select>
+    </label>
 
-  <label>
-    Rubrika (zadanie)
-    <select bind:value={rubric_id} disabled={running}>
-      {#each rubrics as rubric (rubric.id)}
-        <option value={rubric.id}>{rubric.title}</option>
-      {/each}
-    </select>
-  </label>
+    <div class="actions">
+      <button type="submit" disabled={running}>Analyzovať</button>
+      {#if running}
+        <button type="button" class="secondary" onclick={on_cancel}>Zrušiť</button>
+      {/if}
+    </div>
+  </form>
+</section>
 
-  <button type="submit" disabled={running}>Analyzovať</button>
-  {#if running}
-    <button type="button" onclick={on_cancel}>Zrušiť</button>
-  {/if}
-</form>
-
-<!-- Priebeh krokov a report sú v ďalších krokoch (6 a 8), toto je len holé overenie, že volanie funguje. -->
+<!-- Priebeh krokov a plnohodnotný report sú v ďalších krokoch (6 a 8). -->
 {#if error_message}
-  <p>Chyba: {error_message}</p>
+  <p class="banner error">{error_message}</p>
 {/if}
 
 {#if analysis}
-  <p>Hotovo: {analysis.report.points} / {analysis.report.max_points} bodov.</p>
+  <p class="banner success">
+    Hotovo: {analysis.report.points} / {analysis.report.max_points} bodov.
+  </p>
 {/if}
+
+<style>
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-4);
+  }
+
+  .card h1 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-4);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: 0.9rem;
+  }
+
+  input,
+  select {
+    padding: var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .actions {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  button {
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius);
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  button.secondary {
+    background: transparent;
+    color: var(--color-primary);
+  }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .banner {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius);
+    border: 1px solid;
+  }
+
+  .banner.error {
+    background: var(--color-error-bg);
+    border-color: var(--color-error-border);
+    color: var(--color-error-text);
+  }
+
+  .banner.success {
+    background: var(--color-success-bg);
+    border-color: var(--color-success-border);
+    color: var(--color-success-text);
+  }
+</style>

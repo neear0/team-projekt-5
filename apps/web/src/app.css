@@ -1,0 +1,51 @@
+/* Dočasné tokeny, kým nevznikne packages/ui so zdieľaným vzhľadom (README bod 2). */
+:root {
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #d9dadf;
+  --color-text: #1b1d22;
+  --color-text-muted: #5c5f66;
+  --color-primary: #2554c7;
+  --color-primary-contrast: #ffffff;
+  --color-error-bg: #fdecea;
+  --color-error-border: #e4a199;
+  --color-error-text: #8c231b;
+  --color-success-bg: #eaf6ec;
+  --color-success-border: #9fd3a8;
+  --color-success-text: #1e6b2e;
+
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --radius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
