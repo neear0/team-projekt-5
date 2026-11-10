@@ -5,14 +5,14 @@ zatiaľ vracajú ukážkové hodnoty (pozri [Čo ešte nie je hotové](#čo-ešt
 
 ## Čo budeš používať
 
-| Čo                                                              | Na čo                                                             |
-| --------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `apps/web`                                                      | sem príde aplikácia (Astro podľa README, nový balík vo workspace) |
-| `@ooko/client`                                                  | volania API, celá analýza jedným volaním, report, pomocné funkcie |
-| `@ooko/contracts`                                               | typy všetkých dát, `parse_rubric` na YAML rubriky                 |
-| `rubrics/*.yaml`                                                | hotové rubriky (zadania), napr. `webove-sidlo.yaml`               |
-| `docs/examples/*.json`                                          | skutočné odpovede API na kreslenie obrazoviek bez servera         |
-| CSS premenné z `style.css` webu projektu (vetva `01-web-setup`) | spoločný vzhľad s webom projektu                                  |
+| Čo                                                              | Na čo                                                                 |
+| --------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `apps/web`                                                      | sem príde aplikácia (SvelteKit podľa README, nový balík vo workspace) |
+| `@ooko/client`                                                  | volania API, celá analýza jedným volaním, report, pomocné funkcie     |
+| `@ooko/contracts`                                               | typy všetkých dát, `parse_rubric` na YAML rubriky                     |
+| `rubrics/*.yaml`                                                | hotové rubriky (zadania), napr. `webove-sidlo.yaml`                   |
+| `docs/examples/*.json`                                          | skutočné odpovede API na kreslenie obrazoviek bez servera             |
+| CSS premenné z `style.css` webu projektu (vetva `01-web-setup`) | spoločný vzhľad s webom projektu                                      |
 
 Všetko je v TypeScripte a beží v prehliadači, nič z toho nepotrebuje Node.
 
@@ -33,18 +33,20 @@ V `apps/web/package.json`:
 }
 ```
 
-V `astro.config.mjs` presmerovanie `/api` na lokálne API a čítanie balíkov zo zdrojákov
-(bez neho by bolo treba po každej zmene v `packages/` spustiť `pnpm build`):
+V `vite.config.ts` presmerovanie `/api` na lokálne API a čítanie balíkov zo zdrojákov
+(bez neho by bolo treba po každej zmene v `packages/` spustiť `pnpm build`). SvelteKit stránky
+renderuje aj na serveri (SSR), takže podmienku `"source"` treba pridať aj do
+`ssr.resolve.conditions`, nestačí len `resolve.conditions` pre klienta:
 
-```js
-import { defineConfig } from 'astro/config';
-import { defaultClientConditions } from 'vite';
+```ts
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defaultClientConditions, defaultServerConditions, defineConfig } from 'vite';
 
 export default defineConfig({
-  vite: {
-    resolve: { conditions: ['source', ...defaultClientConditions] },
-    server: { proxy: { '/api': 'http://localhost:3000' } },
-  },
+  plugins: [sveltekit()],
+  resolve: { conditions: ['source', ...defaultClientConditions] },
+  ssr: { resolve: { conditions: ['source', ...defaultServerConditions] } },
+  server: { proxy: { '/api': 'http://localhost:3000' } },
 });
 ```
 
