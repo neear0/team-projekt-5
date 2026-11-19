@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ApiError, create_client, type Analysis } from '@ooko/client';
   import { rubrics } from '$lib/rubrics.ts';
+  import ReportView from '$lib/report/ReportView.svelte';
 
   const client = create_client();
 
@@ -79,15 +80,13 @@
   </form>
 </section>
 
-<!-- Priebeh krokov a plnohodnotný report sú v ďalších krokoch (6 a 8). -->
+<!-- Priebeh krokov počas analýzy pribudne v ďalšom kroku. -->
 {#if error_message}
   <p class="banner error">{error_message}</p>
 {/if}
 
 {#if analysis}
-  <p class="banner success">
-    Hotovo: {analysis.report.points} / {analysis.report.max_points} bodov.
-  </p>
+  <ReportView {analysis} />
 {/if}
 
 <style>
@@ -162,11 +161,5 @@
     background: var(--color-error-bg);
     border-color: var(--color-error-border);
     color: var(--color-error-text);
-  }
-
-  .banner.success {
-    background: var(--color-success-bg);
-    border-color: var(--color-success-border);
-    color: var(--color-success-text);
   }
 </style>
