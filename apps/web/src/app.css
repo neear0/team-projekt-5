@@ -13,6 +13,12 @@
   --color-success-bg: #eaf6ec;
   --color-success-border: #9fd3a8;
   --color-success-text: #1e6b2e;
+  --color-warning-bg: #fff6e0;
+  --color-warning-border: #e9c46a;
+  --color-warning-text: #7a5600;
+  --color-info-bg: #eaf1fb;
+  --color-info-border: #a9c3e8;
+  --color-info-text: #1d4178;
 
   --space-2: 0.5rem;
   --space-3: 0.75rem;
