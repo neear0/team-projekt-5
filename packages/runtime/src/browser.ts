@@ -10,6 +10,30 @@ export interface LaunchedBrowser {
 
 const is_serverless = process.env.VERCEL === '1' && process.platform === 'linux';
 
+/**
+ * Prepínače z `@sparticuz/chromium`, ktoré vynechávame:
+ * - `--single-process`: Lighthouse sa zasekne pri otvorení vlastnej stránky (timeout 30 s).
+ * - SwiftShader (emulácia GPU na CPU): na 1 vCPU kreslí `backdrop-filter`, `filter` a tiene
+ *   mnohonásobne pomalšie než softvérové vykresľovanie (`--disable-gpu`).
+ * - `--disable-web-security`, `--allow-running-insecure-content`: v prehliadači beží JS študenta,
+ *   same-origin policy musí platiť.
+ */
+const DROPPED_ARGS = new Set([
+  '--single-process',
+  '--use-gl=angle',
+  '--use-angle=swiftshader',
+  '--enable-unsafe-swiftshader',
+  '--ignore-gpu-blocklist',
+  '--in-process-gpu',
+  '--disable-web-security',
+  '--allow-running-insecure-content',
+]);
+
+/** Prepínače pre Chromium na Verceli. */
+export function serverless_args(chromium_args: readonly string[]): string[] {
+  return [...chromium_args.filter((arg) => !DROPPED_ARGS.has(arg)), '--disable-gpu'];
+}
+
 /** Voľný port na 127.0.0.1. Vo Fluid compute môže bežať viac požiadaviek naraz, pevný port by kolidoval. */
 async function free_port(): Promise<number> {
   const server = createServer();
@@ -32,8 +56,7 @@ export async function launch_browser(): Promise<LaunchedBrowser> {
   if (is_serverless) {
     const { default: chromium } = await import('@sparticuz/chromium');
     options = {
-      // V jednom procese sa Lighthouse zasekne pri otvorení vlastnej stránky (timeout 30 s).
-      args: [...chromium.args.filter((arg) => arg !== '--single-process'), ...args],
+      args: [...serverless_args(chromium.args), ...args],
       executablePath: await chromium.executablePath(),
     };
   } else if (process.env.CHROMIUM_PATH) {
