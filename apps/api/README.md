@@ -116,6 +116,21 @@ funkcie a otvorí ho v Chromiu:
   `lighthouse.*` majú `skipped: true`.
 
 Zacyklený skript študenta nezasekne krok: každá operácia so stránkou má timeout 20 s a po 120 s
-sa ďalšie stránky už nekontrolujú. Lokálne (Edge) trvá krok na webe projektu so 4 stránkami
-~17 s. Integračný test so skutočným prehliadačom beží iba s `BROWSER_CHANNEL` alebo
-`CHROMIUM_PATH` (v CI `chrome`).
+sa ďalšie stránky už nekontrolujú. Integračný test so skutočným prehliadačom beží iba
+s `BROWSER_CHANNEL` alebo `CHROMIUM_PATH` (v CI `chrome`).
+
+Každé volanie zapíše do logu funkcie riadok `{"step":"runtime","timings_ms":{…}}` s trvaním
+fáz (štart, screenshoty, načítanie a axe pre každú stránku, Lighthouse), čítať sa dá cez
+`vercel logs --deployment <url> --json`.
+
+Vercel (23. 11. 2026, `fra1`), trvanie funkcie:
+
+| Web (4 stránky) | screenshoty | axe | Lighthouse | spolu |
+|---|---|---|---|---|
+| ukážkový web z testov | 0,4 s | 2,3 s | 6,1 s | 9 s |
+| web projektu (`01-web-setup`) | 1,1 s | 5,4 s | 6,4 s | 13 s (studený štart 18 s) |
+
+Chromium z `@sparticuz/chromium` predvolene kreslí cez SwiftShader (emuláciu GPU). Na 1 vCPU
+je to pri `backdrop-filter: blur()` a podobných efektoch extrémne pomalé: web projektu trval
+65 s (screenshoty 20 s, axe 27 s). S `--disable-gpu` (softvérové vykresľovanie) 13 s pri
+rovnakých výsledkoch, pozri `serverless_args` v `src/browser.ts`.
