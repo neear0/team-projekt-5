@@ -1,0 +1,351 @@
+/* ---------- 1. ZÁKLAD (selektor: html, body) ---------- */
+/* základná veľkosť písma a plynulé posúvanie na kotvy (odkazy v rámci stránky) */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* celá stránka: tmavé pozadie, svetlý text, písmo a riadkovanie */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0b1026;      /* farba pozadia */
+  color: #e6ebff;                 /* farba textu */
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+/* ---------- 2. NADPISY A TEXT (selektor: html prvky) ---------- */
+/* hlavný nadpis stránky */
+h1 {
+  font-size: 2.2rem;
+  color: #f4a63a;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* nadpis druhej úrovne s rámom pod textom */
+h2 {
+  font-size: 1.6rem;
+  color: #8fb8ff;
+  border-bottom: 2px solid #2a3770;  /* rám pod nadpisom */
+  padding-bottom: 6px;
+}
+
+/* nadpis tretej úrovne */
+h3 {
+  font-size: 1.2rem;
+  color: #cfe0ff;
+  font-style: italic;
+}
+
+/* farba odkazov */
+a {
+  color: #8fb8ff;
+}
+
+/* zmena farby odkazu po nabehnutí myšou */
+a:hover {
+  color: #f4a63a;
+}
+
+/* zvýraznenie dôležitého textu (tučné písmo) */
+strong {
+  color: #ffd27a;
+}
+
+/* zdôraznený text (kurzíva) zelenou farbou */
+em {
+  color: #b9f0c9;
+}
+
+/* označený text s oranžovým pozadím */
+mark {
+  background-color: #f4a63a;
+  color: #0b1026;
+  padding: 0 4px;
+}
+
+/* ---------- 3. HLAVIČKA A LOGO (selektor: id) ---------- */
+/* hlavička stránky: logo vľavo, menu vpravo (flexbox) */
+#hlavicka {
+  background-color: #070b1d;
+  border-bottom: 3px solid #2a3770;
+  padding: 10px 20px;
+  /* flexbox: prvky vedľa seba v riadku */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* obrázok loga so zaoblenými rohmi */
+#logo img {
+  display: block;
+  border-radius: 12px;
+}
+
+/* ---------- 4. MENU – horizontálne (selektor: class) ---------- */
+/* zoznam položiek menu bez odrážok, položky vedľa seba (horizontálne menu) */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* flexbox: prvky vedľa seba v riadku */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* jednotlivé tlačidlá menu */
+.menu a {
+  display: block;
+  padding: 10px 16px;
+  background-color: #1a2557;
+  color: #ffffff;
+  /* bez podčiarknutia odkazu */
+  text-decoration: none;
+  border: 1px solid #2a3770;
+  border-radius: 8px;
+}
+
+/* tlačidlo menu po nabehnutí myšou a aktívna (otvorená) stránka */
+.menu a:hover,
+.menu a.aktivna {
+  background-color: #f4a63a;
+  color: #0b1026;
+}
+
+/* ---------- 5. ROZLOŽENIE STRÁNKY (main, article, section, aside) ---------- */
+/* hlavný obsah: centrovaný a obmedzený na šírku 1000 px */
+#obsah {
+  max-width: 1000px;
+  margin: 20px auto;          /* vonkajší okraj */
+  padding: 0 20px;            /* vnútorný okraj */
+}
+
+/* rámček pre články a sekcie */
+article,
+section {
+  background-color: #121a3d;
+  border: 1px solid #2a3770;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+}
+
+/* bočný panel so zaujímavosťou, oranžový pásik vľavo */
+aside {
+  background-color: #1b2450;
+  border-left: 6px solid #f4a63a;
+  margin: 20px 0;
+  padding: 10px 20px;
+}
+
+/* ---------- 6. PÄTIČKA ---------- */
+/* pätička stránky */
+#paticka {
+  background-color: #070b1d;
+  border-top: 3px solid #2a3770;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+
+/* ---------- 7. CITÁTY (blockquote, q, cite) ---------- */
+/* dlhý citát: odsadený, s modrým pásikom vľavo */
+blockquote {
+  margin: 20px 0;
+  padding: 10px 20px;
+  border-left: 5px solid #8fb8ff;
+  background-color: #1b2450;
+  font-style: italic;
+}
+
+/* krátky citát vo vnútri vety */
+q {
+  color: #ffd27a;
+}
+
+/* názov zdroja alebo autora citátu */
+cite {
+  color: #9fb0e8;
+}
+
+/* ---------- 8. OBRÁZKY (všeobecné vlastnosti) ---------- */
+/* obrázky sa nikdy nezväčšia nad šírku svojho rámčeka */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Obrázky s efektom po nabehnutí myšou: zväčšenie + zaoblené rohy */
+.planeta-obr {
+  border-radius: 50%;                 /* zaoblené rohy */
+  border: 3px solid #2a3770;          /* rám */
+  /* zväčšenie sa prehrá plynulo za 0,3 s */
+  transition: transform 0.3s ease;
+}
+
+.planeta-obr:hover {
+  transform: scale(1.15);             /* zväčšenie */
+}
+
+/* Obrázková mapa – nesmie sa zmenšovať, inak by nesedeli súradnice */
+/* obal obrázkovej mapy, na malej obrazovke sa dá posúvať do strán */
+.mapa-wrapper {
+  overflow-x: auto;
+  text-align: center;
+}
+
+/* samotný obrázok mapy s pevnou výškou, rámom a zaoblenými rohmi */
+#mapa-sustavy {
+  max-width: none;
+  height: 300px;
+  border: 2px solid #2a3770;
+  border-radius: 10px;
+}
+
+/* ---------- 9. OBTEKANIE OBRÁZKOV (float) ---------- */
+/* obrázok vľavo, text ho obteká sprava */
+.obr-vlavo {
+  /* float: obrázok sa posunie doľava a text sa ho „chytí“ z pravej strany */
+  float: left;
+  margin: 0 20px 10px 0;
+}
+
+/* obrázok vpravo, text ho obteká zľava */
+.obr-vpravo {
+  /* float: obrázok sa posunie doprava a text sa ho „chytí“ z ľavej strany */
+  float: right;
+  margin: 0 0 10px 20px;
+}
+
+/* šírka obrázka s popiskom v galérii */
+.obtekanie figure {
+  width: 200px;
+  text-align: center;
+}
+
+/* popisok pod obrázkom */
+.obtekanie figcaption {
+  font-size: 0.85rem;
+  color: #9fb0e8;
+}
+
+/* zrušenie obtekania pod galériou */
+.cistenie {
+  /* clear: ďalší obsah začne až pod obrázkom, nie vedľa neho */
+  clear: both;
+}
+
+/* ---------- 10. ZOZNAMY ---------- */
+/* odstup medzi položkami zoznamov */
+ol li,
+ul li {
+  margin-bottom: 6px;
+}
+
+/* Zoznam s obrázkami */
+.zoznam-obr {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* položka zoznamu: obrázok a text vedľa seba */
+.zoznam-obr li {
+  /* flexbox: prvky vedľa seba v riadku */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* malé okrúhle obrázky v zozname */
+.zoznam-obr img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Definičný zoznam */
+/* pojem v definičnom zozname (tučný, oranžový) */
+dt {
+  font-weight: bold;
+  color: #f4a63a;
+  margin-top: 12px;
+}
+
+/* vysvetlenie pojmu, odsadené doprava */
+dd {
+  margin-left: 25px;
+}
+
+/* ---------- 11. TABUĽKA (s obrázkami) ---------- */
+/* tabuľka na celú šírku, bunky bez medzier medzi rámami */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+/* popis tabuľky nad tabuľkou */
+caption {
+  caption-side: top;
+  padding: 8px;
+  color: #8fb8ff;
+  font-style: italic;
+}
+
+/* všetky bunky tabuľky: rám, odsadenie a vycentrovanie */
+th,
+td {
+  border: 1px solid #2a3770;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+/* bunky hlavičky tabuľky majú vlastné pozadie a farbu */
+th {
+  background-color: #1a2557;
+  color: #ffffff;
+}
+
+/* každý druhý riadok tabuľky má svetlejšie pozadie */
+tr:nth-child(even) td {
+  background-color: #151d45;
+}
+
+/* obrázky planét v bunkách tabuľky */
+td img {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 0 auto 4px auto;
+}
+
+/* ---------- 12. AUDIO A VIDEO ---------- */
+/* video: šírka prispôsobená obrazovke, rámček a zaoblené rohy */
+video {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  margin: 10px auto;
+  border: 3px solid #2a3770;
+  border-radius: 10px;
+}
+
+/* audio prehrávač: šírka prispôsobená obrazovke */
+audio {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  margin: 10px auto;
+}
+
+/* ---------- 13. ODKAZ SPÄŤ HORE ---------- */
+/* odkaz „späť hore“ zarovnaný doprava */
+.hore {
+  text-align: right;
+  font-size: 0.9rem;
+}

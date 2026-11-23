@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300">
+  <defs>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff3b0"/><stop offset="100%" stop-color="#f4a63a"/></radialGradient>
+  </defs>
+  <rect width="900" height="300" fill="#05081a"/>
+  <g fill="#ffffff" opacity="0.8">
+    <circle cx="120" cy="40" r="1.5"/><circle cx="300" cy="260" r="1.5"/><circle cx="420" cy="30" r="1"/>
+    <circle cx="540" cy="270" r="1.5"/><circle cx="650" cy="35" r="1"/><circle cx="760" cy="255" r="1.5"/>
+    <circle cx="850" cy="50" r="1.5"/><circle cx="520" cy="60" r="1"/><circle cx="200" cy="270" r="1"/>
+  </g>
+  <circle cx="60" cy="150" r="50" fill="url(#sun)"/>
+  <circle cx="150" cy="150" r="8" fill="#a8a29e"/>
+  <circle cx="215" cy="150" r="14" fill="#e3b778"/>
+  <circle cx="290" cy="150" r="15" fill="#3b82f6"/>
+  <circle cx="360" cy="150" r="11" fill="#c8553d"/>
+  <circle cx="470" cy="150" r="40" fill="#d9a066"/>
+  <ellipse cx="600" cy="150" rx="52" ry="12" fill="none" stroke="#e8d5a3" stroke-width="5" transform="rotate(-18 600 150)"/>
+  <circle cx="600" cy="150" r="30" fill="#e8d5a3"/>
+  <circle cx="710" cy="150" r="22" fill="#7fd6e0"/>
+  <circle cx="800" cy="150" r="21" fill="#3b4fd8"/>
+  <g font-family="Arial, sans-serif" font-size="13" fill="#cfd8ff" text-anchor="middle">
+    <text x="60" y="225">Slnko</text><text x="150" y="190">Merkúr</text><text x="215" y="205">Venuša</text>
+    <text x="290" y="205">Zem</text><text x="360" y="200">Mars</text><text x="470" y="215">Jupiter</text>
+    <text x="600" y="215">Saturn</text><text x="710" y="205">Urán</text><text x="800" y="205">Neptún</text>
+  </g>
+</svg>

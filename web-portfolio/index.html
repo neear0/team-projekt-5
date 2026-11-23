@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cesta slnečnou sústavou – úvod</title>
+  <meta name="description" content="Školský web o Slnečnej sústave: planéty, slovník pojmov, kozmické misie a galéria.">
+  <meta name="keywords" content="slnečná sústava, planéty, vesmír, NASA, misie">
+  <meta name="author" content="David Kocák">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <header id="hlavicka">
+    <a href="index.html" id="logo"><img src="img/logo.svg" alt="Logo webu Cesta slnečnou sústavou" width="300" height="90"></a>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html" class="aktivna">Domov</a></li>
+        <li><a href="planety.html">Planéty</a></li>
+        <li><a href="slovnik.html">Slovník</a></li>
+        <li><a href="misie.html">Misie</a></li>
+        <li><a href="galeria.html">Galéria</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="obsah">
+
+    <article>
+      <h1>Cesta slnečnou sústavou</h1>
+      <h2>Vitajte na webe</h2>
+      <p>Tento web je o našej <strong>kozmickej domovine</strong>. Nájdete tu
+        <a href="planety.html"><em>tabuľku planét</em></a>, <a href="slovnik.html">slovník základných pojmov</a>,
+        prehľad <a href="misie.html">najznámejších misií</a> a <a href="galeria.html">galériu</a>.
+        Naša sústava vznikla pred približne <mark>4,6 miliardami rokov</mark> &asymp; 4 600 000 000 rokov.</p>
+      <h3>Klikateľná mapa sústavy</h3>
+      <p>Kliknutím na planétu prejdete na jej riadok v tabuľke. Kliknutím na Slnko sa dozviete, čo je hviezda.</p>
+      <div class="mapa-wrapper">
+        <img src="img/slnecna-sustava.svg" id="mapa-sustavy" width="900" height="300" usemap="#planety" alt="Mapa Slnečnej sústavy so Slnkom a ôsmimi planétami">
+      </div>
+      <map name="planety">
+        <area shape="circle" coords="60,150,50"  href="slovnik.html#hviezda" alt="Slnko">
+        <area shape="circle" coords="150,150,14" href="planety.html#merkur"  alt="Merkúr">
+        <area shape="circle" coords="215,150,18" href="planety.html#venusa"  alt="Venuša">
+        <area shape="circle" coords="290,150,20" href="planety.html#zem"     alt="Zem">
+        <area shape="circle" coords="360,150,16" href="planety.html#mars"    alt="Mars">
+        <area shape="circle" coords="470,150,40" href="planety.html#jupiter" alt="Jupiter">
+        <area shape="circle" coords="600,150,50" href="planety.html#saturn"  alt="Saturn">
+        <area shape="circle" coords="710,150,24" href="planety.html#uran"    alt="Urán">
+        <area shape="circle" coords="800,150,24" href="planety.html#neptun"  alt="Neptún">
+      </map>
+    </article>
+
+    <section>
+      <h2>Poradie planét od Slnka</h2>
+      <ol>
+        <li>Merkúr</li>
+        <li>Venuša</li>
+        <li>Zem</li>
+        <li>Mars</li>
+        <li>Jupiter</li>
+        <li>Saturn</li>
+        <li>Urán</li>
+        <li>Neptún</li>
+      </ol>
+      <p>Viac údajov nájdete na stránke <a href="planety.html">Planéty</a> &rarr;</p>
+    </section>
+
+    <aside>
+      <h3>Vedeli ste?</h3>
+      <p>Svetlo zo Slnka k Zemi letí približne <strong>8 minút</strong>.</p>
+    </aside>
+
+  </main>
+
+  <footer id="paticka">
+    <p>&copy; 2026 David Kocák &ndash; Cesta slnečnou sústavou | <a href="kontakt.html">Kontakt a zdroje</a></p>
+  </footer>
+
+</body>
+</html>

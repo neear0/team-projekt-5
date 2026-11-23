@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planéty – Cesta slnečnou sústavou</title>
+  <meta name="description" content="Tabuľka ôsmich planét Slnečnej sústavy s obrázkami, rozmermi a teplotami.">
+  <meta name="keywords" content="planéty, Merkúr, Venuša, Zem, Mars, Jupiter, Saturn, Urán, Neptún">
+  <meta name="author" content="David Kocák">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <header id="hlavicka">
+    <a href="index.html" id="logo"><img src="img/logo.svg" alt="Logo webu Cesta slnečnou sústavou" width="300" height="90"></a>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Domov</a></li>
+        <li><a href="planety.html" class="aktivna">Planéty</a></li>
+        <li><a href="slovnik.html">Slovník</a></li>
+        <li><a href="misie.html">Misie</a></li>
+        <li><a href="galeria.html">Galéria</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="obsah">
+
+    <article>
+      <h1>Planéty Slnečnej sústavy</h1>
+      <h2>Tabuľka planét</h2>
+      <table>
+        <caption>Základné údaje o planétach (zaokrúhlené hodnoty)</caption>
+        <thead>
+          <tr>
+            <th>Planéta</th>
+            <th>Typ</th>
+            <th>Priemer (km)</th>
+            <th>Vzdialenosť od Slnka (mil. km)</th>
+            <th>Priemerná teplota (&deg;C)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="merkur">
+            <td><img src="img/merkur.svg" class="planeta-obr" alt="Planéta Merkúr" width="60" height="60">Merkúr</td>
+            <td>terestrická</td><td>4 879</td><td>58</td><td>167</td>
+          </tr>
+          <tr id="venusa">
+            <td><img src="img/venusa.svg" class="planeta-obr" alt="Planéta Venuša" width="60" height="60">Venuša</td>
+            <td>terestrická</td><td>12 104</td><td>108</td><td>464</td>
+          </tr>
+          <tr id="zem">
+            <td><img src="img/zem.svg" class="planeta-obr" alt="Planéta Zem" width="60" height="60">Zem</td>
+            <td>terestrická</td><td>12 742</td><td>150</td><td>15</td>
+          </tr>
+          <tr id="mars">
+            <td><img src="img/mars.svg" class="planeta-obr" alt="Planéta Mars" width="60" height="60">Mars</td>
+            <td>terestrická</td><td>6 779</td><td>228</td><td>&minus;65</td>
+          </tr>
+          <tr id="jupiter">
+            <td><img src="img/jupiter.svg" class="planeta-obr" alt="Planéta Jupiter" width="60" height="60">Jupiter</td>
+            <td>plynný obor</td><td>139 820</td><td>778</td><td>&minus;110</td>
+          </tr>
+          <tr id="saturn">
+            <td><img src="img/saturn.svg" class="planeta-obr" alt="Planéta Saturn" width="60" height="60">Saturn</td>
+            <td>plynný obor</td><td>116 460</td><td>1 434</td><td>&minus;140</td>
+          </tr>
+          <tr id="uran">
+            <td><img src="img/uran.svg" class="planeta-obr" alt="Planéta Urán" width="60" height="60">Urán</td>
+            <td>ľadový obor</td><td>50 724</td><td>2 871</td><td>&minus;195</td>
+          </tr>
+          <tr id="neptun">
+            <td><img src="img/neptun.svg" class="planeta-obr" alt="Planéta Neptún" width="60" height="60">Neptún</td>
+            <td>ľadový obor</td><td>49 244</td><td>4 495</td><td>&minus;200</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="hore"><a href="#obsah">&uarr; Späť hore</a></p>
+    </article>
+
+    <section>
+      <h2>Typy planét</h2>
+      <h3>Rozdelenie podľa zloženia</h3>
+      <ul class="zoznam-obr">
+        <li><img src="img/mars.svg" alt="Ikona terestrickej planéty" width="50" height="50">
+            <span><strong>Terestrické planéty</strong> &ndash; Merkúr, Venuša, Zem, Mars (pevný skalnatý povrch)</span></li>
+        <li><img src="img/jupiter.svg" alt="Ikona plynného obra" width="50" height="50">
+            <span><strong>Plynné obry</strong> &ndash; Jupiter, Saturn (hlavne vodík a hélium)</span></li>
+        <li><img src="img/neptun.svg" alt="Ikona ľadového obra" width="50" height="50">
+            <span><strong>Ľadové obry</strong> &ndash; Urán, Neptún (vodné, amoniakové a metánové ľady)</span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer id="paticka">
+    <p>&copy; 2026 David Kocák &ndash; Cesta slnečnou sústavou | <a href="kontakt.html">Kontakt a zdroje</a></p>
+  </footer>
+
+</body>
+</html>
