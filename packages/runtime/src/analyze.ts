@@ -77,6 +77,18 @@ export function entry_page(paths: readonly string[]): string | null {
   return [...paths].sort((a, b) => depth(a) - depth(b) || a.localeCompare(b))[0] ?? null;
 }
 
+/** Meranie trvania fáz kroku 2, zapisuje sa do logu funkcie (Vercel → Logs). */
+export type Timings = Record<string, number>;
+
+function stopwatch(timings: Timings): (name: string) => void {
+  let last = performance.now();
+  return (name) => {
+    const now = performance.now();
+    timings[name] = Math.round(now - last);
+    last = now;
+  };
+}
+
 function page_url(base: string, path: string): string {
   return new URL(path.split('/').map(encodeURIComponent).join('/'), base).href;
 }
@@ -135,6 +147,7 @@ async function audit_pages(
   paths: readonly string[],
   site_pages: ReadonlyMap<string, SitePage>,
   repo_paths: ReadonlySet<string>,
+  timings: Timings,
 ): Promise<AuditResult> {
   const result: AuditResult = {
     audited_pages: [],
@@ -159,6 +172,7 @@ async function audit_pages(
       break;
     }
 
+    const lap = stopwatch(timings);
     const page = await context.newPage();
     const push_error = (error: Omit<ConsoleError, 'page'>) => {
       if (result.console_errors.length < MAX_CONSOLE_ERRORS)
@@ -207,7 +221,9 @@ async function audit_pages(
           waitUntil: 'load',
           timeout: NAVIGATION_TIMEOUT_MS,
         });
+        lap(`load ${path}`);
       } catch (err) {
+        lap(`load ${path}`);
         // Stránka sa mohla čiastočne načítať (napr. visí externý zdroj), axe ju aj tak skúsi.
         result.findings.push(
           info('runtime.load', `Stránka ${path} sa nenačítala celá: ${message_of(err)}`, path),
@@ -218,6 +234,7 @@ async function audit_pages(
         PAGE_TIMEOUT_MS,
         'Kontrola prístupnosti',
       );
+      lap(`axe ${path}`);
       result.audited_pages.push(path);
       for (const v of axe.violations) {
         // Prvky vo vnorených rámoch (PDF, YouTube, mapa) nie sú kód študenta.
@@ -316,6 +333,10 @@ export async function analyze_runtime(
   const screenshots: Screenshot[] = [];
   const findings: Finding[] = [];
 
+  const timings: Timings = {};
+  const started = performance.now();
+  const lap = stopwatch(timings);
+
   if (entry !== null) {
     const audited = [entry, ...page_paths.filter((p) => p !== entry)].slice(0, MAX_AUDITED_PAGES);
     if (page_paths.length > audited.length) {
@@ -329,6 +350,7 @@ export async function analyze_runtime(
 
     const served = await serve_files(repo_files);
     const { browser, debugging_port } = await launch_browser();
+    lap('launch');
     try {
       const entry_url = page_url(served.url, entry);
       const context = await browser.newContext({ deviceScaleFactor: 1 });
@@ -336,8 +358,10 @@ export async function analyze_runtime(
 
       const shot_page = await context.newPage();
       try {
-        for (const width of SCREENSHOT_WIDTHS)
+        for (const width of SCREENSHOT_WIDTHS) {
           screenshots.push(await take_screenshot(shot_page, entry_url, width));
+          lap(`screenshot ${String(width)}`);
+        }
       } catch (err) {
         findings.push(
           info('runtime.screenshot', `Screenshot sa nepodarilo urobiť: ${message_of(err)}`, entry),
@@ -356,10 +380,13 @@ export async function analyze_runtime(
         audited,
         new Map(site.pages.map((p) => [p.path, p])),
         site.paths,
+        timings,
       );
+      lap('audit');
       await with_timeout(context.close(), 5_000, 'Zatvorenie prehliadača').catch(() => undefined);
 
       const lh = await run_lighthouse(entry_url, debugging_port);
+      lap('lighthouse');
       if (lh.error !== null) {
         findings.push(info('lighthouse.error', `Lighthouse nedobehol: ${lh.error}`, entry));
       }
@@ -377,6 +404,11 @@ export async function analyze_runtime(
       await served.close();
     }
   }
+
+  timings.total = Math.round(performance.now() - started);
+  console.info(
+    JSON.stringify({ step: 'runtime', pages: data.audited_pages.length, timings_ms: timings }),
+  );
 
   findings.push(...axe_findings(data.violations), ...console_findings(data.console_errors));
 
