@@ -8,6 +8,8 @@ export const RepoUrl = z
 
 export const ErrorCode = z.enum([
   'bad_request',
+  /** Chýba alebo vypršalo prihlásenie, UI má poslať používateľa na /login.html. */
+  'unauthorized',
   'not_found',
   'method_not_allowed',
   'payload_too_large',
@@ -31,5 +33,7 @@ export const HealthResponse = z.object({
   status: z.literal('ok'),
   version: z.string(),
   region: z.string().nullable(),
+  /** Server má vlastný kľúč pre AI, dá sa zvoliť `{ provider: 'server' }`. */
+  server_ai: z.boolean(),
 });
 export type HealthResponse = z.infer<typeof HealthResponse>;

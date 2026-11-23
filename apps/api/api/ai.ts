@@ -1,27 +1,28 @@
-import { AiRequest, type AiResponse } from '@ooko/contracts';
-import { post_handler } from '@ooko/http';
+import { AiError, describe_cause, evaluate } from '@ooko/ai';
+import { AiRequest } from '@ooko/contracts';
+import { HttpError, post_handler } from '@ooko/http';
+import { protect } from '../lib/auth.ts';
 
-// Krok 3: AI hodnotenie. Zatiaľ AI nevolá: body za pravidlá počíta z výsledkov krokov 1 a 2,
-// kritériá iba pre AI dostanú 0 bodov.
-export const POST = post_handler(AiRequest, (req): Promise<AiResponse> => {
-  const rule_results = [...req.static.rule_results, ...req.runtime.rule_results];
-
-  return Promise.resolve({
-    summary: 'Ukážkové hodnotenie, AI zatiaľ nie je zapojená.',
-    criteria: req.rubric.criteria.map((criterion) => {
-      const results = rule_results.filter((r) => r.criterion_id === criterion.id);
-      const passed = results.filter((r) => r.passed).length;
-      return {
-        id: criterion.id,
-        title: criterion.title,
-        points: results.length > 0 ? (criterion.points * passed) / results.length : 0,
-        max_points: criterion.points,
-        reasoning:
-          results.length > 0
-            ? `Splnené pravidlá: ${String(passed)} z ${String(results.length)}.`
-            : 'Kritérium hodnotí AI, tá zatiaľ nie je zapojená.',
-        findings: results.flatMap((r) => r.findings),
-      };
-    }),
-  });
-});
+// Krok 3: body za pravidlá z krokov 1 a 2 a hodnotenie kritérií s pokynom pre AI.
+// Bez AI (`provider: 'none'`) iba body za pravidlá. API kľúč sa nikde neukladá ani neloguje.
+export const POST = protect(
+  post_handler(AiRequest, async (req) => {
+    try {
+      return await evaluate(req);
+    } catch (err) {
+      if (err instanceof AiError) {
+        // Celú chybu nelogujeme, obsahuje prompt s kódom študenta.
+        console.warn(
+          JSON.stringify({
+            step: 'ai',
+            code: err.code,
+            message: err.message,
+            ...describe_cause(err),
+          }),
+        );
+        throw new HttpError(err.code === 'bad_request' ? 400 : 502, err.code, err.message);
+      }
+      throw err;
+    }
+  }),
+);

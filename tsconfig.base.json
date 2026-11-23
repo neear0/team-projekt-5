@@ -20,8 +20,8 @@
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
 
-    // Vo workspace sa balíky čítajú zo zdrojákov (podmienka "source"),
+    // Vo workspace sa balíky čítajú zo zdrojákov (podmienka "ooko-source", nie "source", tú používajú aj balíky v node_modules),
     // na Verceli z buildnutého dist/.
-    "customConditions": ["source"]
+    "customConditions": ["ooko-source"]
   }
 }

@@ -44,7 +44,7 @@ criteria:
       - type: css.media_queries
         min: 1
     ai: >
-      Porovnaj screenshoty v šírkach 375, 768 a 1440 px. Strhni body, ak sa obsah
+      Porovnaj screenshoty v šírkach 375, 768 a 1280 px. Strhni body, ak sa obsah
       na mobile prekrýva, pretečie do strany alebo je text príliš malý.
 
   - id: pristupnost

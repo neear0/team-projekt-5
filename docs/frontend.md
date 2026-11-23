@@ -1,7 +1,7 @@
 # UI webovej aplikácie: čo je pripravené
 
-Backend je hotový tak, aby sa UI dalo robiť hneď. Tvar dát sa už nemení, aj keď krok 3
-zatiaľ nevolá AI (pozri [Čo ešte nie je hotové](#čo-ešte-nie-je-hotové)).
+Backend je hotový tak, aby sa UI dalo robiť hneď. Všetky tri kroky bežia naozaj, tvar dát
+sa už nemení (pozri aj [Čo ešte nie je hotové](#čo-ešte-nie-je-hotové)).
 
 ## Čo budeš používať
 
@@ -42,11 +42,14 @@ import { defaultClientConditions } from 'vite';
 
 export default defineConfig({
   vite: {
-    resolve: { conditions: ['source', ...defaultClientConditions] },
+    resolve: { conditions: ['ooko-source', ...defaultClientConditions] },
     server: { proxy: { '/api': 'http://localhost:3000' } },
   },
 });
 ```
+
+Podmienka sa volá `ooko-source`, nie `source`: `source` majú aj balíky v `node_modules`
+(napr. `ai`, `eventsource-parser`) a Vite by potom čítal ich TypeScript zdrojáky.
 
 API zatiaľ nemá CORS, preto proxy. Aplikácia volá `/api/...` na tej istej adrese, z ktorej
 sa načítala.
@@ -150,8 +153,20 @@ so zvýraznenými riadkami z nálezov.
   `z.config(z.locales.sk())` (`import { z } from 'zod'`).
 - **AI** (`AiConfig`):
   - `{ provider: 'none' }`: bez AI, body iba za pravidlá.
+  - `{ provider: 'server' }`: kľúč a model servera. Ponúkni, iba ak `client.health()` vráti
+    `server_ai: true`, a daj ho ako predvolenú možnosť.
   - `{ provider: 'google' | 'anthropic' | 'openai', model, api_key }`.
-  - `{ provider: 'openai-compatible', base_url, model, api_key? }`: vlastný server.
+  - `{ provider: 'openai-compatible', base_url, model, api_key? }`: vlastný server s verejnou
+    adresou `https://` (napr. OpenRouter). Lokálne adresy server odmietne.
+
+  Model musí podporovať obrázky (screenshoty) a štruktúrovaný výstup. Bezplatný kľúč pre
+  Gemini je na [Google AI Studio](https://aistudio.google.com/). Model nie je v kóde natvrdo,
+  ponúkni na výber aktuálny model Flash a nechaj aj vlastný názov.
+
+**Body s AI:** kritérium má diel za každé pravidlo a jeden diel za AI, takže AI nástroje
+neprebije. AI pridá ku kritériu `reasoning` a nálezy s `tool: 'ai'`. Nálezy, ktoré
+nepatria ku kritériu (pokus v kóde ovplyvniť hodnotenie, `rule_id: 'ai.manipulation'`), sú
+v `analysis.ai.findings` a v `report.findings`. Takýto nález ukáž učiteľovi výrazne.
 
 API kľúč používateľa sa nikde neukladá na serveri a do reportu sa nedostane. V prehliadači ho
 drž iba v pamäti, prípadne v `sessionStorage`, nie v `localStorage`.
@@ -161,6 +176,7 @@ drž iba v pamäti, prípadne v `sessionStorage`, nie v `localStorage`.
 | `err.code`                 | Kedy                                                        | Čo ukázať                          |
 | -------------------------- | ----------------------------------------------------------- | ---------------------------------- |
 | `bad_request`              | zlé pole (`err.issues`), napr. URL mimo GitHubu             | chybu pri danom poli               |
+| `unauthorized`             | používateľ nie je prihlásený alebo prihlásenie vypršalo     | presmerovať na `/login.html?next=` |
 | `not_found`                | repozitár alebo vetva neexistuje, alebo nie je verejný      | `err.message`                      |
 | `payload_too_large`        | repozitár je väčší ako 25 MB alebo má viac ako 3000 súborov | `err.message`                      |
 | `upstream_error`           | GitHub alebo AI neodpovedá                                  | `err.message`, ponúknuť opakovanie |
@@ -174,7 +190,7 @@ Ukážka tela chyby: `docs/examples/chyba-404.json`.
 ## Ukážkové dáta
 
 `docs/examples/` obsahuje odpovede všetkých krokov a hotový report pre rubriku
-`webove-sidlo.yaml`:
+`webove-sidlo.yaml`, zatiaľ bez AI (`provider: 'none'`):
 
 - `web-s-chybami.*`: web projektu (vetva `01-web-setup`), 40,67 zo 100 bodov, veľa nálezov.
 - `web-bez-chyb.*`: ukážkový web z testov, 96 zo 100 (4 body sú za kritériá, ktoré hodnotí
@@ -185,7 +201,8 @@ Pregenerovanie zo skutočného API: `pnpm --filter @ooko/api examples`.
 
 ## Čo ešte nie je hotové
 
-- **Krok 3** nevolá AI. Body za pravidlá počíta naozaj, kritériá iba pre AI dostanú 0 bodov.
+- **Krok 3 so skutočným modelom** je otestovaný iba s mockom. Ukážkové dáta s AI pribudnú po
+  prvom behu s kľúčom.
 - **Nasadenie UI** zatiaľ nie je rozhodnuté. Najjednoduchšie je dať UI do toho istého Vercel
   projektu ako API (jedna adresa, netreba CORS). Ak bude UI inde, treba na API pridať CORS.
 - **Lokálny model (Ollama)** z README zatiaľ nie je.

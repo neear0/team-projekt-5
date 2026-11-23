@@ -3,5 +3,5 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "include": ["api", "lib", "scripts", "test"]
+  "include": ["api", "lib", "scripts", "test", "middleware.ts"]
 }

@@ -86,6 +86,8 @@ export const AiConfig = z.discriminatedUnion('provider', [
     model: z.string().min(1),
     api_key: z.string().optional(),
   }),
+  /** Kľúč a model z nastavení servera (GEMINI_API_KEY, GEMINI_MODEL), iba po prihlásení. */
+  z.object({ provider: z.literal('server') }),
   z.object({ provider: z.literal('none') }),
 ]);
 export type AiConfig = z.infer<typeof AiConfig>;
@@ -111,6 +113,10 @@ export type CriterionResult = z.infer<typeof CriterionResult>;
 
 export const AiResponse = z.object({
   summary: z.string(),
+  /** Model, ktorý hodnotil, `null` bez AI. */
+  model: z.string().nullable().default(null),
   criteria: z.array(CriterionResult),
+  /** Nálezy AI, ktoré nepatria ku kritériu, napr. pokus v kóde ovplyvniť hodnotenie. */
+  findings: z.array(Finding).default([]),
 });
 export type AiResponse = z.infer<typeof AiResponse>;

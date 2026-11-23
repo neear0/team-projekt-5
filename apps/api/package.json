@@ -6,18 +6,20 @@
     "node": "24.x"
   },
   "scripts": {
-    "dev": "node --conditions=source --watch scripts/dev.ts",
+    "dev": "node --conditions=ooko-source --watch scripts/dev.ts",
     "build": "pnpm --filter \"@ooko/api^...\" run build",
     "typecheck": "tsc --noEmit",
-    "examples": "node --conditions=source scripts/examples.ts"
+    "examples": "node --conditions=ooko-source scripts/examples.ts"
   },
   "dependencies": {
+    "@ooko/ai": "workspace:*",
     "@ooko/analyzer": "workspace:*",
     "@ooko/client": "workspace:*",
     "@ooko/contracts": "workspace:*",
     "@ooko/http": "workspace:*",
     "@ooko/runtime": "workspace:*",
     "@sparticuz/chromium": "^153.0.0",
-    "lighthouse": "~13.5.0"
+    "lighthouse": "~13.5.0",
+    "zod": "^4.6.7"
   }
 }

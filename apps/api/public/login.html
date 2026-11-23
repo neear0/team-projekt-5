@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Prihlásenie · ooko</title>
+    <style>
+      :root {
+        --color-bg: #f4f6fb;
+        --color-surface: #fff;
+        --color-text: #1b2333;
+        --color-muted: #5b6475;
+        --color-primary: #2f5bd3;
+        --color-error: #b42318;
+        --radius: 12px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 16px;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+      }
+      main {
+        width: 100%;
+        max-width: 360px;
+        padding: 32px 24px;
+        background: var(--color-surface);
+        border-radius: var(--radius);
+        box-shadow: 0 4px 20px rgb(27 35 51 / 0.08);
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 1.5rem;
+      }
+      p {
+        margin: 0 0 24px;
+        color: var(--color-muted);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      label {
+        font-weight: 600;
+      }
+      input,
+      button {
+        font: inherit;
+        padding: 10px 12px;
+        border-radius: 8px;
+      }
+      input {
+        border: 1px solid #c8cfdc;
+      }
+      button {
+        border: 0;
+        background: var(--color-primary);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+      }
+      #chyba {
+        min-height: 1.5em;
+        margin: 0;
+        color: var(--color-error);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>ooko</h1>
+      <p>Kontrola webových projektov. Zadaj heslo, ktoré ti dal učiteľ alebo tím.</p>
+      <form id="prihlasenie">
+        <label for="heslo">Heslo</label>
+        <input
+          id="heslo"
+          name="heslo"
+          type="password"
+          autocomplete="current-password"
+          required
+          autofocus
+        />
+        <button type="submit">Prihlásiť sa</button>
+        <p id="chyba" role="alert"></p>
+      </form>
+    </main>
+    <script>
+      const form = document.getElementById('prihlasenie');
+      const chyba = document.getElementById('chyba');
+
+      /** Presmerovať iba v rámci tejto stránky, nie na cudziu adresu. */
+      function ciel() {
+        const next = new URL(
+          new URLSearchParams(location.search).get('next') ?? '/',
+          location.href,
+        );
+        return next.origin === location.origin ? next.pathname + next.search + next.hash : '/';
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = form.querySelector('button');
+        button.disabled = true;
+        chyba.textContent = '';
+        try {
+          const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ password: form.heslo.value }),
+          });
+          if (res.ok) {
+            location.replace(ciel());
+            return;
+          }
+          const body = await res.json().catch(() => null);
+          chyba.textContent = body?.error?.message ?? 'Prihlásenie zlyhalo.';
+          form.heslo.select();
+        } catch {
+          chyba.textContent = 'Server neodpovedá. Skús to znova.';
+        } finally {
+          button.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

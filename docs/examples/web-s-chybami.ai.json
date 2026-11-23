@@ -1,9 +1,10 @@
 {
-  "summary": "Ukážkové hodnotenie, AI zatiaľ nie je zapojená.",
+  "summary": "Hodnotené bez AI, body sú iba za pravidlá overené nástrojmi.",
   "criteria": [
     {
       "id": "stranky",
       "title": "Úvodná stránka a aspoň 3 podstránky",
+      "group": "1. časť: HTML5",
       "points": 4,
       "max_points": 4,
       "reasoning": "Splnené pravidlá: 2 z 2.",
@@ -12,14 +13,16 @@
     {
       "id": "kontakty",
       "title": "Stránka s kontaktmi",
+      "group": "1. časť: HTML5",
       "points": 0,
       "max_points": 4,
-      "reasoning": "Kritérium hodnotí AI, tá zatiaľ nie je zapojená.",
+      "reasoning": "Kritérium hodnotí AI, tá nie je zapnutá.",
       "findings": []
     },
     {
       "id": "struktura",
       "title": "Minimálna štruktúra, kódovanie a title",
+      "group": "1. časť: HTML5",
       "points": 3,
       "max_points": 3,
       "reasoning": "Splnené pravidlá: 1 z 1.",
@@ -28,6 +31,7 @@
     {
       "id": "meta",
       "title": "Meta informácie",
+      "group": "1. časť: HTML5",
       "points": 0,
       "max_points": 3,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -73,6 +77,7 @@
     {
       "id": "favicon",
       "title": "Favicon",
+      "group": "1. časť: HTML5",
       "points": 0,
       "max_points": 2,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -118,6 +123,7 @@
     {
       "id": "nadpisy",
       "title": "Nadpisy aspoň v troch úrovniach",
+      "group": "1. časť: HTML5",
       "points": 3,
       "max_points": 3,
       "reasoning": "Splnené pravidlá: 1 z 1.",
@@ -126,7 +132,8 @@
     {
       "id": "textove-elementy",
       "title": "Textové elementy, odkazy a špeciálne symboly",
-      "points": 1.6666666666666667,
+      "group": "1. časť: HTML5",
+      "points": 1.67,
       "max_points": 5,
       "reasoning": "Splnené pravidlá: 1 z 3.",
       "findings": [
@@ -171,6 +178,7 @@
     {
       "id": "zoznamy",
       "title": "Zoznamy s obrázkami",
+      "group": "1. časť: HTML5",
       "points": 0,
       "max_points": 4,
       "reasoning": "Splnené pravidlá: 0 z 2.",
@@ -204,6 +212,7 @@
     {
       "id": "obrazky",
       "title": "Obrázok, logo s odkazom a obrázková mapa",
+      "group": "1. časť: HTML5",
       "points": 0,
       "max_points": 5,
       "reasoning": "Splnené pravidlá: 0 z 3.",
@@ -237,6 +246,7 @@
     {
       "id": "semantika",
       "title": "Sémantická štruktúra",
+      "group": "1. časť: HTML5",
       "points": 0,
       "max_points": 5,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -258,6 +268,7 @@
     {
       "id": "navigacia",
       "title": "Funkčná navigácia medzi stránkami",
+      "group": "1. časť: HTML5",
       "points": 5,
       "max_points": 5,
       "reasoning": "Splnené pravidlá: 2 z 2.",
@@ -266,6 +277,7 @@
     {
       "id": "html-validita",
       "title": "Validné HTML súbory",
+      "group": "1. časť: HTML5",
       "points": 0,
       "max_points": 7,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -284,6 +296,7 @@
     {
       "id": "css-subor",
       "title": "Jeden CSS súbor v style/style.css",
+      "group": "2. časť: CSS3",
       "points": 0,
       "max_points": 5,
       "reasoning": "Splnené pravidlá: 0 z 2.",
@@ -344,6 +357,7 @@
     {
       "id": "css-komentare",
       "title": "Okomentované časti CSS",
+      "group": "2. časť: CSS3",
       "points": 4,
       "max_points": 4,
       "reasoning": "Splnené pravidlá: 1 z 1.",
@@ -352,6 +366,7 @@
     {
       "id": "selektory",
       "title": "Selektory podľa elementu, id a triedy",
+      "group": "2. časť: CSS3",
       "points": 0,
       "max_points": 4,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -367,6 +382,7 @@
     {
       "id": "farby-pismo",
       "title": "Farba pozadia, textu a štýlovanie písma",
+      "group": "2. časť: CSS3",
       "points": 5,
       "max_points": 5,
       "reasoning": "Splnené pravidlá: 1 z 1.",
@@ -375,6 +391,7 @@
     {
       "id": "okraje",
       "title": "Okraje, rám a obtekanie obrázkov",
+      "group": "2. časť: CSS3",
       "points": 0,
       "max_points": 6,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -390,6 +407,7 @@
     {
       "id": "obrazky-efekty",
       "title": "Efekty na obrázkoch",
+      "group": "2. časť: CSS3",
       "points": 0,
       "max_points": 5,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -405,6 +423,7 @@
     {
       "id": "tabulka",
       "title": "Tabuľka s obrázkami",
+      "group": "2. časť: CSS3",
       "points": 2,
       "max_points": 4,
       "reasoning": "Splnené pravidlá: 1 z 2.",
@@ -420,6 +439,7 @@
     {
       "id": "multimedia",
       "title": "Audio a video",
+      "group": "2. časť: CSS3",
       "points": 0,
       "max_points": 4,
       "reasoning": "Splnené pravidlá: 0 z 1.",
@@ -441,6 +461,7 @@
     {
       "id": "menu",
       "title": "Funkčné menu",
+      "group": "2. časť: CSS3",
       "points": 6,
       "max_points": 6,
       "reasoning": "Splnené pravidlá: 1 z 1.",
@@ -449,10 +470,12 @@
     {
       "id": "css-validita",
       "title": "Validný CSS súbor",
+      "group": "2. časť: CSS3",
       "points": 7,
       "max_points": 7,
       "reasoning": "Splnené pravidlá: 1 z 1.",
       "findings": []
     }
-  ]
+  ],
+  "findings": []
 }

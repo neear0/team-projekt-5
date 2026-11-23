@@ -33,6 +33,8 @@ export function build_report(input: ReportInput): Report {
     ...input.static.findings,
     ...input.runtime.findings,
     ...rule_results.flatMap((r) => r.findings),
+    ...input.ai.criteria.flatMap((c) => c.findings),
+    ...input.ai.findings,
   ]);
 
   return {
@@ -46,7 +48,10 @@ export function build_report(input: ReportInput): Report {
     ai:
       ai_config.provider === 'none'
         ? null
-        : { provider: ai_config.provider, model: ai_config.model },
+        : {
+            provider: ai_config.provider,
+            model: 'model' in ai_config ? ai_config.model : (input.ai.model ?? 'neznámy'),
+          },
     criteria: input.ai.criteria,
     lighthouse: input.runtime.lighthouse,
     findings,

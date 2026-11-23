@@ -4,14 +4,45 @@ Backend webovej aplikácie: Vercel Functions v `api/`, logika v `packages/*`.
 
 | Endpoint | Metóda | Stav |
 |---|---|---|
-| `/api/health` | GET | verzia a región |
+| `/api/health` | GET | verzia, región, `server_ai` (server má kľúč pre AI); bez prihlásenia |
+| `/api/login` | POST `{ password }` | prihlásenie, nastaví cookie `ooko_session` |
+| `/api/logout` | POST | odhlásenie |
 | `/api/static` | POST `{ repo_url, rubric }` | krok 1: stiahne repozitár, vyhodnotí statické pravidlá (`packages/analyzer`) |
 | `/api/runtime` | POST `{ repo_url, rubric }` | krok 2: otvorí web v Chromiu, screenshoty, axe, konzola, Lighthouse (`packages/runtime`) |
-| `/api/ai` | POST `{ ai, rubric, static, runtime }` | krok 3, zatiaľ ukážkové dáta |
+| `/api/ai` | POST `{ ai, rubric, static, runtime }` | krok 3: body za pravidlá a hodnotenie kritérií s pokynom pre AI (`packages/ai`) |
 | `/api/probe` | GET | prototyp etapy 1, na produkcii vypnutý |
 
 Tvar požiadaviek a odpovedí je v `packages/contracts`. Chyby majú vždy tvar
 `{ "error": { "code", "message", "issues"? } }`.
+
+## Prihlásenie
+
+Celý projekt na Verceli (stránky aj API okrem `/api/health`, `/api/login`, `/api/logout`
+a `/login.html`) je iba pre prihlásených. Účty nie sú, je jedno heslo pre všetkých.
+
+| Premenná (Vercel → Settings → Environment Variables) | Na čo |
+|---|---|
+| `APP_PASSWORD` | heslo, **povinné** na Verceli. Bez neho API vráti 503 a nepustí nikoho. |
+| `GEMINI_API_KEY`, `GEMINI_MODEL` | voliteľne kľúč a model servera pre `{ provider: 'server' }`. Používať ho môžu iba prihlásení. |
+
+```bash
+vercel env add APP_PASSWORD          # pre Production aj Preview
+vercel env add GEMINI_API_KEY
+vercel env add GEMINI_MODEL          # napr. aktuálny model Flash z Google AI Studio
+```
+
+- **Ako to funguje:** `/login.html` pošle heslo na `/api/login`. Pri zhode server nastaví cookie
+  `ooko_session` (HttpOnly, Secure, SameSite=Lax, 7 dní) s platnosťou podpísanou HMAC-SHA256
+  kľúčom odvodeným z hesla (`lib/session.ts`). Zmena hesla odhlási všetkých.
+- **Dve vrstvy:** `middleware.ts` (Vercel Routing Middleware) presmeruje stránky na
+  `/login.html?next=…` a na `/api/*` vráti 401. Funkcie to overujú aj samy (`lib/auth.ts`),
+  takže API ostane zamknuté, aj keby middleware nebežal.
+- **Hádanie hesla:** zlý pokus trvá 1,5 s. Počet pokusov server nepočíta (nemá databázu), preto
+  zvoľ dlhé náhodné heslo. Pri útoku sa dá zapnúť Vercel Firewall (rate limit na `/api/login`).
+- **Lokálne** bez `APP_PASSWORD` je všetko otvorené. S ním sa správa ako na Verceli:
+  `APP_PASSWORD=… pnpm --filter @ooko/api dev` a otvoriť `http://localhost:3000/login.html`.
+- **UI aplikácie:** ak bude v tomto Vercel projekte, chráni ho ten istý middleware. Na chybu
+  `unauthorized` z API má poslať používateľa na `/login.html?next=<aktuálna adresa>`.
 
 ## Rubriky
 
@@ -134,3 +165,37 @@ Chromium z `@sparticuz/chromium` predvolene kreslí cez SwiftShader (emuláciu G
 je to pri `backdrop-filter: blur()` a podobných efektoch extrémne pomalé: web projektu trval
 65 s (screenshoty 20 s, axe 27 s). S `--disable-gpu` (softvérové vykresľovanie) 13 s pri
 rovnakých výsledkoch, pozri `serverless_args` v `src/browser.ts`.
+
+## Krok 3: AI hodnotenie
+
+`packages/ai` volá model cez [AI SDK](https://ai-sdk.dev/) podľa `ai` v požiadavke: `google`,
+`anthropic`, `openai` alebo `openai-compatible` (vlastný server, napr. OpenRouter). Kľúč
+posiela prehliadač s každou požiadavkou, server ho nikde neukladá ani neloguje.
+
+**Body.** Kritérium má jeden diel za každé overené pravidlo a jeden diel za pokyn `ai`, ak AI
+beží. AI vracia, na koľko percent je kritérium splnené. Pravidlá teda AI neprebije, v kritériu
+s pravidlami má iba svoj diel. Preskočené pravidlá (nedostupný W3C validátor) sa nerátajú, body
+za ne študent nestratí. Bez AI (`provider: 'none'`) majú kritériá iba pre AI 0 bodov.
+
+**Prompt** (`src/prompt.ts`): pokyny sú iba v systémovej časti. Rubrika (iba kritériá s `ai`
+a výsledky ich pravidiel), Lighthouse, najviac 60 nálezov nástrojov, screenshoty a kód študenta
+s číslami riadkov (najviac 300 000 znakov) idú do správy používateľa. Kód je v značkách
+`<subor>` a študent ich nevie zavrieť. Model má pokusy ovplyvniť hodnotenie vrátiť
+v `manipulation`, z nich sú nálezy `ai.manipulation` vo `findings` odpovede.
+
+**Kontrola výstupu.** Odpoveď sa overí Zod schémou (`src/schema.ts`). Pri neplatnom tvare alebo
+vynechanom kritériu sa volanie raz zopakuje. Percentá sa orežú na 0–100, súbor a riadok
+z nálezu zostanú, iba ak v repozitári naozaj sú.
+
+**Vlastný server** (`openai-compatible`) musí mať verejnú adresu `https://`. Lokálne
+a privátne adresy server odmietne, aby sa cez nás nedalo dostať do vnútornej siete. Ollama
+a LM Studio sa majú volať priamo z prehliadača.
+
+| Chyba | Kód | HTTP |
+|---|---|---|
+| zlý kľúč (401/403), neexistujúci model (404), iná 4xx | `bad_request` | 400 |
+| limit (429), výpadok poskytovateľa, neplatná odpoveď aj na druhý pokus, viac ako 240 s | `upstream_error` | 502 |
+
+Do logu ide iba `{"step":"ai","code","message","cause","status"}`, nie prompt.
+
+Testy používajú `MockLanguageModelV4` z `ai/test`, kľúč netreba.
