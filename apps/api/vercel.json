@@ -5,7 +5,10 @@
   "outputDirectory": "public",
   "regions": ["fra1"],
   "functions": {
-    "api/runtime.ts": { "maxDuration": 300 },
+    "api/runtime.ts": {
+      "maxDuration": 300,
+      "includeFiles": "../../node_modules/.pnpm/{@sparticuz+chromium@*/*/*/chromium/bin,lighthouse@*/*/lighthouse/{core,dist/report,*/assets,shared,third-party},node_modules/{ajv*,axe-core,csp_evaluator,http-link-*,image-ssim,jpeg-js,js-library-*,robots-*,speedline-core}}/**"
+    },
     "api/probe.ts": {
       "maxDuration": 300,
       "includeFiles": "../../node_modules/.pnpm/{@sparticuz+chromium@*/*/*/chromium/bin,lighthouse@*/*/lighthouse/{core,dist/report,*/assets,shared,third-party},node_modules/{ajv*,axe-core,csp_evaluator,http-link-*,image-ssim,jpeg-js,js-library-*,robots-*,speedline-core}}/**"

@@ -6,7 +6,7 @@ Backend webovej aplikácie: Vercel Functions v `api/`, logika v `packages/*`.
 |---|---|---|
 | `/api/health` | GET | verzia a región |
 | `/api/static` | POST `{ repo_url, rubric }` | krok 1: stiahne repozitár, vyhodnotí statické pravidlá (`packages/analyzer`) |
-| `/api/runtime` | POST `{ repo_url, rubric }` | krok 2, zatiaľ ukážkové dáta |
+| `/api/runtime` | POST `{ repo_url, rubric }` | krok 2: otvorí web v Chromiu, screenshoty, axe, konzola, Lighthouse (`packages/runtime`) |
 | `/api/ai` | POST `{ ai, rubric, static, runtime }` | krok 3, zatiaľ ukážkové dáta |
 | `/api/probe` | GET | prototyp etapy 1, na produkcii vypnutý |
 
@@ -32,7 +32,7 @@ pnpm install
 pnpm --filter @ooko/api dev          # http://localhost:3000/api/health
 ```
 
-`/api/probe` potrebuje prehliadač: `BROWSER_CHANNEL=msedge` (alebo `chrome`),
+`/api/runtime` a `/api/probe` potrebujú prehliadač: `BROWSER_CHANNEL=msedge` (alebo `chrome`),
 `CHROMIUM_PATH=...`, alebo `pnpm --filter @ooko/runtime exec playwright-core install chromium`.
 Samotný prototyp bez servera: `pnpm --filter @ooko/runtime probe`.
 
@@ -100,3 +100,22 @@ Odkaz `/tree/vetva/priecinok` analyzuje iba priečinok, vetva s lomkou v názve 
 
 Ukážkový web, ktorý spĺňa celú rubriku `webove-sidlo.yaml`, je v
 `packages/analyzer/test/fixtures/webove-sidlo/`.
+
+## Krok 2: runtime analýza
+
+`packages/runtime` stiahne repozitár rovnako ako krok 1, naservíruje ho na `127.0.0.1` vo vnútri
+funkcie a otvorí ho v Chromiu:
+
+- **Screenshoty** úvodnej stránky (`index.html`, inak stránka najbližšie ku koreňu) v šírkach
+  375, 768 a 1280 px, JPEG najviac 2400 px na výšku a ~350 kB, aby sa zmestili do kroku 3
+  (limit 4,5 MB na telo požiadavky).
+- **axe-core** a **chyby v konzole** na najviac 10 stránkach. Porušenia majú slovenskú hlášku
+  (`src/axe_sk.ts`, najčastejšie pravidlá) a riadok v zdrojáku, ak sa prvok dá nájsť podľa
+  selektora. Prvky vo vnorených rámoch (PDF, YouTube) sa ignorujú.
+- **Lighthouse** iba na úvodnej stránke. Keď nedobehne, `lighthouse` je `null` a pravidlá
+  `lighthouse.*` majú `skipped: true`.
+
+Zacyklený skript študenta nezasekne krok: každá operácia so stránkou má timeout 20 s a po 120 s
+sa ďalšie stránky už nekontrolujú. Lokálne (Edge) trvá krok na webe projektu so 4 stránkami
+~17 s. Integračný test so skutočným prehliadačom beží iba s `BROWSER_CHANNEL` alebo
+`CHROMIUM_PATH` (v CI `chrome`).

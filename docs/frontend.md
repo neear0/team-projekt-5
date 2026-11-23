@@ -1,7 +1,7 @@
 # UI webovej aplikácie: čo je pripravené
 
-Backend je hotový tak, aby sa UI dalo robiť hneď. Tvar dát sa už nemení, aj keď kroky 2 a 3
-zatiaľ vracajú ukážkové hodnoty (pozri [Čo ešte nie je hotové](#čo-ešte-nie-je-hotové)).
+Backend je hotový tak, aby sa UI dalo robiť hneď. Tvar dát sa už nemení, aj keď krok 3
+zatiaľ nevolá AI (pozri [Čo ešte nie je hotové](#čo-ešte-nie-je-hotové)).
 
 ## Čo budeš používať
 
@@ -128,8 +128,13 @@ Typy sú v `packages/contracts/src/`, presný tvar vidno v `docs/examples/`.
 Pravidlo so `skipped: true` sa nedalo overiť (napr. nedostupný W3C validátor). Nie je to chyba
 študenta, zobraz ho inak ako neúspech.
 
-**Screenshoty** (`analysis.runtime.screenshots`): `width` (napr. 375, 768, 1280) a obrázok,
-`<img src={screenshot_src(s)}>`.
+**Screenshoty** (`analysis.runtime.screenshots`): úvodná stránka v šírkach 375, 768 a 1280 px
+(najviac 2400 px na výšku), `<img src={screenshot_src(s)}>`.
+
+**Nálezy z prehliadača** (krok 2): `tool: 'axe'` (prístupnosť, hláška po slovensky aj
+s ukážkou prvku a riadkom, ak sa prvok dá nájsť v zdrojáku), `tool: 'chromium'` (chyby
+v konzole, nenačítané stránky) a `tool: 'lighthouse'`. axe a konzola sa kontrolujú najviac
+na 10 stránkach, Lighthouse iba na úvodnej.
 
 **Zdrojáky** (`analysis.static.files`): `path` a `content`, napr. na zobrazenie kódu
 so zvýraznenými riadkami z nálezov.
@@ -180,8 +185,6 @@ Pregenerovanie zo skutočného API: `pnpm --filter @ooko/api examples`.
 
 ## Čo ešte nie je hotové
 
-- **Krok 2** vracia pevné skóre Lighthouse a žiadne screenshoty. Prehliadač na serveri už
-  funguje, zapojí sa do endpointu.
 - **Krok 3** nevolá AI. Body za pravidlá počíta naozaj, kritériá iba pre AI dostanú 0 bodov.
 - **Nasadenie UI** zatiaľ nie je rozhodnuté. Najjednoduchšie je dať UI do toho istého Vercel
   projektu ako API (jedna adresa, netreba CORS). Ak bude UI inde, treba na API pridať CORS.

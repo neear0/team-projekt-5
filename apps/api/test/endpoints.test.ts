@@ -2,8 +2,10 @@ import {
   AiResponse,
   ErrorBody,
   HealthResponse,
+  rule_step,
   RuntimeResponse,
   StaticResponse,
+  type Rubric,
 } from '@ooko/contracts';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { make_tar_gz } from '../../../packages/analyzer/test/tar.ts';
@@ -11,6 +13,29 @@ import * as ai from '../api/ai.ts';
 import * as health from '../api/health.ts';
 import * as runtime from '../api/runtime.ts';
 import * as static_step from '../api/static.ts';
+
+// Prehliadač v testoch endpointov nespúšťame, krok 2 so skutočným Chromiom testuje @ooko/runtime.
+const analyze_runtime = vi.hoisted(() =>
+  vi.fn((files: ReadonlyMap<string, Uint8Array>, rubric: Rubric): Promise<RuntimeResponse> =>
+    Promise.resolve({
+      screenshots: [],
+      lighthouse: { performance: 90, accessibility: 100, best_practices: 100, seo: 90 },
+      findings: [],
+      rule_results: rubric.criteria.flatMap((criterion) =>
+        criterion.rules
+          .filter((rule) => rule_step(rule) === 'runtime')
+          .map((rule) => ({
+            criterion_id: criterion.id,
+            rule,
+            passed: files.has('index.html'),
+            message: '',
+            findings: [],
+          })),
+      ),
+    }),
+  ),
+);
+vi.mock('@ooko/runtime', () => ({ analyze_runtime }));
 
 const repo_url = 'https://github.com/student/web';
 const missing_repo_url = 'https://github.com/student/neexistuje';
@@ -89,8 +114,19 @@ describe('API', () => {
     expect(body.rule_results).toMatchObject([{ criterion_id: 'html', passed: true }]);
   });
 
-  it('static vráti 404, ak repozitár neexistuje', async () => {
-    const res = await static_step.POST(post({ repo_url: missing_repo_url, rubric }));
+  it('runtime stiahne repozitár a pošle ho do prehliadača', async () => {
+    const res = await runtime.POST(post({ repo_url, rubric }));
+    expect(res.status).toBe(200);
+    const body = RuntimeResponse.parse(await res.json());
+    expect([...(analyze_runtime.mock.lastCall?.[0].keys() ?? [])]).toEqual(['index.html']);
+    expect(body.rule_results).toMatchObject([{ criterion_id: 'pristupnost', passed: true }]);
+  });
+
+  it.each([
+    ['static', static_step.POST],
+    ['runtime', runtime.POST],
+  ])('%s vráti 404, ak repozitár neexistuje', async (_, handler) => {
+    const res = await handler(post({ repo_url: missing_repo_url, rubric }));
     expect(res.status).toBe(404);
     expect(ErrorBody.parse(await res.json()).error.code).toBe('not_found');
   });

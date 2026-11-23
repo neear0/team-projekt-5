@@ -23,4 +23,7 @@ jobs:
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test
+        env:
+          # Integračný test kroku 2 so skutočným prehliadačom (Chrome je na runneri predinštalovaný).
+          BROWSER_CHANNEL: chrome
       - run: pnpm build

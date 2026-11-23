@@ -189,20 +189,20 @@
     }
   ],
   "lighthouse": {
-    "performance": 90,
-    "accessibility": 80,
+    "performance": 100,
+    "accessibility": 100,
     "best_practices": 100,
-    "seo": 90
+    "seo": 100
   },
   "findings": [
     {
-      "tool": "ukazka",
-      "rule_id": "image-alt",
-      "severity": "error",
-      "message": "Obrázok nemá alternatívny text.",
-      "file": "index.html",
-      "line": 12,
-      "hint": "Pridaj k <img> atribút alt s popisom obrázka."
+      "tool": "axe",
+      "rule_id": "image-redundant-alt",
+      "severity": "warning",
+      "message": "Alternatívny text obrázka opakuje text, ktorý je hneď vedľa. Prvok: <img src=\"images/foto.png\" alt=\"Rysy\" class=\"nahlad\">",
+      "file": "tatry.html",
+      "line": 30,
+      "hint": "Ak text vedľa obrázok už popisuje, daj obrázku alt=\"\". Viac: https://dequeuniversity.com/rules/axe/4.14/image-redundant-alt?application=playwright"
     }
   ]
 }

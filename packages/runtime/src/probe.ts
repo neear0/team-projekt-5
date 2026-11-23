@@ -4,6 +4,7 @@ import { freemem, totalmem } from 'node:os';
 import { AxeBuilder } from '@axe-core/playwright';
 import type { LighthouseScores } from '@ooko/contracts';
 import lighthouse from 'lighthouse';
+import { SCREENSHOT_WIDTHS } from './analyze.ts';
 import { launch_browser } from './browser.ts';
 import { serve_files } from './static_server.ts';
 
@@ -33,7 +34,6 @@ const TEST_CSS = `body { font-family: system-ui, sans-serif; margin: 0 auto; max
 
 const TEST_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100"><rect width="200" height="100" fill="#89a"/></svg>`;
 
-export const SCREENSHOT_WIDTHS = [375, 768, 1440] as const;
 const MAX_SCREENSHOT_HEIGHT = 3000;
 
 export interface ProbeResult {

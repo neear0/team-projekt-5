@@ -466,20 +466,134 @@
     }
   ],
   "lighthouse": {
-    "performance": 90,
-    "accessibility": 80,
-    "best_practices": 100,
+    "performance": 100,
+    "accessibility": 96,
+    "best_practices": 96,
     "seo": 90
   },
   "findings": [
     {
-      "tool": "ukazka",
-      "rule_id": "image-alt",
-      "severity": "error",
-      "message": "Obrázok nemá alternatívny text.",
+      "tool": "axe",
+      "rule_id": "heading-order",
+      "severity": "warning",
+      "message": "Úrovne nadpisov preskakujú (napr. po <h1> hneď <h3>). Prvok: <h4>Kontrola kódu</h4>",
       "file": "index.html",
-      "line": 12,
-      "hint": "Pridaj k <img> atribút alt s popisom obrázka."
+      "line": 36,
+      "hint": "Nadpisy používaj postupne: h1, potom h2, potom h3. Veľkosť nastav cez CSS. Viac: https://dequeuniversity.com/rules/axe/4.14/heading-order?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "landmark-unique",
+      "severity": "warning",
+      "message": "Viac oblastí rovnakého druhu sa nedá od seba odlíšiť. Prvok: <nav> <a href=\"index.html\" class=\"active\">Domov</a> <a href=\"vyvoj.html\">Vývoj</a> <a href=\"dokumenty.html\">Dokumenty</a…",
+      "file": "index.html",
+      "line": 18,
+      "hint": "Daj každej z nich iný aria-label, napr. dvom <nav>. Viac: https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "page-has-heading-one",
+      "severity": "warning",
+      "message": "Stránka nemá hlavný nadpis <h1>. Prvok: <html lang=\"sk\">",
+      "file": "index.html",
+      "line": 2,
+      "hint": "Pridaj na stránku jeden <h1> s názvom stránky. Viac: https://dequeuniversity.com/rules/axe/4.14/page-has-heading-one?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "landmark-unique",
+      "severity": "warning",
+      "message": "Viac oblastí rovnakého druhu sa nedá od seba odlíšiť. Prvok: <nav> <a href=\"index.html\">Domov</a> <a href=\"vyvoj.html\">Vývoj</a> <a href=\"dokumenty.html\" class=\"active\">Dokumenty</a…",
+      "file": "dokumenty.html",
+      "line": 18,
+      "hint": "Daj každej z nich iný aria-label, napr. dvom <nav>. Viac: https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "page-has-heading-one",
+      "severity": "warning",
+      "message": "Stránka nemá hlavný nadpis <h1>. Prvok: <html lang=\"sk\">",
+      "file": "dokumenty.html",
+      "line": 2,
+      "hint": "Pridaj na stránku jeden <h1> s názvom stránky. Viac: https://dequeuniversity.com/rules/axe/4.14/page-has-heading-one?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "color-contrast",
+      "severity": "error",
+      "message": "Text má príliš slabý kontrast s pozadím. Prvok: <div class=\"avatar-placeholder avatar-2\" aria-hidden=\"true\">MH</div>",
+      "file": "tim.html",
+      "line": 45,
+      "hint": "Stmav text alebo zosvetli pozadie. Bežný text potrebuje kontrast aspoň 4,5 : 1. Viac: https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "landmark-unique",
+      "severity": "warning",
+      "message": "Viac oblastí rovnakého druhu sa nedá od seba odlíšiť. Prvok: <nav> <a href=\"index.html\">Domov</a> <a href=\"vyvoj.html\">Vývoj</a> <a href=\"dokumenty.html\">Dokumenty</a> <a href=\"tim.…",
+      "file": "tim.html",
+      "line": 18,
+      "hint": "Daj každej z nich iný aria-label, napr. dvom <nav>. Viac: https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "page-has-heading-one",
+      "severity": "warning",
+      "message": "Stránka nemá hlavný nadpis <h1>. Prvok: <html lang=\"sk\">",
+      "file": "tim.html",
+      "line": 2,
+      "hint": "Pridaj na stránku jeden <h1> s názvom stránky. Viac: https://dequeuniversity.com/rules/axe/4.14/page-has-heading-one?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "color-contrast",
+      "severity": "error",
+      "message": "Text má príliš slabý kontrast s pozadím. Prvok: <span class=\"trello-termin hotovo\">26. 10. 2026</span>",
+      "file": "vyvoj.html",
+      "hint": "Stmav text alebo zosvetli pozadie. Bežný text potrebuje kontrast aspoň 4,5 : 1. Viac: https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "color-contrast",
+      "severity": "error",
+      "message": "Text má príliš slabý kontrast s pozadím. Prvok: <span class=\"trello-termin hotovo\">28. 10. 2026</span>",
+      "file": "vyvoj.html",
+      "hint": "Stmav text alebo zosvetli pozadie. Bežný text potrebuje kontrast aspoň 4,5 : 1. Viac: https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "landmark-unique",
+      "severity": "warning",
+      "message": "Viac oblastí rovnakého druhu sa nedá od seba odlíšiť. Prvok: <nav> <a href=\"index.html\">Domov</a> <a href=\"vyvoj.html\" class=\"active\">Vývoj</a> <a href=\"dokumenty.html\">Dokumenty</a…",
+      "file": "vyvoj.html",
+      "line": 18,
+      "hint": "Daj každej z nich iný aria-label, napr. dvom <nav>. Viac: https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "page-has-heading-one",
+      "severity": "warning",
+      "message": "Stránka nemá hlavný nadpis <h1>. Prvok: <html lang=\"sk\">",
+      "file": "vyvoj.html",
+      "line": 2,
+      "hint": "Pridaj na stránku jeden <h1> s názvom stránky. Viac: https://dequeuniversity.com/rules/axe/4.14/page-has-heading-one?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "scrollable-region-focusable",
+      "severity": "error",
+      "message": "Posúvateľná oblasť sa nedá ovládať klávesnicou. Prvok: <div id=\"trello-board\" class=\"trello-board\">",
+      "file": "vyvoj.html",
+      "line": 36,
+      "hint": "Pridaj jej tabindex=\"0\", alebo do nej daj odkaz či tlačidlo. Viac: https://dequeuniversity.com/rules/axe/4.14/scrollable-region-focusable?application=playwright"
+    },
+    {
+      "tool": "axe",
+      "rule_id": "scrollable-region-focusable",
+      "severity": "error",
+      "message": "Posúvateľná oblasť sa nedá ovládať klávesnicou. Prvok: <ul class=\"trello-zoznam\">",
+      "file": "vyvoj.html",
+      "hint": "Pridaj jej tabindex=\"0\", alebo do nej daj odkaz či tlačidlo. Viac: https://dequeuniversity.com/rules/axe/4.14/scrollable-region-focusable?application=playwright"
     },
     {
       "tool": "ooko",
