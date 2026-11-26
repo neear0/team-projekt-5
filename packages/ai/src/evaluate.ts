@@ -1,14 +1,19 @@
 // Krok 3: AI hodnotenie kritérií s pokynom pre AI a celkové zhodnotenie.
 import type { AiRequest, AiResponse, Finding } from '@ooko/contracts';
 import { generateText, NoObjectGeneratedError, Output, type LanguageModel } from 'ai';
-import { should_try_next_model, to_ai_error } from './errors.ts';
+import { AiError, should_try_next_model, to_ai_error } from './errors.ts';
 import { build_prompt, INSTRUCTIONS } from './prompt.ts';
 import { create_models, type NamedModel } from './providers.ts';
 import { AiOutput } from './schema.ts';
 import { score_criteria, type AiCriterionScore } from './score.ts';
 
 /** Funkcia má 300 s, zvyšok je rezerva na odpoveď. */
-const TIMEOUT_MS = 240_000;
+const TIMEOUT_MS = 270_000;
+/**
+ * Najdlhšie čakanie na jeden model. Bežne odpovie do 30 s, preťažený model však niekedy visí
+ * bez odpovede a záložný by sa inak nedostal na rad.
+ */
+const MODEL_TIMEOUT_MS = 90_000;
 const MAX_FINDINGS_PER_CRITERION = 15;
 const MAX_TEXT = 1_000;
 
@@ -16,7 +21,13 @@ export interface EvaluateOptions {
   /** Namiesto modelov z `req.ai`, napr. v testoch. Pri zozname sa ďalší skúša ako záložný. */
   model?: LanguageModel | LanguageModel[];
   timeout_ms?: number;
+  model_timeout_ms?: number;
 }
+
+/** Vypršal čas pre jeden model, ďalší model to môže stihnúť. */
+class ModelTimeout extends Error {}
+
+const TIMEOUT_MESSAGE = 'Model neodpovedal včas. Skús to znova alebo zvoľ rýchlejší model.';
 
 function named(model: LanguageModel): NamedModel {
   return { name: typeof model === 'string' ? model : model.modelId, model };
@@ -93,6 +104,7 @@ export async function evaluate(req: AiRequest, options: EvaluateOptions = {}): P
 
   /** Jeden model: druhý pokus, ak vráti neplatný tvar alebo niektoré kritérium vynechá. */
   const run = async (model: LanguageModel): Promise<ReturnType<typeof to_result>> => {
+    const model_signal = AbortSignal.timeout(options.model_timeout_ms ?? MODEL_TIMEOUT_MS);
     let result: ReturnType<typeof to_result> | null = null;
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
@@ -101,11 +113,12 @@ export async function evaluate(req: AiRequest, options: EvaluateOptions = {}): P
           instructions: INSTRUCTIONS,
           messages: [{ role: 'user', content }],
           output: Output.object({ schema: AiOutput }),
-          abortSignal: signal,
+          abortSignal: AbortSignal.any([signal, model_signal]),
         });
         result = to_result(output, ai_ids, file_lines);
         if ([...ai_ids].every((id) => result?.scores.has(id))) break;
       } catch (err) {
+        if (model_signal.aborted && !signal.aborted) throw new ModelTimeout('Model neodpovedal.');
         if (!NoObjectGeneratedError.isInstance(err) || attempt === 1) throw err;
       }
     }
@@ -119,7 +132,8 @@ export async function evaluate(req: AiRequest, options: EvaluateOptions = {}): P
     const candidates = options.model
       ? (Array.isArray(options.model) ? options.model : [options.model]).map(named)
       : create_models(req.ai as Exclude<AiRequest['ai'], { provider: 'none' }>);
-    // Preťažený model (503) alebo minutý limit (429): skúsi sa ďalší zo zoznamu.
+    // Preťažený model (503), minutý limit (429) alebo model, ktorý neodpovedá:
+    // skúsi sa ďalší zo zoznamu.
     for (let i = 0; ; i++) {
       const candidate = candidates[i];
       if (!candidate) throw new Error('Žiadny model.');
@@ -128,8 +142,9 @@ export async function evaluate(req: AiRequest, options: EvaluateOptions = {}): P
         used = candidate.name;
         break;
       } catch (err) {
-        if (i + 1 < candidates.length && should_try_next_model(err)) continue;
-        throw err;
+        const next = err instanceof ModelTimeout || should_try_next_model(err);
+        if (i + 1 < candidates.length && next) continue;
+        throw err instanceof ModelTimeout ? new AiError('upstream_error', TIMEOUT_MESSAGE) : err;
       }
     }
   } catch (err) {

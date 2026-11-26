@@ -279,3 +279,36 @@ describe('záložný model', () => {
     });
   });
 });
+
+/** Model, ktorý neodpovie, kým ho nezrušia. */
+function hanging_model() {
+  return new MockLanguageModelV4({
+    doGenerate: (options) =>
+      new Promise((_, reject) => {
+        options.abortSignal?.addEventListener('abort', () => {
+          reject(new Error('aborted'));
+        });
+      }),
+  });
+}
+
+describe('model, ktorý neodpovedá', () => {
+  it('po čase pre jeden model skúsi ďalší', async () => {
+    const hanging = hanging_model();
+    const result = await evaluate(request(), {
+      model: [hanging, mock_model(good)],
+      model_timeout_ms: 50,
+    });
+    expect(result.summary).toBe('Pekná práca.');
+  });
+
+  it('keď neodpovedá ani posledný, vráti chybu o čase', async () => {
+    const hanging = hanging_model();
+    await expect(
+      evaluate(request(), { model: [hanging], model_timeout_ms: 50 }),
+    ).rejects.toMatchObject({
+      code: 'upstream_error',
+      message: expect.stringContaining('včas') as string,
+    });
+  });
+});
