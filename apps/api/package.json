@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "node --conditions=ooko-source --watch scripts/dev.ts",
-    "build": "pnpm --filter \"@ooko/api^...\" run build",
+    "build": "pnpm --filter \"@ooko/api^...\" run build && pnpm --filter @ooko/web run build && node scripts/static.ts",
     "typecheck": "tsc --noEmit",
     "examples": "node --conditions=ooko-source scripts/examples.ts"
   },

@@ -8,3 +8,4 @@ dist/
 coverage/
 .svelte-kit/
 apps/web/build/
+apps/api/static/

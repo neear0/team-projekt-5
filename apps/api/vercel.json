@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "buildCommand": "pnpm run build",
-  "outputDirectory": "public",
+  "outputDirectory": "static",
   "regions": ["fra1"],
   "functions": {
     "api/ai.ts": {

@@ -11,7 +11,7 @@
     "strict": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    // Vo workspace sa balíky čítajú zo zdrojákov (podmienka "source"), pozri tsconfig.base.json.
-    "customConditions": ["source"]
+    // Vo workspace sa balíky čítajú zo zdrojákov (podmienka "ooko-source"), pozri tsconfig.base.json.
+    "customConditions": ["ooko-source"]
   }
 }

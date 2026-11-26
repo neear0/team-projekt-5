@@ -205,6 +205,7 @@ Pregenerovanie zo skutočného API: `pnpm --filter @ooko/api examples`.
 
 - **Krok 3 so skutočným modelom** je otestovaný iba s mockom. Ukážkové dáta s AI pribudnú po
   prvom behu s kľúčom.
-- **Nasadenie UI** zatiaľ nie je rozhodnuté. Najjednoduchšie je dať UI do toho istého Vercel
-  projektu ako API (jedna adresa, netreba CORS). Ak bude UI inde, treba na API pridať CORS.
+- **Nasadenie UI** je vyriešené: `adapter-static` a build v `apps/api` ho pribalí do toho
+  istého Vercel projektu ako API (vetva `deployment`), za prihlásenie heslom. Stránky preto
+  nesmú potrebovať server (žiadne `+page.server.ts`), všetko ide cez `/api`.
 - **Lokálny model (Ollama)** z README zatiaľ nie je.

@@ -76,11 +76,15 @@ Nový projekt z GitHub repozitára:
 - **Include files outside the root directory:** zapnuté (predvolene áno)
 - **Node.js:** 24.x (z `engines` v `package.json`)
 
-Build (`pnpm run build`) zostaví balíky z `packages/` do `dist/`, funkcie ich importujú odtiaľ.
+Build (`pnpm run build`) zostaví balíky z `packages/` do `dist/` (funkcie ich importujú
+odtiaľ), potom UI z `apps/web` ako statické stránky a `scripts/static.ts` ich spolu s `public/`
+(prihlásenie) skopíruje do `static/`, ktorý Vercel servíruje. UI a API sú tak na jednej adrese
+za tým istým prihlásením.
 
-Projekt na Verceli je `ooko-api` (tím `bc-tp-e`). Každá vetva dostane preview nasadenie,
-`02-backend` má stálu adresu `ooko-api-git-02-backend-bc-tp-e.vercel.app`. Preview je za
-prihlásením Vercelu, z príkazového riadka cez `vercel curl /api/health --deployment <url>`.
+Projekt na Verceli je `ooko-api` (tím `bc-tp-e`). **Produkčná vetva je `deployment`**: do nej sa
+zlučujú hotové vetvy (`02-backend`, `03-frontend` …) a každý push do nej nasadí produkciu.
+Ostatné vetvy dostanú preview nasadenie, ktoré je navyše za prihlásením Vercelu, z príkazového
+riadka cez `vercel curl /api/health --deployment <url>`.
 Vetva `01-web-setup` (web projektu) sa nebuilduje (Ignored Build Step).
 
 ### Prečo je `includeFiles` v `vercel.json` taký dlhý

@@ -1,19 +1,47 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { ApiError, create_client, type Analysis } from '@ooko/client';
+  import type { AiConfig } from '@ooko/contracts';
   import { rubrics } from '$lib/rubrics.ts';
   import ReportView from '$lib/report/ReportView.svelte';
 
   const client = create_client();
+
+  const STEP_LABELS = {
+    static: 'Kontrolujem HTML, CSS a JS…',
+    runtime: 'Otváram web v prehliadači (screenshoty, prístupnosť, Lighthouse)…',
+    ai: 'AI hodnotí kritériá…',
+  } as const;
 
   let repo_url = $state('');
   let rubric_id = $state(rubrics[0]?.id ?? '');
   let running = $state(false);
   let analysis = $state<Analysis | null>(null);
   let error_message = $state<string | null>(null);
+  let progress = $state<string | null>(null);
+  /** Server má vlastný kľúč pre AI (GEMINI_API_KEY), inak sa hodnotí bez AI. */
+  let server_ai = $state(false);
 
   let controller: AbortController | null = null;
 
   const selected_rubric = $derived(rubrics.find((r) => r.id === rubric_id) ?? null);
+  const ai_config = $derived<AiConfig>(server_ai ? { provider: 'server' } : { provider: 'none' });
+
+  /** Prihlásenie vypršalo: späť na prihlásenie a potom sem. */
+  function go_to_login() {
+    location.href = `/login.html?next=${encodeURIComponent(location.pathname)}`;
+  }
+
+  onMount(() => {
+    client
+      .health()
+      .then((health) => {
+        server_ai = health.server_ai;
+      })
+      .catch(() => {
+        server_ai = false;
+      });
+  });
 
   async function on_submit(event: SubmitEvent) {
     event.preventDefault();
@@ -25,16 +53,24 @@
     controller = new AbortController();
 
     try {
-      // AI vrstva pribudne neskôr, zatiaľ sa počítajú iba body za pravidlá.
       analysis = await client.analyze(
-        { repo_url, rubric: selected_rubric, ai: { provider: 'none' } },
-        { signal: controller.signal },
+        { repo_url, rubric: selected_rubric, ai: ai_config },
+        {
+          signal: controller.signal,
+          on_progress: (step, state) => {
+            if (state === 'running') progress = STEP_LABELS[step];
+          },
+        },
       );
     } catch (err) {
-      // Rozlíšenie podľa err.code pribudne v ďalšom kroku, zatiaľ iba holá hláška.
+      if (err instanceof ApiError && err.code === 'unauthorized') {
+        go_to_login();
+        return;
+      }
       error_message = err instanceof ApiError ? err.message : 'Neočakávaná chyba. Skús to znova.';
     } finally {
       running = false;
+      progress = null;
       controller = null;
     }
   }
@@ -71,6 +107,12 @@
       </select>
     </label>
 
+    <p class="hint">
+      {server_ai
+        ? 'AI hodnotenie je zapnuté (model servera).'
+        : 'AI hodnotenie je vypnuté, body sú iba za pravidlá overené nástrojmi.'}
+    </p>
+
     <div class="actions">
       <button type="submit" disabled={running}>Analyzovať</button>
       {#if running}
@@ -80,7 +122,10 @@
   </form>
 </section>
 
-<!-- Priebeh krokov počas analýzy pribudne v ďalšom kroku. -->
+{#if progress}
+  <p class="banner info" aria-live="polite">{progress}</p>
+{/if}
+
 {#if error_message}
   <p class="banner error">{error_message}</p>
 {/if}
@@ -161,5 +206,17 @@
     background: var(--color-error-bg);
     border-color: var(--color-error-border);
     color: var(--color-error-text);
+  }
+
+  .banner.info {
+    background: var(--color-info-bg);
+    border-color: var(--color-info-border);
+    color: var(--color-info-text);
+  }
+
+  .hint {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
   }
 </style>
