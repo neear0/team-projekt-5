@@ -1,5 +1,13 @@
 [
   {
+    "sha": "b50f2a6",
+    "sprava": "Pridaná zápisnica č. 4",
+    "autor": "neear0",
+    "datum": "2026-11-26T03:47:00Z",
+    "url": "https://github.com/neear0/team-projekt-5/commit/b50f2a6d8afc1c1a7aac81710f9c3f657a73824a",
+    "avatar": "https://avatars.githubusercontent.com/u/49129022?v=4"
+  },
+  {
     "sha": "3cb443e",
     "sprava": "Pridaná zápisnica č. 3",
     "autor": "neear0",
@@ -229,14 +237,6 @@
     "autor": "MarianHolly",
     "datum": "2026-10-26T20:39:31Z",
     "url": "https://github.com/neear0/team-projekt-5/commit/28675ff738256d059293615ab5c5dc92e0d9f03f",
-    "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
-  },
-  {
-    "sha": "c92b8d5",
-    "sprava": "Update class",
-    "autor": "MarianHolly",
-    "datum": "2026-10-26T20:39:04Z",
-    "url": "https://github.com/neear0/team-projekt-5/commit/c92b8d5016835765ae3b857cb9bd4d7e1c686500",
     "avatar": "https://avatars.githubusercontent.com/u/97178172?v=4"
   }
 ]
