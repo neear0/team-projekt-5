@@ -1,9 +1,9 @@
 // Krok 3: AI hodnotenie kritérií s pokynom pre AI a celkové zhodnotenie.
 import type { AiRequest, AiResponse, Finding } from '@ooko/contracts';
 import { generateText, NoObjectGeneratedError, Output, type LanguageModel } from 'ai';
-import { to_ai_error } from './errors.ts';
+import { should_try_next_model, to_ai_error } from './errors.ts';
 import { build_prompt, INSTRUCTIONS } from './prompt.ts';
-import { create_model, model_name } from './providers.ts';
+import { create_models, type NamedModel } from './providers.ts';
 import { AiOutput } from './schema.ts';
 import { score_criteria, type AiCriterionScore } from './score.ts';
 
@@ -13,9 +13,13 @@ const MAX_FINDINGS_PER_CRITERION = 15;
 const MAX_TEXT = 1_000;
 
 export interface EvaluateOptions {
-  /** Namiesto modelu z `req.ai`, napr. v testoch. */
-  model?: LanguageModel;
+  /** Namiesto modelov z `req.ai`, napr. v testoch. Pri zozname sa ďalší skúša ako záložný. */
+  model?: LanguageModel | LanguageModel[];
   timeout_ms?: number;
+}
+
+function named(model: LanguageModel): NamedModel {
+  return { name: typeof model === 'string' ? model : model.modelId, model };
 }
 
 const text = (s: string) => (s.length > MAX_TEXT ? `${s.slice(0, MAX_TEXT)}…` : s).trim();
@@ -85,12 +89,11 @@ export async function evaluate(req: AiRequest, options: EvaluateOptions = {}): P
   const file_lines = new Map(req.static.files.map((f) => [f.path, f.content.split('\n').length]));
   const signal = AbortSignal.timeout(options.timeout_ms ?? TIMEOUT_MS);
 
-  let result: ReturnType<typeof to_result> | null = null;
-  try {
-    const model =
-      options.model ?? create_model(req.ai as Exclude<AiRequest['ai'], { provider: 'none' }>);
-    const content = build_prompt(req);
-    // Druhý pokus, ak model vráti neplatný tvar alebo niektoré kritérium vynechá.
+  const content = build_prompt(req);
+
+  /** Jeden model: druhý pokus, ak vráti neplatný tvar alebo niektoré kritérium vynechá. */
+  const run = async (model: LanguageModel): Promise<ReturnType<typeof to_result>> => {
+    let result: ReturnType<typeof to_result> | null = null;
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const { output } = await generateText({
@@ -106,18 +109,37 @@ export async function evaluate(req: AiRequest, options: EvaluateOptions = {}): P
         if (!NoObjectGeneratedError.isInstance(err) || attempt === 1) throw err;
       }
     }
+    if (!result) throw new Error('Model nevrátil výsledok.');
+    return result;
+  };
+
+  let result: ReturnType<typeof to_result>;
+  let used: string;
+  try {
+    const candidates = options.model
+      ? (Array.isArray(options.model) ? options.model : [options.model]).map(named)
+      : create_models(req.ai as Exclude<AiRequest['ai'], { provider: 'none' }>);
+    // Preťažený model (503) alebo minutý limit (429): skúsi sa ďalší zo zoznamu.
+    for (let i = 0; ; i++) {
+      const candidate = candidates[i];
+      if (!candidate) throw new Error('Žiadny model.');
+      try {
+        result = await run(candidate.model);
+        used = candidate.name;
+        break;
+      } catch (err) {
+        if (i + 1 < candidates.length && should_try_next_model(err)) continue;
+        throw err;
+      }
+    }
   } catch (err) {
     throw to_ai_error(err);
   }
 
   return {
-    summary: result?.summary ?? '',
-    model: options.model
-      ? typeof options.model === 'string'
-        ? options.model
-        : options.model.modelId
-      : model_name(req.ai),
-    criteria: score_criteria(req.rubric, rule_results, result?.scores ?? new Map()),
-    findings: result?.findings ?? [],
+    summary: result.summary,
+    model: used,
+    criteria: score_criteria(req.rubric, rule_results, result.scores),
+    findings: result.findings,
   };
 }

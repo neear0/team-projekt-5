@@ -82,3 +82,14 @@ export function describe_cause(err: AiError): { cause?: string; status?: number 
       cause.statusCode !== undefined && { status: cause.statusCode }),
   };
 }
+
+/**
+ * Chyba, pri ktorej má zmysel skúsiť iný model: preťažený model (503 a iné 5xx) alebo limit
+ * (429, iný model má na free tieri vlastný limit). Zlý kľúč ani zlý prompt iný model nezachráni.
+ */
+export function should_try_next_model(err: unknown): boolean {
+  const cause = RetryError.isInstance(err) ? err.lastError : err;
+  if (!APICallError.isInstance(cause)) return false;
+  const status = cause.statusCode;
+  return status === 429 || (status !== undefined && status >= 500);
+}

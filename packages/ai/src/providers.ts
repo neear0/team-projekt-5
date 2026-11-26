@@ -8,22 +8,21 @@ import { AiError } from './errors.ts';
 
 type ProviderConfig = Exclude<AiConfig, { provider: 'none' }>;
 
-/** Kľúč a model servera z premenných prostredia (Vercel → Settings → Environment Variables). */
-function server_ai(): { api_key: string; model: string } | null {
+/**
+ * Kľúč a modely servera z premenných prostredia (Vercel → Settings → Environment Variables).
+ * `GEMINI_MODEL` môže byť zoznam oddelený čiarkami: prvý model a záložné.
+ */
+function server_ai(): { api_key: string; models: string[] } | null {
   const api_key = process.env.GEMINI_API_KEY;
-  const model = process.env.GEMINI_MODEL;
-  return api_key && model ? { api_key, model } : null;
+  const models = (process.env.GEMINI_MODEL ?? '')
+    .split(',')
+    .map((m) => m.trim())
+    .filter(Boolean);
+  return api_key && models.length > 0 ? { api_key, models } : null;
 }
 
 export function server_ai_configured(): boolean {
   return server_ai() !== null;
-}
-
-/** Názov modelu pre report. */
-export function model_name(config: AiConfig): string | null {
-  if (config.provider === 'none') return null;
-  if (config.provider === 'server') return server_ai()?.model ?? null;
-  return config.model;
 }
 
 /**
@@ -61,26 +60,47 @@ export function check_base_url(base_url: string): void {
   }
 }
 
-/** Model podľa nastavení používateľa. Kľúč ide iba do tejto inštancie, nikam sa neukladá. */
-export function create_model(config: ProviderConfig): LanguageModel {
+export interface NamedModel {
+  name: string;
+  model: LanguageModel;
+}
+
+/**
+ * Modely podľa nastavení používateľa, v poradí, v akom sa skúšajú. Server ich môže mať viac
+ * (`GEMINI_MODEL=prvy,zalozny`), keď je prvý preťažený. Kľúč ide iba do týchto inštancií,
+ * nikam sa neukladá.
+ */
+export function create_models(config: ProviderConfig): NamedModel[] {
   switch (config.provider) {
     case 'google':
-      return createGoogle({ apiKey: config.api_key })(config.model);
+      return [
+        { name: config.model, model: createGoogle({ apiKey: config.api_key })(config.model) },
+      ];
     case 'server': {
       const server = server_ai();
       if (!server) throw new AiError('bad_request', 'Server nemá nastavený kľúč pre AI.');
-      return createGoogle({ apiKey: server.api_key })(server.model);
+      const google = createGoogle({ apiKey: server.api_key });
+      return server.models.map((name) => ({ name, model: google(name) }));
     }
     case 'anthropic':
-      return createAnthropic({ apiKey: config.api_key })(config.model);
+      return [
+        { name: config.model, model: createAnthropic({ apiKey: config.api_key })(config.model) },
+      ];
     case 'openai':
-      return createOpenAI({ apiKey: config.api_key })(config.model);
+      return [
+        { name: config.model, model: createOpenAI({ apiKey: config.api_key })(config.model) },
+      ];
     case 'openai-compatible':
       check_base_url(config.base_url);
-      return createOpenAICompatible({
-        name: 'vlastny',
-        baseURL: config.base_url,
-        ...(config.api_key !== undefined && { apiKey: config.api_key }),
-      })(config.model);
+      return [
+        {
+          name: config.model,
+          model: createOpenAICompatible({
+            name: 'vlastny',
+            baseURL: config.base_url,
+            ...(config.api_key !== undefined && { apiKey: config.api_key }),
+          })(config.model),
+        },
+      ];
   }
 }
