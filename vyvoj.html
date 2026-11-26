@@ -51,6 +51,108 @@
             <h3>Zápisnice zo stretnutí</h3>
 
             <details class="zapisnica">
+                <summary>Zápisnica č. 4: 26. 11. 2026</summary>
+                <div class="zapisnica-telo">
+                    <h4>Program</h4>
+                    <ol>
+                        <li>Stav úloh podľa Trella</li>
+                        <li>Čo je hotové: aplikácia, nasadenie, prihlásenie</li>
+                        <li>Výsledky testov na testovacích weboch</li>
+                        <li>Nový postup pri nasadzovaní</li>
+                        <li>Úlohy na ďalšie obdobie</li>
+                    </ol>
+
+                    <h4>Stav úloh podľa Trella</h4>
+                    <ul>
+                        <li>Úlohy z týždňov 1 až 4 sú splnené. Z týždňa 5 je hotové aj to, čo bolo naplánované až na druhú polovicu projektu: AI vrstva s ochranou pred prompt injection a zobrazenie reportu v aplikácii.</li>
+                        <li>Chýbajú nastavenia AI v aplikácii a testovanie na viacerých vzorkách.</li>
+                    </ul>
+
+                    <h4>Čo je hotové</h4>
+                    <ul>
+                        <li>Celá aplikácia beží na Verceli na adrese <a href="https://ooko-api.vercel.app">ooko-api.vercel.app</a>, prístup je chránený heslom.</li>
+                        <li><strong>Krok 1</strong> (statická analýza): validácia HTML a CSS, kontrola JavaScriptu a pravidlá rubriky, 2 až 4 sekundy.</li>
+                        <li><strong>Krok 2</strong> (prehliadač): screenshoty v troch šírkach, prístupnosť cez axe-core, chyby v konzole a Lighthouse, 13 až 27 sekúnd.</li>
+                        <li><strong>Krok 3</strong> (AI): hodnotenie kritérií, ktoré sa nedajú zmerať, model Gemini so záložnými modelmi. Pokus študenta ovplyvniť hodnotenie cez komentár v kóde AI ignoruje a označí ho v reporte.</li>
+                        <li>Aplikácia (SvelteKit) zobrazuje priebeh analýzy a report s bodmi, zhodnotením a nálezmi.</li>
+                    </ul>
+
+                    <h4>Výsledky testov</h4>
+                    <div class="tabulka-wrap">
+                        <table>
+                            <tr>
+                                <th>Web</th>
+                                <th>Body (zo 100)</th>
+                            </tr>
+                            <tr>
+                                <td>Ukážkový web bez chýb</td>
+                                <td>98,5</td>
+                            </tr>
+                            <tr>
+                                <td>Testovacia stránka <q>web-portfolio</q></td>
+                                <td>96,25</td>
+                            </tr>
+                            <tr>
+                                <td>Web projektu</td>
+                                <td>42,55</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <ul>
+                        <li>Pravidlo pre efekty obrázkov neuznalo <code>:hover</code> zapísaný cez triedu obrázka, treba ho upraviť.</li>
+                        <li>AI dáva pri opakovaní body s rozdielom do 0,5 bodu, budeme to sledovať pri porovnaní s ručným hodnotením.</li>
+                    </ul>
+
+                    <h4>Nový postup pri nasadzovaní</h4>
+                    <ul>
+                        <li>Hotová práca sa zlučuje do vetvy <code>deployment</code>, z ktorej sa aplikácia automaticky nasadí na Vercel.</li>
+                        <li>Web projektu zostáva na GitHub Pages.</li>
+                    </ul>
+
+                    <h4>Úlohy</h4>
+                    <div class="tabulka-wrap">
+                        <table>
+                            <tr>
+                                <th>Úloha</th>
+                                <th>Zodpovedá</th>
+                                <th>Termín</th>
+                            </tr>
+                            <tr>
+                                <td>Demo aplikácie a retro v polovici projektu</td>
+                                <td>celý tím</td>
+                                <td>29. 11. 2026</td>
+                            </tr>
+                            <tr>
+                                <td>Úprava pravidla pre efekty obrázkov, export reportu a hromadné hodnotenie</td>
+                                <td>Simon Škreko</td>
+                                <td>6. 12. a 13. 12. 2026</td>
+                            </tr>
+                            <tr>
+                                <td>Aplikácia: nastavenia AI, vlastná rubrika, screenshoty a odkazy na riadky v reporte</td>
+                                <td>Marián Hollý</td>
+                                <td>6. 12. 2026</td>
+                            </tr>
+                            <tr>
+                                <td>Testovacie weby so zámernými chybami, porovnanie AI s ručným hodnotením</td>
+                                <td>Ondrej Potúček</td>
+                                <td>6. 12. a 13. 12. 2026</td>
+                            </tr>
+                            <tr>
+                                <td>Web projektu: odkaz na aplikáciu, harmonogram, Dokumentácia, aktualizácia Trella</td>
+                                <td>David Kocák</td>
+                                <td>6. 12. 2026</td>
+                            </tr>
+                            <tr>
+                                <td>Finálna prezentácia (PDF)</td>
+                                <td>celý tím</td>
+                                <td>13. 12. 2026</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </details>
+
+            <details class="zapisnica">
                 <summary>Zápisnica č. 3: 4. 11. 2026</summary>
                 <div class="zapisnica-telo">
                     <h4>Program</h4>
