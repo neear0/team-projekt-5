@@ -23,7 +23,7 @@ a `/login.html`) je iba pre prihlásených. Účty nie sú, je jedno heslo pre v
 | Premenná (Vercel → Settings → Environment Variables) | Na čo |
 |---|---|
 | `APP_PASSWORD` | heslo, **povinné** na Verceli. Bez neho API vráti 503 a nepustí nikoho. |
-| `GEMINI_API_KEY`, `GEMINI_MODEL` | voliteľne kľúč a model servera pre `{ provider: 'server' }`. Používať ho môžu iba prihlásení. |
+| `GEMINI_API_KEY`, `GEMINI_MODEL` | voliteľne kľúč a model servera pre `{ provider: 'server' }`, iba pre prihlásených. `GEMINI_MODEL` môže byť zoznam, napr. `gemini-3.5-flash,gemini-2.5-flash`: pri preťažení (503) alebo limite (429) sa skúsi ďalší model. |
 
 ```bash
 vercel env add APP_PASSWORD          # pre Production aj Preview

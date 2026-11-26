@@ -245,3 +245,37 @@ describe('provider server', () => {
     });
   });
 });
+
+describe('záložný model', () => {
+  const api_error = (status: number) =>
+    new APICallError({
+      message: 'chyba',
+      url: 'https://x',
+      requestBodyValues: {},
+      statusCode: status,
+      isRetryable: false,
+    });
+
+  it('pri preťažení (503) skúsi ďalší model', async () => {
+    const result = await evaluate(request(), {
+      model: [mock_model(api_error(503)), mock_model(good)],
+    });
+    expect(result.summary).toBe('Pekná práca.');
+    expect(result.criteria[2]?.points).toBe(2);
+  });
+
+  it('zlý kľúč iný model nezachráni', async () => {
+    await expect(
+      evaluate(request(), { model: [mock_model(api_error(401)), mock_model(good)] }),
+    ).rejects.toMatchObject({ code: 'bad_request' });
+  });
+
+  it('keď zlyhajú všetky, vráti chybu posledného', async () => {
+    await expect(
+      evaluate(request(), { model: [mock_model(api_error(503)), mock_model(api_error(429))] }),
+    ).rejects.toMatchObject({
+      code: 'upstream_error',
+      message: expect.stringContaining('limit') as string,
+    });
+  });
+});
